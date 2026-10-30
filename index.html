@@ -715,7 +715,7 @@
       <a href="#roi">Calculadora</a>
       <a href="#planes">Planes</a>
     </nav>
-    <a class="btn btn--rojo" href="#demo">Pedí una demo</a>
+    <a class="btn btn--rojo" href="#demo">Agendá una demo</a>
     <button type="button" class="menu-movil-btn" id="menu-movil-btn" aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú"><svg aria-hidden="true"><use href="#menu"/></svg></button>
   </div>
 </header>
@@ -729,7 +729,7 @@
   <a class="enlace" href="#panel">Panel</a>
   <a class="enlace" href="#roi">Calculadora de ROI</a>
   <a class="enlace" href="#planes">Planes</a>
-  <a class="enlace" href="#demo">Pedí una demo</a>
+  <a class="enlace" href="#demo">Agendá una demo</a>
 </div>
 
 <main id="inicio">
@@ -743,7 +743,7 @@
         <p class="hero-rubro">Hecho para tiendas de <span class="rot" id="rot"><span class="act">belleza</span><span>indumentaria</span><span>bazar</span><span>muebles y deco</span></span></p>
         <p class="bajada">Guidelia conoce todo tu catálogo, responde al instante y acompaña a cada cliente hasta el carrito. Responde con los datos exactos de cada producto, habla con tu tono y se ve como tu marca.</p>
         <div class="hero-acciones">
-          <a class="btn btn--rojo" href="#demo">Pedí una demo <svg aria-hidden="true"><use href="#flecha"/></svg></a>
+          <a class="btn btn--rojo" href="#demo">Agendá una demo <svg aria-hidden="true"><use href="#flecha"/></svg></a>
           <a class="btn btn--borde" href="#como-funciona">Cómo funciona <svg aria-hidden="true"><use href="#abajo"/></svg></a>
         </div>
         <div class="hero-pruebas">
@@ -1232,7 +1232,7 @@
             <option>Otra</option>
           </select>
         </label>
-        <button class="btn btn--rojo" type="submit">Pedí tu demo <svg aria-hidden="true"><use href="#flecha"/></svg></button>
+        <button class="btn btn--rojo" type="submit">Agendá tu demo <svg aria-hidden="true"><use href="#flecha"/></svg></button>
         <p class="form-nota" id="form-nota" hidden>Vista previa: este formulario todavía no está conectado. Antes de publicar el sitio hay que vincularlo a tu email o CRM.</p>
       </form>
     </div>
@@ -1745,7 +1745,7 @@
             <h1>${r.titulo}</h1>
             <p class="bajada">${r.bajada}</p>
             <div class="hero-acciones">
-              <a class="btn btn--rojo" href="#demo">Pedí una demo ${icono("flecha")}</a>
+              <a class="btn btn--rojo" href="#demo">Agendá una demo ${icono("flecha")}</a>
               <a class="btn btn--borde" href="#planes">Ver planes</a>
             </div>
           </div>
@@ -1800,7 +1800,7 @@
       <section class="banda banda--honda cierre cierre-corto">
         <div class="envoltura">
           <h2>Miralo funcionando con tu catálogo de ${r.corto.toLowerCase()}</h2>
-          <a class="btn btn--blanco" href="#demo">Pedí una demo ${icono("flecha")}</a>
+          <a class="btn btn--blanco" href="#demo">Agendá una demo ${icono("flecha")}</a>
         </div>
       </section>`;
     prepararReveal($("vista-rubro"));
@@ -2116,7 +2116,7 @@
           <div class="roi-fila"><span>Inversión por mes</span><b>${usd(costo)}</b></div>
           <div class="roi-fila"><span>Pedidos extra por mes para pagarse</span><b>${fmt(pedidosPago)}<small>${roi < 1 ? "con estos supuestos todavía no se paga" : `de ${fmt(Math.round(sesiones * conv))} que hacés hoy`}</small></b></div>
         </div>
-        <a class="btn btn--blanco" href="#demo">Pedí una demo ${icono("flecha")}</a>
+        <a class="btn btn--blanco" href="#demo">Agendá una demo ${icono("flecha")}</a>
         <p class="roi-aviso">Estimación con los supuestos de la izquierda. Habla de ingresos, no de ganancia, y no es una promesa de resultado.</p>
       </div>`;
 
