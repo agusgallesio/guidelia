@@ -217,6 +217,20 @@
   .paso-visual { margin-top: 6px; height: 118px; border-radius: var(--r-md); background: var(--niebla); position: relative; overflow: hidden; }
   @media (max-width: 860px) { .pasos { grid-template-columns: 1fr; } }
 
+  /* ---------- Evidencia ---------- */
+  .datos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+  .dato { background: var(--papel); border: 1px solid var(--linea); border-radius: var(--r-lg); padding: 30px 28px; display: grid; gap: 12px; align-content: start; }
+  .dato-n { font-family: var(--f-display); font-weight: 700; font-size: clamp(44px, 5vw, 58px); line-height: 1; letter-spacing: -.02em; color: var(--petroleo); }
+  .dato-n em { font-style: normal; color: var(--rojo); }
+  .dato-n small { font-size: .42em; font-weight: 600; color: var(--apagado); letter-spacing: 0; margin-inline: 6px; }
+  .dato p { color: var(--texto-2); font-size: 16px; line-height: 1.55; }
+  .dato-fuente { margin-top: 6px; padding-top: 14px; border-top: 1px solid var(--linea); font-family: var(--f-mono); font-size: 12px; line-height: 1.5; color: var(--apagado); }
+  .dato-fuente a { color: var(--petroleo-medio); text-decoration: underline; text-underline-offset: 3px; }
+  .dato-fuente a:hover { color: var(--petroleo); }
+  .datos-nota { max-width: 760px; margin: 28px auto 0; text-align: center; font-size: 14.5px; line-height: 1.6; color: var(--texto-2); }
+  .datos-nota a { color: var(--petroleo-medio); text-decoration: underline; text-underline-offset: 3px; }
+  @media (max-width: 900px) { .datos { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; } }
+
   .sync { display: grid; gap: 7px; padding: 14px; animation: sube 9s linear infinite; }
   .sync div { display: flex; align-items: center; gap: 10px; background: #fff; border-radius: 9px; padding: 7px 10px; font-size: 12px; }
   .sync span:nth-child(2) { flex: 1; color: var(--texto); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -1081,6 +1095,35 @@
           <div class="feed-lista" id="feed-lista" aria-live="off"></div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ================= EVIDENCIA ================= -->
+  <section class="banda" id="evidencia">
+    <div class="envoltura">
+      <div class="cabeza-seccion cabeza-seccion--centro">
+        <span class="ceja"><svg aria-hidden="true"><use href="#chispa"/></svg>Lo que muestran los datos</span>
+        <h2>Qué pasa cuando un asistente de IA acompaña la compra</h2>
+        <p class="bajada">Estudios y reportes recientes del comercio online global. Cada dato tiene su fuente para que lo puedas revisar.</p>
+      </div>
+      <div class="datos">
+        <article class="dato">
+          <div class="dato-n"><em>+25</em>%</div>
+          <p>más probabilidad de completar una compra en los compradores que usan un asistente de IA, según el análisis de más de 3 millones de interacciones reales.</p>
+          <div class="dato-fuente">Zoovu, <i>2026 Benchmark for AI in Ecommerce Conversion</i>. <a href="https://www.retainful.com/blog/ai-ecommerce-conversion-benchmark" target="_blank" rel="noopener">Ver resumen</a></div>
+        </article>
+        <article class="dato">
+          <div class="dato-n"><small>hasta</small><em>+40</em>%</div>
+          <p>de conversión cuando el asistente traduce las características técnicas de un producto en beneficios para lo que cada persona necesita.</p>
+          <div class="dato-fuente">Zoovu, <i>2026 Benchmark for AI in Ecommerce Conversion</i>. <a href="https://www.retainful.com/blog/ai-ecommerce-conversion-benchmark" target="_blank" rel="noopener">Ver resumen</a></div>
+        </article>
+        <article class="dato">
+          <div class="dato-n"><em>6,2</em>%<small>vs</small>3,9%</div>
+          <p>de crecimiento interanual de ventas: tiendas con agentes de IA propios frente a tiendas sin ellos, un 59&nbsp;% más de crecimiento en la temporada de fiestas 2025.</p>
+          <div class="dato-fuente">Salesforce, datos de compras de fin de año 2025. <a href="https://www.salesforce.com/news/stories/2025-holiday-shopping-data/" target="_blank" rel="noopener">Ver fuente</a></div>
+        </article>
+      </div>
+      <p class="datos-nota">Son datos de proveedores de IA y de tiendas de otros mercados: muestran una tendencia, no una promesa de resultado. En tu tienda lo medimos con un piloto. Para leer más: <a href="https://www.mdpi.com/2079-8954/12/10/429" target="_blank" rel="noopener">revisión académica sobre marketing con IA y ventas online</a> (<i>Systems</i>, 2024).</p>
     </div>
   </section>
 

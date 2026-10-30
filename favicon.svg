@@ -1,5 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <title>Guidelia</title>
   <rect width="64" height="64" rx="15" fill="#0B4B64"/>
-  <path d="M32 9Q36 28 55 32Q36 36 32 55Q28 36 9 32Q28 28 32 9Z" fill="#FF3231"/>
+  <g transform="translate(32 32) scale(.25) translate(-87 -111)">
+    <path d="M142.3 42.4C125.5 33.1 103.3 31.7 94 33.2C53.6 39 22.2 69.7 25.1 112.4C20.7 148.6 52.9 184.4 92.5 189.4C150.1 192.1 153.6 171.6 150.7 150.5V118.9H106.5" fill="none" stroke="#fff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M68 65Q71.5 91.5 98 95Q71.5 98.5 68 125Q64.5 98.5 38 95Q64.5 91.5 68 65Z" fill="#FF3231"/>
+  </g>
 </svg>
