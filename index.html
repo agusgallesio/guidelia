@@ -9,6 +9,7 @@
   img { max-width: 100%; }
   [hidden] { display: none !important; }
 </style>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Guidelia</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -300,6 +301,42 @@
   .previa .pv-in { margin: 4px 0 0; display: flex; align-items: center; justify-content: space-between; border: 1px solid #DDE8EC; border-radius: var(--rp); padding: 5px 5px 5px 13px; font-size: 12.5px; color: var(--apagado); background: #fff; transition: border-radius .35s; }
   .previa .pv-env { width: 28px; height: 28px; border-radius: var(--rp); background: var(--pc); transition: background .35s, border-radius .35s; }
   .previa .pv-burbuja { justify-self: end; background: var(--pc); color: #fff; padding: 8px 12px; border-radius: var(--rm) var(--rm) 4px var(--rm); font-size: 12.5px; transition: background .35s, border-radius .35s; }
+
+  .previa { --fp: var(--f-display); }
+  .previa .pv-n, .previa .pv-hola { font-family: var(--fp); }
+  .previa .pv-hola { transition: opacity .2s; }
+
+  /* Escena fija en escritorio: la sección se queda quieta y, con cada scroll, el asesor cambia
+     de color, bordes, tipografía y tono. En celular y con "reducir movimiento" no se fija. */
+  .perso-guia { display: none; align-items: center; gap: 14px; margin-top: 26px; }
+  .guia-pasos { display: flex; gap: 6px; width: 148px; flex-shrink: 0; }
+  .guia-pasos i { flex: 1; height: 5px; border-radius: 99px; background: var(--linea); transition: background .3s; }
+  .guia-pasos i.on { background: var(--rojo); }
+  .guia-txt { font-size: 13.5px; font-weight: 600; color: var(--texto-2); }
+  @media (min-width: 901px) and (min-height: 620px) and (prefers-reduced-motion: no-preference) {
+    .perso-escena { padding-block: 0; height: 300vh; }
+    .perso-pegado { position: sticky; top: calc(var(--alto-cab, 72px) + env(safe-area-inset-top, 0px)); height: calc(100vh - var(--alto-cab, 72px)); display: flex; align-items: center; }
+    .perso-pegado .perso { width: 100%; }
+    .perso-guia { display: flex; }
+    .perso-escena .controles { margin-top: 24px; gap: 18px; }
+    .perso-escena .controles > div { transition: opacity .35s; opacity: .8; }
+    .perso-escena .controles > div.act { opacity: 1; }
+    .perso-escena .controles > div .control-titulo { transition: color .3s; }
+    .perso-escena .controles > div.act .control-titulo { color: var(--rojo); }
+    .perso-escena .previa-marco { min-height: 0; padding: 44px; }
+    .perso-escena .previa { zoom: 1.4; }
+  }
+  @media (min-width: 901px) and (min-height: 620px) and (max-height: 780px) and (prefers-reduced-motion: no-preference) {
+    .perso-escena .previa { zoom: 1.18; }
+    .perso-escena .previa-marco { padding: 30px; }
+    .perso-escena .controles { gap: 10px; margin-top: 16px; }
+    .perso-escena .cabeza-seccion .bajada { display: none; }
+    .perso-escena h2 { font-size: clamp(30px, 3.2vw, 40px); }
+    .perso-escena .control-titulo { margin-bottom: 6px; }
+    .perso-escena .segmento button { padding: 7px 14px; }
+    .perso-escena .campo-nombre { height: 40px; }
+    .perso-escena .perso-guia { margin-top: 16px; }
+  }
 
   /* ---------- Panel (banda honda) ---------- */
   .panel-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(32px, 5vw, 64px); align-items: center; }
@@ -923,7 +960,8 @@
   </section>
 
   <!-- ================= PERSONALIZACIÓN ================= -->
-  <section class="banda banda--niebla" id="personaliza">
+  <section class="banda banda--niebla perso-escena" id="personaliza">
+   <div class="perso-pegado">
     <div class="envoltura perso">
       <div>
         <div class="cabeza-seccion" style="margin-bottom:0">
@@ -945,6 +983,13 @@
             </div>
           </div>
           <div>
+            <div class="control-titulo" id="lbl-tipo">Tipografía</div>
+            <div class="segmento" role="group" aria-labelledby="lbl-tipo" id="tipografia">
+              <button type="button" data-v="moderna" aria-pressed="true">Moderna</button>
+              <button type="button" data-v="elegante" aria-pressed="false">Elegante</button>
+            </div>
+          </div>
+          <div>
             <div class="control-titulo" id="lbl-tono">Tono</div>
             <div class="segmento" role="group" aria-labelledby="lbl-tono" id="tono">
               <button type="button" data-v="cercano" aria-pressed="true">Cercano</button>
@@ -956,6 +1001,10 @@
             <label class="control-titulo" for="nombre-asesor" style="display:block">Nombre del asesor</label>
             <input class="campo-nombre" id="nombre-asesor" type="text" maxlength="24" value="Nova">
           </div>
+        </div>
+        <div class="perso-guia" aria-hidden="true">
+          <div class="guia-pasos" id="guia-pasos"><i></i><i></i><i></i><i></i></div>
+          <span class="guia-txt" id="guia-txt">Seguí bajando y mirá cómo se adapta</span>
         </div>
       </div>
       <div class="previa-marco">
@@ -975,6 +1024,7 @@
         </div>
       </div>
     </div>
+   </div>
   </section>
 
   <!-- ================= PANEL ================= -->
@@ -1535,6 +1585,8 @@
     formal: ["Buenas tardes. ¿En qué puedo asistirle?", "Indíqueme qué necesita y le recomendaré la mejor opción.", "Necesito un regalo para mi madre"],
     experto: ["¿Qué tipo de pelo tenés y qué resultado buscás?", "Te recomiendo según tu tipo de pelo, temperatura y potencia.", "Necesito algo para pelo rizado"],
   };
+  const FUENTES = { moderna: "var(--f-display)", elegante: "'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, 'Times New Roman', serif" };
+  grupo("tipografia", (v) => previa.style.setProperty("--fp", FUENTES[v]));
   grupo("tono", (v) => {
     const [h, s, b] = TONOS[v];
     $("pv-hola").textContent = h;
@@ -2002,8 +2054,54 @@
     }, { threshold: 0.4 }).observe($("tablero"));
   }
 
-  // --- Personalización: se muestra sola hasta que el visitante la toca
+  // --- Personalización en escritorio: la sección queda fija y el scroll recorre 4 cambios
+  const ESCENA = window.matchMedia("(min-width: 901px) and (min-height: 620px) and (prefers-reduced-motion: no-preference)");
   const secPerso = $("personaliza");
+  {
+    const cab = document.querySelector(".encabezado");
+    const medirCab = () => document.documentElement.style.setProperty("--alto-cab", (cab ? cab.offsetHeight : 72) + "px");
+    medirCab();
+    window.addEventListener("resize", medirCab);
+    // Orden de cada lista: colores (0 petróleo, 1 rojo), bordes (0 recto, 2 redondo), tipografía, tono (0 cercano, 1 formal)
+    const ESTADOS = [
+      { col: 0, bor: 2, tip: 0, ton: 0, nom: "Nova", foco: [], txt: "Seguí bajando y mirá cómo se adapta" },
+      { col: 1, bor: 2, tip: 0, ton: 0, nom: "Nova", foco: [0], txt: "1 de 4 · El color de tu marca" },
+      { col: 1, bor: 0, tip: 0, ton: 0, nom: "Nova", foco: [1], txt: "2 de 4 · Bordes rectos, suaves o redondeados" },
+      { col: 1, bor: 0, tip: 1, ton: 0, nom: "Nova", foco: [2], txt: "3 de 4 · La tipografía de tu marca" },
+      { col: 1, bor: 0, tip: 1, ton: 1, nom: "Lucía", foco: [3, 4], txt: "4 de 4 · El tono y el nombre. Listo, es tu asesor." },
+    ];
+    const controles = secPerso.querySelector(".controles").children;
+    const barras = $("guia-pasos").children;
+    let actual = -1;
+    const clicHijo = (cont, k) => $(cont).children[k] && $(cont).children[k].click();
+    function aplicarEstado(i) {
+      if (i === actual) return;
+      actual = i;
+      const e = ESTADOS[i];
+      clicHijo("muestras", e.col); clicHijo("bordes", e.bor); clicHijo("tipografia", e.tip); clicHijo("tono", e.ton);
+      const campo = $("nombre-asesor");
+      if (campo.value !== e.nom) { campo.value = e.nom; campo.dispatchEvent(new Event("input")); }
+      [...controles].forEach((c, k) => c.classList.toggle("act", e.foco.includes(k) || e.foco.length === 0));
+      [...barras].forEach((b, k) => b.classList.toggle("on", k < i));
+      $("guia-txt").textContent = e.txt;
+    }
+    let pendiente = false;
+    function alScroll() {
+      pendiente = false;
+      if (!ESCENA.matches || !secPerso.offsetHeight) return;
+      const cabH = cab ? cab.offsetHeight : 72;
+      const recorrido = secPerso.offsetHeight - (window.innerHeight - cabH);
+      const p = Math.min(1, Math.max(0, (cabH - secPerso.getBoundingClientRect().top) / recorrido));
+      aplicarEstado(Math.min(ESTADOS.length - 1, Math.floor(p * ESTADOS.length)));
+    }
+    const pedir = () => { if (!pendiente) { pendiente = true; requestAnimationFrame(alScroll); } };
+    window.addEventListener("scroll", pedir, { passive: true });
+    window.addEventListener("resize", pedir);
+    ESCENA.addEventListener("change", () => { actual = -1; if (!ESCENA.matches) [...controles].forEach((c) => c.classList.remove("act")); pedir(); });
+    alScroll();
+  }
+
+  // --- Personalización (móvil): se muestra sola hasta que el visitante la toca
   if (secPerso && !QUIETO && "IntersectionObserver" in window) {
     const CICLO = [[1, "recto", "formal"], [2, "suave", "experto"], [3, "redondo", "cercano"], [4, "recto", "cercano"], [0, "redondo", "cercano"]];
     let ic = 0, tPerso = null, tocado = false;
@@ -2018,7 +2116,7 @@
     $("personaliza").querySelector(".controles").addEventListener("focusin", parar);
     new IntersectionObserver((es) => {
       clearInterval(tPerso);
-      if (es[0].isIntersecting && !tocado) tPerso = setInterval(paso, 2600);
+      if (es[0].isIntersecting && !tocado && !ESCENA.matches) tPerso = setInterval(paso, 2600);
     }, { threshold: 0.5 }).observe($("personaliza").querySelector(".previa-marco"));
   }
 
@@ -2147,5 +2245,6 @@
 })();
 </script>
 
+</body></html>
 </body>
 </html>
