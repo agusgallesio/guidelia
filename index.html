@@ -177,8 +177,8 @@
   @keyframes parpadea { 50% { opacity: 0; } }
   .wd-enviar { width: 34px; height: 34px; border-radius: 50%; background: var(--petroleo); display: grid; place-items: center; flex-shrink: 0; }
   .wd-enviar svg { width: 15px; height: 15px; color: #fff; }
-  .wd-firma { text-align: center; font-size: 10.5px; color: var(--apagado); margin-top: 7px; }
-  .wd-firma b { color: var(--petroleo); }
+  .wd-firma { display: flex; align-items: center; justify-content: center; gap: 5px; line-height: 1; font-size: 10.5px; color: var(--apagado); margin-top: 7px; }
+  .wd-firma svg { display: block; height: 11px; width: auto; aspect-ratio: 908 / 213; color: #0B4B64; margin-top: 1px; }
 
   .evento { position: absolute; z-index: 3; display: flex; align-items: center; gap: 11px; background: #fff; border-radius: 16px; padding: 11px 15px 11px 11px; box-shadow: var(--sombra-2); max-width: 250px; transition: opacity .4s, transform .4s cubic-bezier(.2,.8,.2,1); }
   .evento.oculto { opacity: 0; transform: translateY(10px) scale(.96); }
@@ -798,7 +798,7 @@
           <div class="wd-cuerpo" id="wd-cuerpo" aria-live="polite"></div>
           <div class="wd-pie">
             <div class="wd-input"><span class="t" id="wd-texto">Escribí tu consulta...</span><span class="wd-enviar"><svg aria-hidden="true"><use href="#enviar"/></svg></span></div>
-            <div class="wd-firma">Asesor IA impulsado por <b>Guidelia</b></div>
+            <div class="wd-firma"><span>Asesor IA impulsado por</span><svg viewBox="0 0 908 213" role="img" aria-label="Guidelia"><use href="#logo-guidelia" width="908" height="213"/></svg></div>
           </div>
         </div>
         <div class="evento evento--panel oculto" id="evento" aria-live="polite">
@@ -876,7 +876,7 @@
             <div class="wd-cuerpo" id="dia-chat"></div>
             <div class="wd-pie">
               <div class="wd-input"><span class="t">Escribí tu consulta...</span><span class="wd-enviar"><svg aria-hidden="true"><use href="#enviar"/></svg></span></div>
-              <div class="wd-firma">Asesor IA impulsado por <b>Guidelia</b></div>
+              <div class="wd-firma"><span>Asesor IA impulsado por</span><svg viewBox="0 0 908 213" role="img" aria-label="Guidelia"><use href="#logo-guidelia" width="908" height="213"/></svg></div>
             </div>
           </div>
         </div>
@@ -1800,7 +1800,7 @@
               <div class="wd-cuerpo" id="rubro-chat">${chatRubro(r)}</div>
               <div class="wd-pie">
                 <div class="wd-input"><span class="t">Escribí tu consulta...</span><span class="wd-enviar">${icono("enviar")}</span></div>
-                <div class="wd-firma">Asesor IA impulsado por <b>Guidelia</b></div>
+                <div class="wd-firma"><span>Asesor IA impulsado por</span><svg viewBox="0 0 908 213" role="img" aria-label="Guidelia"><use href="#logo-guidelia" width="908" height="213"/></svg></div>
               </div>
             </div>
             ${QUIETO ? "" : `<button type="button" class="repetir" id="rubro-repetir">${icono("repetir")}Ver la conversación de nuevo</button>`}
