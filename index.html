@@ -288,6 +288,13 @@
   .previa .pv-cab { display: flex; align-items: center; gap: 10px; padding: 14px; color: #fff; background: linear-gradient(135deg, var(--pc), var(--pc2)); transition: background .35s; }
   .previa .pv-av { width: 34px; height: 34px; border-radius: var(--rp); background: rgba(255,255,255,.18); display: grid; place-items: center; transition: border-radius .35s; }
   .previa .pv-av svg { width: 15px; height: 15px; }
+  .previa .pv-av.foto { background: none; overflow: hidden; }
+  .previa .pv-av.foto svg { width: 100%; height: 100%; display: block; }
+  .foto-op { width: 36px; height: 36px; border-radius: 50%; border: 0; padding: 0; overflow: hidden; cursor: pointer; background: #E3EEF8; color: var(--petroleo); display: grid; place-items: center; box-shadow: inset 0 0 0 1px rgba(0,0,0,.1); transition: transform .15s; }
+  .foto-op:hover { transform: scale(1.1); }
+  .foto-op svg { width: 100%; height: 100%; display: block; }
+  .foto-op.logo svg { width: 16px; height: 16px; }
+  .foto-op[aria-pressed="true"] { box-shadow: 0 0 0 2.5px #fff, 0 0 0 4.5px var(--texto); }
   .previa .pv-n { font-family: var(--f-display); font-weight: 700; font-size: 14.5px; }
   .previa .pv-e { font-size: 11px; opacity: .75; }
   .previa .pv-cuerpo { padding: 18px 14px 14px; display: grid; gap: 9px; }
@@ -312,7 +319,7 @@
   .guia-pasos i.on { background: var(--rojo); }
   .guia-txt { font-size: 13.5px; font-weight: 600; color: var(--texto-2); }
   @media (min-width: 901px) and (min-height: 620px) and (prefers-reduced-motion: no-preference) {
-    .perso-escena { padding-block: 0; height: 300vh; }
+    .perso-escena { padding-block: 0; height: 360vh; }
     .perso-pegado { position: sticky; top: calc(var(--alto-cab, 72px) + env(safe-area-inset-top, 0px)); height: calc(100vh - var(--alto-cab, 72px)); display: flex; align-items: center; }
     .perso-pegado .perso { width: 100%; }
     .perso-guia { display: flex; }
@@ -712,6 +719,8 @@
     <symbol id="carrito" viewBox="0 0 24 24"><path d="M3 4h2l2.2 10.4a2 2 0 0 0 2 1.6h7.4a2 2 0 0 0 2-1.5L20.5 8H6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="20" r="1.4" fill="currentColor"/><circle cx="17" cy="20" r="1.4" fill="currentColor"/></symbol>
     <symbol id="bandera" viewBox="0 0 24 24"><path d="M5 21V4m0 0h11l-2 4 2 4H5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="persona" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="avatar-lucia" viewBox="0 0 100 100"><rect width="100" height="100" fill="#D6E9F1"/><path d="M27 50C23 24 35 12 51 12s28 12 23 38c0 14 3 24 6 32H21c3-8 7-18 6-32Z" fill="#3B2A24"/><path d="M18 100c2-22 16-31 32-31s30 9 32 31Z" fill="#0E4A62"/><path d="M42 62h16v12c0 5-4 8-8 8s-8-3-8-8Z" fill="#E3A98A"/><ellipse cx="50" cy="45" rx="17" ry="20" fill="#EDB898"/><path d="M32 42c5-14 24-16 36-3 1-14-9-23-19-23S30 26 32 42Z" fill="#3B2A24"/><circle cx="43" cy="47" r="1.9" fill="#3B2A24"/><circle cx="57" cy="47" r="1.9" fill="#3B2A24"/><path d="M44 55c3 3 9 3 12 0" fill="none" stroke="#B0635A" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="avatar-mateo" viewBox="0 0 100 100"><rect width="100" height="100" fill="#F4DDD6"/><path d="M16 100c2-22 16-31 34-31s32 9 34 31Z" fill="#1C6280"/><path d="M42 62h16v12c0 5-4 8-8 8s-8-3-8-8Z" fill="#C98E6B"/><ellipse cx="50" cy="45" rx="17" ry="20" fill="#D9A07C"/><path d="M33 49c0 14 7 21 17 21s17-7 17-21c-4 6-10 9-17 9s-13-3-17-9Z" fill="#2B2B33"/><path d="M31 42c0-15 8-23 19-23s19 8 19 23c-4-7-11-10-19-10s-15 3-19 10Z" fill="#2B2B33"/><circle cx="43" cy="46" r="1.9" fill="#2B2B33"/><circle cx="57" cy="46" r="1.9" fill="#2B2B33"/><path d="M45 58c3 2 7 2 10 0" fill="none" stroke="#F4DDD6" stroke-width="1.8" stroke-linecap="round"/></symbol>
     <symbol id="rayo" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
     <symbol id="globo" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 1 3.3 6.5L4 20l1.3-3.3A8 8 0 0 1 4 12Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
     <symbol id="enviar" viewBox="0 0 24 24"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -980,6 +989,14 @@
             </div>
           </div>
           <div>
+            <div class="control-titulo" id="lbl-foto">Foto de perfil</div>
+            <div class="muestras" role="group" aria-labelledby="lbl-foto" id="fotos">
+              <button type="button" class="foto-op logo" data-v="logo" aria-pressed="true" aria-label="Logo"><svg aria-hidden="true"><use href="#chispa"/></svg></button>
+              <button type="button" class="foto-op" data-v="lucia" aria-pressed="false" aria-label="Foto de Lucía"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#avatar-lucia"/></svg></button>
+              <button type="button" class="foto-op" data-v="mateo" aria-pressed="false" aria-label="Foto de Mateo"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#avatar-mateo"/></svg></button>
+            </div>
+          </div>
+          <div>
             <div class="control-titulo" id="lbl-tono">Tono</div>
             <div class="segmento" role="group" aria-labelledby="lbl-tono" id="tono">
               <button type="button" data-v="cercano" aria-pressed="true">Cercano</button>
@@ -993,7 +1010,7 @@
           </div>
         </div>
         <div class="perso-guia" aria-hidden="true">
-          <div class="guia-pasos" id="guia-pasos"><i></i><i></i><i></i><i></i></div>
+          <div class="guia-pasos" id="guia-pasos"><i></i><i></i><i></i><i></i><i></i></div>
           <span class="guia-txt" id="guia-txt">Seguí bajando y mirá cómo se adapta</span>
         </div>
       </div>
@@ -1577,6 +1594,11 @@
   };
   const FUENTES = { moderna: "var(--f-display)", elegante: "'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, 'Times New Roman', serif" };
   grupo("tipografia", (v) => previa.style.setProperty("--fp", FUENTES[v]));
+  grupo("fotos", (v) => {
+    const av = previa.querySelector(".pv-av");
+    av.classList.toggle("foto", v !== "logo");
+    av.innerHTML = v === "logo" ? '<svg aria-hidden="true"><use href="#chispa"/></svg>' : `<svg viewBox="0 0 100 100" aria-hidden="true"><use href="#avatar-${v}"/></svg>`;
+  });
   grupo("tono", (v) => {
     const [h, s, b] = TONOS[v];
     $("pv-hola").textContent = h;
@@ -2042,13 +2064,14 @@
     const medirCab = () => document.documentElement.style.setProperty("--alto-cab", (cab ? cab.offsetHeight : 72) + "px");
     medirCab();
     window.addEventListener("resize", medirCab);
-    // Orden de cada lista: colores (0 petróleo, 1 rojo), bordes (0 recto, 2 redondo), tipografía, tono (0 cercano, 1 formal)
+    // Orden de cada lista: colores (0 petróleo, 1 rojo), bordes (0 recto, 2 redondo), tipografía, foto (0 logo, 1 Lucía), tono (0 cercano, 1 formal)
     const ESTADOS = [
-      { col: 0, bor: 2, tip: 0, ton: 0, nom: "Nova", foco: [], txt: "Seguí bajando y mirá cómo se adapta" },
-      { col: 1, bor: 2, tip: 0, ton: 0, nom: "Nova", foco: [0], txt: "1 de 4 · El color de tu marca" },
-      { col: 1, bor: 0, tip: 0, ton: 0, nom: "Nova", foco: [1], txt: "2 de 4 · Bordes rectos, suaves o redondeados" },
-      { col: 1, bor: 0, tip: 1, ton: 0, nom: "Nova", foco: [2], txt: "3 de 4 · La tipografía de tu marca" },
-      { col: 1, bor: 0, tip: 1, ton: 1, nom: "Lucía", foco: [3, 4], txt: "4 de 4 · El tono y el nombre. Listo, es tu asesor." },
+      { col: 0, bor: 2, tip: 0, fot: 0, ton: 0, nom: "Nova", foco: [], txt: "Seguí bajando y mirá cómo se adapta" },
+      { col: 1, bor: 2, tip: 0, fot: 0, ton: 0, nom: "Nova", foco: [0], txt: "1 de 5 · El color de tu marca" },
+      { col: 1, bor: 0, tip: 0, fot: 0, ton: 0, nom: "Nova", foco: [1], txt: "2 de 5 · Bordes rectos, suaves o redondeados" },
+      { col: 1, bor: 0, tip: 1, fot: 0, ton: 0, nom: "Nova", foco: [2], txt: "3 de 5 · La tipografía de tu marca" },
+      { col: 1, bor: 0, tip: 1, fot: 1, ton: 0, nom: "Lucía", foco: [3, 5], txt: "4 de 5 · La foto y el nombre de tu asesor" },
+      { col: 1, bor: 0, tip: 1, fot: 1, ton: 1, nom: "Lucía", foco: [4], txt: "5 de 5 · El tono. Listo, es tu asesor." },
     ];
     const controles = secPerso.querySelector(".controles").children;
     const barras = $("guia-pasos").children;
@@ -2058,7 +2081,7 @@
       if (i === actual) return;
       actual = i;
       const e = ESTADOS[i];
-      clicHijo("muestras", e.col); clicHijo("bordes", e.bor); clicHijo("tipografia", e.tip); clicHijo("tono", e.ton);
+      clicHijo("muestras", e.col); clicHijo("bordes", e.bor); clicHijo("tipografia", e.tip); clicHijo("fotos", e.fot); clicHijo("tono", e.ton);
       const campo = $("nombre-asesor");
       if (campo.value !== e.nom) { campo.value = e.nom; campo.dispatchEvent(new Event("input")); }
       [...controles].forEach((c, k) => c.classList.toggle("act", e.foco.includes(k) || e.foco.length === 0));
