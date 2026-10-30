@@ -221,7 +221,7 @@
   .datos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
   .dato { background: var(--papel); border: 1px solid var(--linea); border-radius: var(--r-lg); padding: 30px 28px; display: grid; gap: 12px; align-content: start; }
   .dato-n { font-family: var(--f-display); font-weight: 700; font-size: clamp(44px, 5vw, 58px); line-height: 1; letter-spacing: -.02em; color: var(--petroleo); }
-  .dato-n em { font-style: normal; color: var(--rojo); }
+  .dato-n .base { color: var(--apagado); }
   .dato-n small { font-size: .42em; font-weight: 600; color: var(--apagado); letter-spacing: 0; margin-inline: 6px; }
   .dato p { color: var(--texto-2); font-size: 16px; line-height: 1.55; }
   .dato-fuente { margin-top: 6px; padding-top: 14px; border-top: 1px solid var(--linea); font-family: var(--f-mono); font-size: 12px; line-height: 1.5; color: var(--apagado); }
@@ -1108,17 +1108,17 @@
       </div>
       <div class="datos">
         <article class="dato">
-          <div class="dato-n"><em>+25</em>%</div>
+          <div class="dato-n">+25%</div>
           <p>más probabilidad de completar una compra en los compradores que usan un asistente de IA, según el análisis de más de 3 millones de interacciones reales.</p>
           <div class="dato-fuente">Zoovu, <i>2026 Benchmark for AI in Ecommerce Conversion</i>. <a href="https://www.retainful.com/blog/ai-ecommerce-conversion-benchmark" target="_blank" rel="noopener">Ver resumen</a></div>
         </article>
         <article class="dato">
-          <div class="dato-n"><small>hasta</small><em>+40</em>%</div>
+          <div class="dato-n"><small>hasta</small>+40%</div>
           <p>de conversión cuando el asistente traduce las características técnicas de un producto en beneficios para lo que cada persona necesita.</p>
           <div class="dato-fuente">Zoovu, <i>2026 Benchmark for AI in Ecommerce Conversion</i>. <a href="https://www.retainful.com/blog/ai-ecommerce-conversion-benchmark" target="_blank" rel="noopener">Ver resumen</a></div>
         </article>
         <article class="dato">
-          <div class="dato-n"><em>6,2</em>%<small>vs</small>3,9%</div>
+          <div class="dato-n">6,2%<small>vs</small><span class="base">3,9%</span></div>
           <p>de crecimiento interanual de ventas: tiendas con agentes de IA propios frente a tiendas sin ellos, un 59&nbsp;% más de crecimiento en la temporada de fiestas 2025.</p>
           <div class="dato-fuente">Salesforce, datos de compras de fin de año 2025. <a href="https://www.salesforce.com/news/stories/2025-holiday-shopping-data/" target="_blank" rel="noopener">Ver fuente</a></div>
         </article>
