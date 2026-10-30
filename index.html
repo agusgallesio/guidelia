@@ -86,10 +86,8 @@
   .btn svg { width: 17px; height: 17px; }
 
   /* ---------- Logo ---------- */
-  .logo { white-space: nowrap; flex-shrink: 0; display: inline-flex; align-items: baseline; font-family: var(--f-display); font-weight: 700; font-size: 29px; letter-spacing: -.02em; line-height: 1; text-decoration: none; color: var(--petroleo); }
-  .logo .ia { color: var(--rojo); }
-  .logo .i-chispa { position: relative; display: inline-block; }
-  .logo .i-chispa svg { position: absolute; left: 50%; top: -.42em; width: .5em; height: .5em; transform: translateX(-50%); color: var(--rojo); }
+  .logo { flex-shrink: 0; display: inline-flex; line-height: 0; text-decoration: none; color: #0B4B64; }
+  .logo svg { display: block; height: 36px; width: auto; aspect-ratio: 908 / 213; }
   .logo--claro { color: #fff; }
 
   /* ---------- Encabezado ---------- */
@@ -711,6 +709,7 @@
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
+    <symbol id="logo-guidelia" viewBox="0 0 908 213"><g fill="none" stroke-width="23.6" stroke-linecap="round" stroke-linejoin="round"><g stroke="currentColor"><path d="M142.3 42.4C125.5 33.1 103.3 31.7 94 33.2C53.6 39 22.2 69.7 25.1 112.4C20.7 148.6 52.9 184.4 92.5 189.4C150.1 192.1 153.6 171.6 150.7 150.5V118.9H106.5"/><path d="M199.7 79.3V152A43.2 39.3 0 0 0 286.3 152M286.3 79.3V150.7"/><path d="M339.3 78.4V187.6"/><path d="M487.6 25.2V187.7M487.6 133.2A51.7 56.6 0 1 0 384.1 133.2A51.7 56.6 0 1 0 487.6 133.2"/><path d="M532.9 127.5H635.3A51.2 57.4 0 1 0 618.3 176.6"/><path d="M681.9 25.3V187.6"/></g><g stroke="#FF3231"><path d="M737 78.4V187.6"/><path d="M885.6 77.4V187.7M885.6 133.4A51.9 54.9 0 1 0 782 133.4A51.9 54.9 0 1 0 885.6 133.4"/></g></g><circle cx="339.3" cy="36.5" r="14.1" fill="currentColor"/><path d="M736.7 10.6Q736.7 34.8 760.9 34.8Q736.7 34.8 736.7 59Q736.7 34.8 712.5 34.8Q736.7 34.8 736.7 10.6Z" fill="#FF3231"/></symbol>
     <symbol id="chispa" viewBox="0 0 24 24"><path d="M12 0c.9 6.2 4.9 10.6 12 12-7.1 1.4-11.1 5.8-12 12-.9-6.2-4.9-10.6-12-12C7.1 10.6 11.1 6.2 12 0Z" fill="currentColor"/></symbol>
     <symbol id="check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="flecha" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -736,7 +735,7 @@
 <div class="progreso-pag" id="progreso-pag" aria-hidden="true"></div>
 <header class="encabezado" id="encabezado">
   <div class="envoltura">
-    <a class="logo" href="#inicio" aria-label="Guidelia, inicio">Guidel<span class="ia"><span class="i-chispa">ı<svg aria-hidden="true"><use href="#chispa"/></svg></span>a</span></a>
+    <a class="logo" href="#inicio" aria-label="Guidelia, inicio"><svg viewBox="0 0 908 213" role="img" aria-label="Guidelia"><use href="#logo-guidelia" width="908" height="213"/></svg></a>
     <nav class="nav" aria-label="Secciones">
       <div class="nav-desplegable" id="nav-soluciones">
         <button type="button" class="nav-btn" id="btn-soluciones" aria-expanded="false" aria-controls="menu-soluciones">Soluciones <svg aria-hidden="true"><use href="#chevron"/></svg></button>
@@ -1293,7 +1292,7 @@
 
 <footer class="pie">
   <div class="envoltura">
-    <a class="logo logo--claro" href="#inicio" aria-label="Guidelia, inicio">Guidel<span class="ia"><span class="i-chispa">ı<svg aria-hidden="true"><use href="#chispa"/></svg></span>a</span></a>
+    <a class="logo logo--claro" href="#inicio" aria-label="Guidelia, inicio"><svg viewBox="0 0 908 213" role="img" aria-label="Guidelia"><use href="#logo-guidelia" width="908" height="213"/></svg></a>
     <nav aria-label="Pie de página">
       <a href="#rubros">Soluciones</a>
       <a href="#como-funciona">Cómo funciona</a>
