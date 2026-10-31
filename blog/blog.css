@@ -166,8 +166,7 @@ img, svg { max-width: 100%; }
 .en-30 li { display: flex; gap: 10px; font-size: 16px; line-height: 1.5; margin: 0; color: var(--texto); }
 .ico-li { width: 22px; height: 22px; flex-shrink: 0; color: var(--petroleo-medio); margin-top: 2px; }
 .cuerpo-articulo .chat-mock, .cuerpo-articulo .duelo, .cuerpo-articulo .stats, .cuerpo-articulo .cmp, .cuerpo-articulo .pasos, .cuerpo-articulo .ico-cards, .cuerpo-articulo .checklist, .cuerpo-articulo .flujo { margin: 30px 0 34px; }
-.cuerpo-articulo { max-width: 760px; }
-.cuerpo-articulo blockquote { display: flex; gap: 14px; align-items: flex-start; }
+.cuerpo-articulo { max-width: 720px; }
 .ico-q { width: 26px; height: 26px; flex-shrink: 0; color: var(--rojo); margin-top: 2px; }
 
 /* Chat de ejemplo */
@@ -271,19 +270,7 @@ img, svg { max-width: 100%; }
 .faq-item > div { padding: 0 20px 6px; }
 .faq-item > div p { font-size: 16.5px; }
 
-/* Animaciones de entrada (solo si hay JavaScript y el usuario no pidió menos movimiento) */
-.anim .chat-mock, .anim .duelo, .anim .stats, .anim .cmp, .anim .pasos > li, .anim .ico-card, .anim .checklist, .anim .flujo, .anim .en-30, .anim .cuerpo-articulo blockquote { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.8,.2,1); }
-.anim .visto { opacity: 1 !important; transform: none !important; }
-.anim .chat-mock .msg, .anim .chat-mock .prods, .anim .chat-mock .chips-sug { opacity: 0; transform: translateY(8px); }
-.anim .chat-mock.visto .msg, .anim .chat-mock.visto .prods, .anim .chat-mock.visto .chips-sug { opacity: 1; transform: none; transition: opacity .5s ease, transform .5s ease; }
-.anim .chat-mock.visto .chat-cuerpo > :nth-child(1) { transition-delay: .3s; }
-.anim .chat-mock.visto .chat-cuerpo > :nth-child(2) { transition-delay: .9s; }
-.anim .chat-mock.visto .chat-cuerpo > :nth-child(3) { transition-delay: 1.5s; }
-.anim .chat-mock.visto .chat-cuerpo > :nth-child(4) { transition-delay: 2s; }
-.anim .chat-mock.visto .chat-cuerpo > :nth-child(5) { transition-delay: 2.5s; }
-.anim .pasos > li:nth-child(2), .anim .ico-card:nth-child(2) { transition-delay: .08s; }
-.anim .pasos > li:nth-child(3), .anim .ico-card:nth-child(3) { transition-delay: .16s; }
-.anim .pasos > li:nth-child(4), .anim .ico-card:nth-child(4) { transition-delay: .24s; }
+/* En pantallas anchas el texto de la portada deja lugar a la ilustración */
 @media (min-width: 761px) {
   .art-hero h1, .art-hero .resumen { max-width: 58%; }
   .art-hero .escena { right: 3%; bottom: 10%; height: 72%; max-width: 36%; }
