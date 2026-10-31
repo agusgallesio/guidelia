@@ -103,6 +103,12 @@
   .nav a { text-decoration: none; font-weight: 500; font-size: 15px; color: var(--texto-2); transition: color .15s; }
   .nav a:hover { color: var(--petroleo); }
   .encabezado .btn { height: 44px; padding: 0 20px; font-size: 14.5px; }
+  /* En celular el botón no se achica: se ajusta el espacio y el logo para que entre completo. */
+  @media (max-width: 560px) {
+    .encabezado .envoltura { gap: 10px; }
+    .encabezado .btn { flex-shrink: 0; padding: 0 14px; font-size: 13.5px; }
+    .logo svg { height: 30px; }
+  }
   @media (max-width: 860px) { .nav { display: none; } .encabezado .btn { margin-left: auto; } }
 
   /* ---------- Hero ---------- */
@@ -123,7 +129,14 @@
   .hero-pruebas span { display: inline-flex; align-items: center; gap: 8px; }
   .hero-pruebas svg { width: 16px; height: 16px; color: var(--ok); flex-shrink: 0; }
   .hero-texto, .escenario { min-width: 0; }
-  @media (max-width: 940px) { .hero .envoltura { grid-template-columns: minmax(0, 1fr); } }
+  @media (max-width: 940px) {
+    /* En celular el chat de ejemplo va justo debajo del párrafo y antes de los botones. */
+    .hero .envoltura { display: flex; flex-direction: column; gap: 26px; }
+    .hero-texto { display: contents; }
+    .hero .escenario { order: 5; width: 100%; }
+    .hero-texto > .hero-acciones { order: 6; }
+    .hero-texto > .hero-pruebas { order: 7; }
+  }
   @media (max-width: 480px) {
     .escenas { max-width: 100%; }
     .escena-btn { padding: 8px 11px; font-size: 12.5px; }
