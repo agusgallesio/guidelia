@@ -100,6 +100,7 @@
   .encabezado .envoltura { display: flex; align-items: center; gap: 28px; height: 74px; }
   .nav { display: flex; gap: 26px; margin-left: auto; }
   @media (max-width: 1100px) { .nav { gap: 18px; } .nav a, .nav-btn { font-size: 14px; } }
+  .nav a, .nav-btn { white-space: nowrap; }
   .nav a { text-decoration: none; font-weight: 500; font-size: 15px; color: var(--texto-2); transition: color .15s; }
   .nav a:hover { color: var(--petroleo); }
   .encabezado .btn { height: 44px; padding: 0 20px; font-size: 14.5px; }
@@ -109,7 +110,7 @@
     .encabezado .btn { flex-shrink: 0; padding: 0 14px; font-size: 13.5px; }
     .logo svg { height: 30px; }
   }
-  @media (max-width: 860px) { .nav { display: none; } .encabezado .btn { margin-left: auto; } }
+  @media (max-width: 1120px) { .nav { display: none; } .encabezado .btn { margin-left: auto; } }
 
   /* ---------- Hero ---------- */
   .hero { position: relative; overflow: hidden; padding-block: clamp(48px, 7vw, 96px) clamp(64px, 8vw, 110px); }
@@ -562,7 +563,7 @@
   .menu-movil { position: fixed; z-index: 49; left: 0; right: 0; top: calc(74px + env(safe-area-inset-top, 0px)); bottom: 0; background: #fff; overflow-y: auto; padding: 18px max(20px, env(safe-area-inset-right, 0px)) calc(28px + env(safe-area-inset-bottom, 0px)) max(20px, env(safe-area-inset-left, 0px)); animation: entra .2s both; }
   .menu-movil a.enlace { display: block; padding: 15px 4px; font-size: 18px; font-weight: 600; text-decoration: none; color: var(--texto); border-bottom: 1px solid var(--linea); }
   .menu-movil .menu-titulo { padding: 22px 4px 8px; }
-  @media (max-width: 860px) { .menu-movil-btn { display: grid; } .encabezado .btn { margin-left: auto; } }
+  @media (max-width: 1120px) { .menu-movil-btn { display: grid; } .encabezado .btn { margin-left: auto; } }
   @media (max-width: 420px) { .encabezado .btn { padding: 0 14px; font-size: 13.5px; } }
 
   /* ---------- Rubros en el inicio ---------- */
@@ -800,6 +801,7 @@
       <a href="#panel">Panel</a>
       <a href="#roi">Calculadora</a>
       <a href="#planes">Planes</a>
+      <a href="https://guidelia.pages.dev/blog/">Blog</a>
     </nav>
     <a class="btn btn--rojo" href="#demo">Agendá una demo</a>
     <button type="button" class="menu-movil-btn" id="menu-movil-btn" aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú"><svg aria-hidden="true"><use href="#menu"/></svg></button>
@@ -815,6 +817,7 @@
   <a class="enlace" href="#panel">Panel</a>
   <a class="enlace" href="#roi">Calculadora de ROI</a>
   <a class="enlace" href="#planes">Planes</a>
+  <a class="enlace" href="https://guidelia.pages.dev/blog/">Blog</a>
   <a class="enlace" href="#demo">Agendá una demo</a>
 </div>
 
@@ -1385,6 +1388,7 @@
       <a href="#funciones">Funciones</a>
       <a href="#roi">Calculadora</a>
       <a href="#planes">Planes</a>
+      <a href="https://guidelia.pages.dev/blog/">Blog</a>
       <a href="#demo">Demo</a>
     </nav>
     <small>© 2026 Guidelia · Asesor de compras con IA</small>
