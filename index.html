@@ -544,9 +544,14 @@
   @media (max-width: 420px) { .encabezado .btn { padding: 0 14px; font-size: 13.5px; } }
 
   /* ---------- Rubros en el inicio ---------- */
-  .rubros-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
-  @media (max-width: 1000px) { .rubros-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 560px) { .rubros-grid { grid-template-columns: 1fr; } }
+  .rubros-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+  /* Con cinco rubros: 3 + 2 en tablet, uno debajo del otro en celular. */
+  @media (max-width: 1100px) {
+    .rubros-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    .rubros-grid .tarjeta-rubro { grid-column: span 2; }
+    .rubros-grid .tarjeta-rubro:nth-child(n+4) { grid-column: span 3; }
+  }
+  @media (max-width: 560px) { .rubros-grid { grid-template-columns: 1fr; } .rubros-grid .tarjeta-rubro, .rubros-grid .tarjeta-rubro:nth-child(n+4) { grid-column: auto; } }
   .tarjeta-rubro { display: grid; gap: 12px; align-content: start; padding: 26px 24px; border-radius: var(--r-xl); background: var(--papel); text-decoration: none; box-shadow: inset 0 0 0 1px var(--linea); transition: transform .2s cubic-bezier(.2,.8,.2,1), box-shadow .2s; }
   .tarjeta-rubro:hover { transform: translateY(-4px); box-shadow: inset 0 0 0 1px var(--cielo), var(--sombra-2); }
   .tarjeta-rubro .ico-rubro { width: 50px; height: 50px; border-radius: 16px; }
@@ -749,6 +754,7 @@
     <symbol id="r-belleza" viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
     <symbol id="r-indumentaria" viewBox="0 0 24 24"><path d="M8.5 3 4 5.5 2.5 10l3 1.3V21h13v-9.7l3-1.3L20 5.5 15.5 3c-.6 1.6-1.9 2.5-3.5 2.5S9.1 4.6 8.5 3Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
     <symbol id="r-bazar" viewBox="0 0 24 24"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9Zm12 2h1.5a2.5 2.5 0 0 1 0 5H15.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 3.5c0 1.4 1 1.4 1 2.8M12 3.5c0 1.4 1 1.4 1 2.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="r-jugueteria" viewBox="0 0 24 24"><rect x="3" y="12.5" width="8" height="8" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="13" y="12.5" width="8" height="8" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="8" y="3.5" width="8" height="8" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
     <symbol id="r-muebles" viewBox="0 0 24 24"><path d="M5.5 11V8a3 3 0 0 1 3-3h7a3 3 0 0 1 3 3v3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 13.5a2 2 0 0 1 4 0V15h10v-1.5a2 2 0 0 1 4 0V18H3v-4.5ZM5.5 18v2M18.5 18v2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></symbol>
     <symbol id="maquina" viewBox="0 0 30 44"><rect x="7" y="9" width="16" height="33" rx="7" fill="currentColor"/><rect x="5" y="2" width="20" height="9" rx="3" fill="currentColor" opacity=".55"/><circle cx="15" cy="24" r="2.6" fill="#fff" opacity=".85"/></symbol>
   </defs>
@@ -798,7 +804,7 @@
       <div class="hero-texto">
         <span class="ceja"><svg aria-hidden="true"><use href="#chispa"/></svg>Asesor de compras con IA para tiendas online</span>
         <h1>Tu mejor vendedor, <em>en cada visita<svg aria-hidden="true"><use href="#chispa"/></svg></em></h1>
-        <p class="hero-rubro">Hecho para tiendas de <span class="rot" id="rot"><span class="act">belleza</span><span>indumentaria</span><span>bazar</span><span>muebles y deco</span></span></p>
+        <p class="hero-rubro">Hecho para tiendas de <span class="rot" id="rot"><span class="act">belleza</span><span>indumentaria</span><span>bazar</span><span>muebles y deco</span><span>jugueterías</span></span></p>
         <p class="bajada">Guidelia conoce todo tu catálogo, responde al instante y acompaña a cada cliente hasta el carrito. Responde con los datos exactos de cada producto, habla con tu tono y se ve como tu marca.</p>
         <div class="hero-acciones">
           <a class="btn btn--rojo" href="#demo">Agendá una demo <svg aria-hidden="true"><use href="#flecha"/></svg></a>
@@ -970,7 +976,7 @@
       <div class="cabeza-seccion cabeza-seccion--centro">
         <span class="ceja"><svg aria-hidden="true"><use href="#chispa"/></svg>Soluciones</span>
         <h2>Pensado para tu rubro</h2>
-        <p class="bajada">Cada rubro tiene sus propias preguntas: talles, medidas, materiales, tipo de piel. El asesor las responde con los datos de tu catálogo.</p>
+        <p class="bajada">Cada rubro tiene sus propias preguntas: talles, medidas, materiales, tipo de piel, edades. El asesor las responde con los datos de tu catálogo.</p>
       </div>
       <div class="rubros-grid" id="rubros-grid"></div>
     </div>
@@ -1724,6 +1730,8 @@
     sartenes: '<svg viewBox="0 0 100 80"><ellipse cx="34" cy="50" rx="24" ry="17" fill="#2F3B42"/><ellipse cx="34" cy="48.5" rx="18.5" ry="12" fill="#46555E"/><ellipse cx="62" cy="30" rx="19" ry="13" fill="#2F3B42"/><ellipse cx="62" cy="29" rx="14.5" ry="9" fill="#46555E"/><rect x="78" y="25" width="18" height="6" rx="3" fill="#B98552" transform="rotate(-12 78 28)"/><rect x="54" y="47" width="24" height="7" rx="3.5" fill="#B98552" transform="rotate(-8 54 50)"/></svg>',
     sillon: '<svg viewBox="0 0 100 80"><rect x="18" y="20" width="64" height="26" rx="8" fill="#A9AFB3"/><rect x="10" y="34" width="14" height="28" rx="6" fill="#959CA1"/><rect x="76" y="34" width="14" height="28" rx="6" fill="#959CA1"/><rect x="22" y="42" width="56" height="16" rx="5" fill="#BAC0C4"/><path d="M50 43v14" stroke="#A3AAAE" stroke-width="1.6"/><path d="M16 62v8M84 62v8" stroke="#6E5A45" stroke-width="3" stroke-linecap="round"/></svg>',
     mesa: '<svg viewBox="0 0 100 80"><rect x="12" y="30" width="76" height="9" rx="3" fill="#B98A5A"/><rect x="16" y="39" width="68" height="4" rx="2" fill="#9C7146"/><path d="M22 43l-4 24M78 43l4 24M30 43l-2 22M70 43l2 22" stroke="#8A6340" stroke-width="3.2" stroke-linecap="round"/><circle cx="62" cy="25" r="5" fill="#7FA38A"/><rect x="58" y="24" width="8" height="6" rx="2" fill="#E8DCCB"/></svg>',
+    bloques: '<svg viewBox="0 0 100 80"><rect x="14" y="44" width="32" height="27" rx="4" fill="#F2383B"/><rect x="50" y="44" width="32" height="27" rx="4" fill="#3B82C4"/><rect x="32" y="15" width="32" height="27" rx="4" fill="#F5B82E"/><circle cx="30" cy="57.5" r="5" fill="#fff" opacity=".7"/><circle cx="66" cy="57.5" r="5" fill="#fff" opacity=".7"/><circle cx="48" cy="28.5" r="5" fill="#fff" opacity=".7"/></svg>',
+    autito: '<svg viewBox="0 0 100 80"><path d="M8 52h84v10a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4Z" fill="#3B82C4"/><path d="M26 52 34 36h28l10 16Z" fill="#6AA8DC"/><path d="M36 39 31 50h15V39Zm14 0v11h17L59 39Z" fill="#E6F2FB"/><circle cx="29" cy="66" r="8" fill="#2F3B42"/><circle cx="29" cy="66" r="3" fill="#BFC7CC"/><circle cx="71" cy="66" r="8" fill="#2F3B42"/><circle cx="71" cy="66" r="3" fill="#BFC7CC"/></svg>',
   };
   const RUBROS = {
     belleza: {
@@ -1790,8 +1798,24 @@
         ["Entregas y armado", "Responde plazos, armado y envío con tu política real, sin prometer de más."],
       ],
     },
+    jugueteria: {
+      nombre: "Jugueterías", corto: "Jugueterías", icono: "r-jugueteria", fondo: "#E3F1FC", color: "#1F6FB5",
+      linea: "Edad recomendada, pilas y piezas, y regalos por edad.",
+      titulo: "El regalo justo según la edad y el presupuesto",
+      bajada: "Desde qué edad es cada juguete, si lleva pilas, cuántas piezas trae y de qué material es: el asesor responde con la ficha real y ayuda a elegir regalos sin pasarse del tope.",
+      chat: { c: "Busco un regalo para un nene de 4 años, hasta US$ 40",
+        a: "Para 4 años te recomiendo el **set de bloques de 60 piezas**: es **desde los 3 años**, tiene piezas grandes y no necesita pilas. Si prefiere algo con movimiento, el **autito de fricción** también es apto **desde los 3 años**.",
+        tarjetas: [["Set de bloques 60 piezas", "US$ 28", "-10%", null, "bloques", "#FFF4DC"], ["Autito de fricción", "US$ 15", "-20%", null, "autito", "#E8F1FA"]],
+        chips: ["¿Lleva pilas?", "¿Tiene piezas chicas?"] },
+      preguntas: ["¿Desde qué edad es?", "¿Lleva pilas?", "¿Tiene piezas chicas?", "¿Qué le regalo a un nene de 5 años?", "¿De qué material es?", "¿Cuántas piezas trae?", "¿Qué diferencia hay entre estos dos?", "¿Cuál es el más vendido?"],
+      beneficios: [
+        ["Edad recomendada a la vista", "Responde desde qué edad es cada juguete y qué advertencias trae, tal cual figuran en la ficha."],
+        ["Regalos por edad y presupuesto", "Arma opciones según para quién es y cuánto querés gastar, sin pasarse del tope."],
+        ["Pilas, piezas y materiales", "Contesta si lleva pilas, cuántas piezas trae y de qué está hecho, con los datos de tu catálogo."],
+      ],
+    },
   };
-  const ORDEN_RUBROS = ["belleza", "indumentaria", "bazar", "muebles"];
+  const ORDEN_RUBROS = ["belleza", "indumentaria", "bazar", "muebles", "jugueteria"];
   const icoRubro = (r) => `<span class="ico-rubro" style="background:${r.fondo};color:${r.color}">${icono(r.icono)}</span>`;
 
   // Menú de escritorio, menú de celular y tarjetas del inicio
