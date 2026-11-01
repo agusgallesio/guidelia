@@ -1,0 +1,3 @@
+/prueba/*
+  Access-Control-Allow-Origin: *
+  Cache-Control: no-store
