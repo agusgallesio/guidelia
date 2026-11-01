@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /prueba/
 
-Sitemap: https://guidelia.pages.dev/sitemap.xml
+Sitemap: https://guidelia.com.ar/sitemap.xml

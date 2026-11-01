@@ -61,7 +61,7 @@
     .catch(function (e) { fila("Mapa del sitio público (para leer el catálogo)", false, String(e)); });
 
   // 7. ¿La tienda deja que el código llame a nuestro servidor?
-  fetch("https://guidelia.pages.dev/prueba/ok.json", { cache: "no-store" }).then(function (r) { return r.json(); })
+  fetch("https://guidelia.com.ar/prueba/ok.json", { cache: "no-store" }).then(function (r) { return r.json(); })
     .then(function (j) { fila("La tienda permite hablar con el servidor de Guidelia", j && j.ok === true, "respuesta recibida"); })
     .catch(function (e) { fila("La tienda permite hablar con el servidor de Guidelia", false, String(e)); });
 
