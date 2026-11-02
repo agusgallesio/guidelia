@@ -157,7 +157,7 @@
   .escenas { display: flex; gap: 6px; margin: 0 auto 16px; width: fit-content; padding: 5px; border-radius: 999px; background: rgba(255,255,255,.75); box-shadow: var(--sombra-1); backdrop-filter: blur(8px); }
   .escena-btn { position: relative; overflow: hidden; border: 0; background: transparent; padding: 8px 15px; border-radius: 999px; font-size: 13px; font-weight: 600; color: var(--texto-2); cursor: pointer; }
   .escena-btn.activa { background: var(--petroleo); color: #fff; }
-  .escena-btn .progreso { position: absolute; left: 0; bottom: 0; height: 2px; width: 0; background: var(--rojo); }
+  .escena-btn .progreso { position: absolute; left: 0; bottom: 0; height: 3px; width: 0; background: var(--rojo); }
   .widget-demo { position: relative; margin: 0 auto; max-width: 420px; background: #F5F9FA; border-radius: 26px; overflow: hidden; box-shadow: var(--sombra-2), 0 0 0 1px rgba(7,44,59,.05); display: flex; flex-direction: column; height: 610px; }
   .wd-cabeza { display: flex; align-items: center; gap: 11px; padding: 15px 16px; color: #fff; background: radial-gradient(260px 120px at 10% -40%, rgba(120,190,215,.45), transparent 70%), linear-gradient(135deg, var(--petroleo), var(--petroleo-hondo)); flex-shrink: 0; }
   .avatar { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(140deg, #1E6E8E, var(--petroleo)); display: grid; place-items: center; flex-shrink: 0; position: relative; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.18); }
@@ -1499,6 +1499,18 @@
     });
   }
 
+  // La línea roja de la pestaña se llena a medida que avanza la conversación (duración aproximada de cada paso).
+  const PAUSA_FINAL = 3200;
+  const duracionPaso = (p) => (p.c ? p.c.length * 41 + 380 : p.a ? 1100 + (p.tarjetas || p.form ? 900 : 0) : 700) + 650;
+  function llenarHasta(i, fraccion, ms) {
+    if (QUIETO) return;
+    const p = tabs.children[i].querySelector(".progreso");
+    requestAnimationFrame(() => {
+      p.style.transition = `width ${ms}ms linear`;
+      p.style.width = `${(fraccion * 100).toFixed(1)}%`;
+    });
+  }
+
   function nodoMensaje(paso) {
     const frag = document.createDocumentFragment();
     if (paso.c) {
@@ -1573,7 +1585,12 @@
     cuerpo.innerHTML = "";
     cuerpo.style.opacity = "1";
     const escena = ESCENAS[i];
+    const totalMs = escena.pasos.reduce((t, p) => t + duracionPaso(p), 0) + PAUSA_FINAL;
+    let hechoMs = 0;
     for (const paso of escena.pasos) {
+      const dur = duracionPaso(paso);
+      hechoMs += dur;
+      llenarHasta(i, hechoMs / totalMs, dur);
       if (paso.c) {
         texto.classList.add("escrito");
         for (let k = 1; k <= paso.c.length; k++) {
@@ -1605,8 +1622,8 @@
       if (!vigente()) return;
     }
     if (!escena.pasos.some((p) => p.ok)) mostrarEvento(escena.evento);
-    animarProgreso(i, 4200);
-    await esperar(4200);
+    llenarHasta(i, 1, PAUSA_FINAL);
+    await esperar(PAUSA_FINAL);
     if (vigente() && !document.hidden && $("inicio").hidden) {
       const reanudar = () => { if (!$("inicio").hidden) { window.removeEventListener("hashchange", reanudar); if (vigente()) reproducir((actual + 1) % ESCENAS.length); } };
       window.addEventListener("hashchange", reanudar);
