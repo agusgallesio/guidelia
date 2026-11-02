@@ -370,13 +370,14 @@
   @media (min-width: 901px) and (min-height: 620px) and (prefers-reduced-motion: no-preference) {
     .perso-escena { padding-block: 0; height: 360vh; }
     .perso-pegado { position: sticky; top: calc(var(--alto-cab, 72px) + env(safe-area-inset-top, 0px)); height: calc(100vh - var(--alto-cab, 72px)); display: flex; align-items: center; }
-    .perso-pegado .perso { width: 100%; }
+    .perso-pegado .perso { width: 100%; zoom: var(--ajuste, 1); }
     .perso-guia { display: flex; }
     .perso-escena .controles { margin-top: 24px; gap: 18px; }
     .perso-escena .controles > div { transition: opacity .35s; opacity: .8; }
     .perso-escena .controles > div.act { opacity: 1; }
     .perso-escena .controles > div .control-titulo { transition: color .3s; }
     .perso-escena .controles > div.act .control-titulo { color: var(--rojo); }
+    .perso-escena .controles.sin-foco > div.act .control-titulo { color: var(--texto); }
     .perso-escena .previa-marco { min-height: 0; padding: 44px; }
     .perso-escena .previa { zoom: 1.4; }
   }
@@ -2193,9 +2194,24 @@
       const campo = $("nombre-asesor");
       if (campo.value !== e.nom) { campo.value = e.nom; campo.dispatchEvent(new Event("input")); }
       [...controles].forEach((c, k) => c.classList.toggle("act", e.foco.includes(k) || e.foco.length === 0));
+      secPerso.querySelector(".controles").classList.toggle("sin-foco", e.foco.length === 0);
       [...barras].forEach((b, k) => b.classList.toggle("on", k < i));
       $("guia-txt").textContent = e.txt;
     }
+    // Si el contenido es más alto que la pantalla, se achica lo justo para que entre completo.
+    const pegado = secPerso.querySelector(".perso-pegado");
+    const perso = secPerso.querySelector(".perso");
+    function ajustar() {
+      perso.style.removeProperty("--ajuste");
+      if (!ESCENA.matches) return;
+      const libre = pegado.clientHeight - 24;
+      const natural = perso.offsetHeight;
+      if (natural > libre) perso.style.setProperty("--ajuste", Math.max(0.55, libre / natural).toFixed(3));
+    }
+    ajustar();
+    window.addEventListener("resize", ajustar);
+    ESCENA.addEventListener("change", ajustar);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(ajustar);
     let pendiente = false;
     function alScroll() {
       pendiente = false;
