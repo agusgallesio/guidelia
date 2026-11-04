@@ -1,12 +1,15 @@
 // POST /api/demo  -> recibe el pedido de demo (con el teléfono ya verificado), lo guarda y avisa por email.
-import { json, error, leerJson, origenValido, telefonoValido, emailValido, limpiar, constanciaValida, limitar } from "./_comun.js";
+import { json, error, leerJson, origenValido, telefonoValido, emailValido, limpiar, constanciaValida, limitar, verificacionConfigurada } from "./_comun.js";
+
+const DESTINO_POR_DEFECTO = "agustin@guidelia.com.ar";
 
 const VISITAS = ["Menos de 5.000", "De 5.000 a 10.000", "De 10.000 a 30.000", "Más de 30.000"];
 const PLATAFORMAS = ["WooCommerce", "Tiendanube", "Shopify", "Otra"];
 
 export async function onRequestPost({ request, env }) {
   if (!origenValido(request)) return error("origen", "Pedido no permitido.", 403);
-  if (!env.FIRMA_SECRETO || !(env.RESEND_API_KEY && env.EMAIL_DESTINO) ) return error("no_configurado", "El formulario todavía no está disponible.", 503);
+  // El aviso sale por un script de Google (APPS_SCRIPT_URL) o por Resend (RESEND_API_KEY). Sin ninguno, no hay a dónde mandarlo.
+  if (!env.APPS_SCRIPT_URL && !env.RESEND_API_KEY) return error("no_configurado", "El formulario todavía no está disponible.", 503);
   let c;
   try {
     c = await leerJson(request, 6000);
@@ -22,13 +25,17 @@ export async function onRequestPost({ request, env }) {
   const plataforma = PLATAFORMAS.includes(c.plataforma) ? c.plataforma : null;
   const visitas = VISITAS.includes(c.visitas) ? c.visitas : null;
   if (!nombre || !tienda || !emailValido(email) || !plataforma || !visitas) return error("datos", "Revisá los datos del formulario.");
-  if (!telefonoValido(c.telefono) || !(await constanciaValida(c.constancia, c.telefono, env.FIRMA_SECRETO))) {
+  if (!telefonoValido(c.telefono)) return error("telefono", "Revisá el número de teléfono.");
+  // Con la verificación por SMS activa, el teléfono tiene que estar verificado. Si todavía no está activa, el pedido entra igual
+  // y el aviso lo marca como "sin verificar".
+  const exigeVerificacion = verificacionConfigurada(env);
+  if (exigeVerificacion && !(await constanciaValida(c.constancia, c.telefono, env.FIRMA_SECRETO))) {
     return error("verificacion", "Verificá tu teléfono para continuar.", 403);
   }
   const ip = request.headers.get("CF-Connecting-IP") || "sin-ip";
   if (!(await limitar(env, `demo:${ip}`, 5, 3600))) return error("limite", "Enviaste varios pedidos seguidos. Probá más tarde.", 429);
 
-  const lead = { nombre, tienda, email, telefono: c.telefono, plataforma, visitas, fecha: new Date().toISOString(), pais: request.headers.get("CF-IPCountry") || "" };
+  const lead = { nombre, tienda, email, telefono: c.telefono, telefonoVerificado: exigeVerificacion, plataforma, visitas, fecha: new Date().toISOString(), pais: request.headers.get("CF-IPCountry") || "" };
   if (env.LEADS) await env.LEADS.put(`lead:${lead.fecha}:${crypto.randomUUID().slice(0, 8)}`, JSON.stringify(lead));
 
   const texto = [
@@ -37,22 +44,29 @@ export async function onRequestPost({ request, env }) {
     `Nombre: ${nombre}`,
     `Tienda: ${tienda}`,
     `Email: ${email}`,
-    `Teléfono (verificado por SMS): ${c.telefono}`,
+    `Teléfono${exigeVerificacion ? " (verificado por SMS)" : " (SIN verificar)"}: ${c.telefono}`,
     `Plataforma: ${plataforma}`,
     `Visitas mensuales estimadas: ${visitas}`,
     `Fecha: ${lead.fecha}${lead.pais ? ` · País: ${lead.pais}` : ""}`,
   ].join("\n");
-  const res = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },
-    body: JSON.stringify({
-      from: env.EMAIL_ORIGEN || "Guidelia <onboarding@resend.dev>",
-      to: [env.EMAIL_DESTINO],
-      reply_to: email,
-      subject: `Demo: ${tienda} (${plataforma}, ${visitas} visitas)`,
-      text: texto,
-    }),
-  });
-  if (!res.ok && !env.LEADS) return error("envio", "No pudimos registrar tu pedido. Probá de nuevo en un rato.", 502);
+  const destino = env.EMAIL_DESTINO || DESTINO_POR_DEFECTO;
+  const asunto = `Demo: ${tienda} (${plataforma}, ${visitas} visitas)`;
+  let enviado = false;
+  try {
+    if (env.APPS_SCRIPT_URL) {
+      const res = await fetch(env.APPS_SCRIPT_URL, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify({ asunto, texto, responderA: email }), redirect: "follow" });
+      enviado = res.ok && (await res.json().catch(() => ({}))).ok === true;
+    } else {
+      const res = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },
+        body: JSON.stringify({ from: env.EMAIL_ORIGEN || "Guidelia <onboarding@resend.dev>", to: [destino], reply_to: email, subject: asunto, text: texto }),
+      });
+      enviado = res.ok;
+    }
+  } catch {
+    enviado = false;
+  }
+  if (!enviado && !env.LEADS) return error("envio", "No pudimos registrar tu pedido. Probá de nuevo en un rato.", 502);
   return json({ ok: true });
 }
