@@ -525,15 +525,25 @@
   /* ---------- Cierre ---------- */
   .cierre { position: relative; overflow: hidden; }
   .cierre::before { content: ""; position: absolute; width: 640px; height: 640px; right: -180px; top: -260px; border-radius: 50%; background: radial-gradient(circle, rgba(79,166,196,.32), transparent 65%); }
+  .demo-izq { display: grid; gap: 30px; align-content: start; }
+  .camino { list-style: none; margin: 0; padding: 0; counter-reset: paso; }
+  .camino li { position: relative; display: grid; gap: 2px; padding: 0 0 22px 52px; counter-increment: paso; }
+  .camino li:last-child { padding-bottom: 0; }
+  .camino li::before { content: counter(paso); position: absolute; left: 0; top: 0; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.1); box-shadow: inset 0 0 0 1.5px rgba(143,195,214,.5); color: #fff; font: 700 14px var(--f-display); }
+  .camino li:last-child::before { background: var(--rojo); box-shadow: none; }
+  .camino li::after { content: ""; position: absolute; left: 16.5px; top: 40px; bottom: 6px; width: 1.5px; background: linear-gradient(rgba(143,195,214,.45), rgba(143,195,214,.12)); }
+  .camino li:last-child::after { display: none; }
+  .camino b { color: #fff; font-family: var(--f-display); font-size: 17px; line-height: 34px; }
+  .camino span { color: #A9C7D2; font-size: 14.5px; line-height: 1.5; }
   .cierre .envoltura { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: center; }
+  #demo .envoltura { align-items: start; }
   @media (max-width: 900px) { .cierre .envoltura { grid-template-columns: 1fr; } }
   .form-demo { background: #fff; color: var(--texto); border-radius: var(--r-xl); padding: 30px; display: grid; gap: 14px; box-shadow: 0 40px 80px rgba(0,0,0,.25); }
   .form-demo label { display: grid; gap: 6px; font-size: 13.5px; font-weight: 600; color: var(--texto); }
   .form-demo input, .form-demo select { height: 48px; border-radius: 12px; border: 1px solid var(--linea); padding: 0 14px; font-size: 15px; color: var(--texto); background: var(--niebla); }
   .campo-tel { display: grid; gap: 6px; }
   .campo-tel > label { font-size: 13.5px; font-weight: 600; color: var(--texto); }
-  .tel-fila { display: grid; grid-template-columns: minmax(0, 150px) minmax(0, 1fr) auto; gap: 8px; }
-  @media (max-width: 520px) { .tel-fila { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .tel-fila .btn-tel { grid-column: 1 / -1; } }
+  .tel-fila { display: grid; grid-template-columns: minmax(0, 150px) minmax(0, 1fr); gap: 8px; }
   .btn-tel { height: 48px; padding: 0 18px; border: 0; border-radius: 12px; background: var(--petroleo); color: #fff; font: 600 14px var(--f-texto); cursor: pointer; white-space: nowrap; transition: background .15s, opacity .15s; }
   .btn-tel:hover { background: var(--petroleo-medio); }
   .btn-tel:disabled { opacity: .55; cursor: default; }
@@ -1476,10 +1486,20 @@
   <!-- ================= CIERRE ================= -->
   <section class="banda banda--honda cierre" id="demo">
     <div class="envoltura">
-      <div class="cabeza-seccion" style="margin-bottom:0">
-        <span class="ceja"><svg aria-hidden="true"><use href="#chispa"/></svg>Demo</span>
-        <h2>Miralo funcionando con tus propios productos</h2>
-        <p class="bajada">Te mostramos el asesor respondiendo con tu catálogo real, y vemos juntos qué plan le conviene a tu tienda.</p>
+      <div class="demo-izq">
+        <div class="cabeza-seccion" style="margin-bottom:0">
+          <span class="ceja"><svg aria-hidden="true"><use href="#chispa"/></svg>Demo</span>
+          <h2>Miralo funcionando con tus propios productos</h2>
+          <p class="bajada">Te mostramos el asesor respondiendo con tu catálogo real, y vemos juntos qué plan le conviene a tu tienda.</p>
+        </div>
+        <ol class="camino" aria-label="El camino desde la demo hasta tener el asesor activo">
+          <li><b>Demo con tu catálogo</b><span>Ves al asesor respondiendo con tus productos y definimos juntos el plan.</span></li>
+          <li><b>Accesos y catálogo</b><span>Nos das acceso de lectura a tu tienda. Nosotros sincronizamos productos, precios, stock y políticas.</span></li>
+          <li><b>Tu voz y tu marca</b><span>Elegís nombre, foto, colores y tono, y qué productos querés que recomiende primero.</span></li>
+          <li><b>Prueba con tus preguntas</b><span>Lo probás con consultas reales de tus clientes antes de abrirlo al público.</span></li>
+          <li><b>Activación</b><span>Se instala en tu tienda y atiende a todo tu tráfico, a cualquier hora.</span></li>
+          <li><b>Mejora continua</b><span>Desde el panel ves qué preguntan tus clientes y lo vas ajustando, con nuestro acompañamiento.</span></li>
+        </ol>
       </div>
       <form class="form-demo" id="form-demo" novalidate>
         <div class="form-dos">
@@ -1495,14 +1515,8 @@
               <option value="+57">Colombia +57</option><option value="+51">Perú +51</option><option value="+34">España +34</option><option value="+1">EE. UU. +1</option>
             </select>
             <input id="f-tel" name="telefono" type="tel" inputmode="tel" autocomplete="tel-national" maxlength="16" placeholder="11 2345 6789">
-            <button type="button" class="btn-tel" id="btn-enviar-codigo">Verificar</button>
           </div>
           <small id="tel-ayuda">Con código de área, sin 0 ni 15.</small>
-          <div class="tel-codigo" id="tel-codigo" hidden>
-            <input id="f-codigo" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="Código de 6 dígitos" aria-label="Código recibido por SMS">
-            <button type="button" class="btn-tel" id="btn-confirmar-codigo">Confirmar</button>
-          </div>
-          <p class="tel-estado" id="tel-estado" role="status" aria-live="polite"></p>
         </div>
         <label for="f-visitas">Visitas mensuales estimadas
           <select id="f-visitas" name="visitas" required>
@@ -1522,7 +1536,7 @@
           </select>
         </label>
         <input type="text" name="sitio_web" id="f-trampa" class="trampa" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button class="btn btn--rojo" id="btn-enviar-demo" type="submit" disabled>Agendá tu demo <svg aria-hidden="true"><use href="#flecha"/></svg></button>
+        <button class="btn btn--rojo" id="btn-enviar-demo" type="submit">Agendá tu demo <svg aria-hidden="true"><use href="#flecha"/></svg></button>
         <p class="form-nota" id="form-nota" role="status" aria-live="polite" hidden></p>
         <p class="form-legal">Al enviar aceptás que te contactemos por este pedido. Mirá la <a href="/privacidad/">política de privacidad</a>.</p>
       </form>
@@ -2563,17 +2577,13 @@
     calcularHoras();
   }
 
-  // ---------- Formulario de demo: teléfono verificado por SMS ----------
+  // ---------- Formulario de demo ----------
   {
     const f = $("form-demo");
-    const estadoTel = $("tel-estado");
     const nota = $("form-nota");
-    let verificado = null; // { telefono, constancia }
-    let cuenta = null;
+    const mensaje = (texto, clase) => { nota.textContent = texto; nota.className = "form-nota " + (clase || ""); nota.hidden = !texto; };
 
-    const mensaje = (el, texto, clase) => { el.textContent = texto; el.className = (el.id === "form-nota" ? "form-nota " : "tel-estado ") + (clase || ""); el.hidden = !texto; };
-
-    // Número en formato internacional (+549... para celulares argentinos), o null si no tiene forma válida.
+    // Número en formato internacional (+549... para celulares argentinos), o null si no tiene la cantidad de dígitos correcta.
     function telefono() {
       const pref = $("f-prefijo").value;
       let d = $("f-tel").value.replace(/\D/g, "").replace(/^0+/, "");
@@ -2585,86 +2595,30 @@
       return d.length >= 7 && d.length <= 11 ? pref + d : null;
     }
 
-    async function api(ruta, cuerpo) {
-      try {
-        const r = await fetch("/api/" + ruta, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(cuerpo) });
-        const d = await r.json().catch(() => ({}));
-        return { ok: r.ok && d.ok, status: r.status, ...d };
-      } catch {
-        return { ok: false, status: 0, error: "No hay conexión. Probá de nuevo." };
-      }
-    }
-
-    function reiniciarVerificacion() {
-      verificado = null;
-      $("btn-enviar-demo").disabled = true;
-      $("tel-codigo").hidden = true;
-      $("f-codigo").value = "";
-      mensaje(estadoTel, "", "");
-    }
-    ["f-tel", "f-prefijo"].forEach((id) => $(id).addEventListener("input", () => { if (verificado) reiniciarVerificacion(); }));
-
-    $("btn-enviar-codigo").addEventListener("click", async () => {
-      const tel = telefono();
-      if (!tel) return mensaje(estadoTel, "Revisá el número: con código de área, sin 0 ni 15.", "mal");
-      const btn = $("btn-enviar-codigo");
-      btn.disabled = true;
-      mensaje(estadoTel, "Enviando el código...", "");
-      const r = await api("telefono-enviar", { telefono: tel });
-      if (r.status === 503) {
-        // La verificación por SMS todavía no está activa en el servidor: el pedido se puede enviar igual (llega marcado "sin verificar").
-        verificado = { telefono: tel, constancia: "" };
-        $("btn-enviar-demo").disabled = false;
-        return mensaje(estadoTel, "Por ahora no verificamos por SMS. Podés enviar tu pedido igual.", "ok");
-      }
-      if (!r.ok) {
-        btn.disabled = false;
-        return mensaje(estadoTel, r.error || "No pudimos enviar el código.", "mal");
-      }
-      $("tel-codigo").hidden = false;
-      $("f-codigo").focus();
-      mensaje(estadoTel, "Te mandamos un SMS con el código. Puede tardar un minuto.", "");
-      let seg = 30;
-      clearInterval(cuenta);
-      cuenta = setInterval(() => { seg -= 1; btn.textContent = seg > 0 ? `Reenviar (${seg})` : "Reenviar código"; if (seg <= 0) { clearInterval(cuenta); btn.disabled = false; } }, 1000);
-      btn.textContent = "Reenviar (30)";
-    });
-
-    $("btn-confirmar-codigo").addEventListener("click", async () => {
-      const tel = telefono();
-      const codigo = $("f-codigo").value.trim();
-      if (!tel || !/^\d{4,8}$/.test(codigo)) return mensaje(estadoTel, "Escribí el código de 6 dígitos que te llegó.", "mal");
-      const btn = $("btn-confirmar-codigo");
-      btn.disabled = true;
-      const r = await api("telefono-confirmar", { telefono: tel, codigo });
-      btn.disabled = false;
-      if (!r.ok) return mensaje(estadoTel, r.error || "El código no es correcto.", "mal");
-      verificado = { telefono: tel, constancia: r.constancia };
-      clearInterval(cuenta);
-      $("tel-codigo").hidden = true;
-      $("btn-enviar-codigo").textContent = "Verificado";
-      $("btn-enviar-codigo").disabled = true;
-      $("btn-enviar-demo").disabled = false;
-      mensaje(estadoTel, "Teléfono verificado", "ok");
-    });
-
     f.addEventListener("submit", async (e) => {
       e.preventDefault();
       const datos = { nombre: $("f-nombre").value.trim(), tienda: $("f-tienda").value.trim(), email: $("f-email").value.trim(), visitas: $("f-visitas").value, plataforma: $("f-plataforma").value, sitio_web: $("f-trampa").value };
-      if (!verificado) return mensaje(nota, "Verificá tu teléfono para continuar.", "mal");
-      if (!datos.nombre || !datos.tienda) return mensaje(nota, "Completá tu nombre y el de tu tienda.", "mal");
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(datos.email)) return mensaje(nota, "Revisá el email.", "mal");
-      if (!datos.visitas) return mensaje(nota, "Elegí cuántas visitas mensuales tiene tu tienda, aproximadamente.", "mal");
+      const tel = telefono();
+      if (!datos.nombre || !datos.tienda) return mensaje("Completá tu nombre y el de tu tienda.", "mal");
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(datos.email)) return mensaje("Revisá el email.", "mal");
+      if (!tel) return mensaje("Revisá el teléfono: con código de área, sin 0 ni 15.", "mal");
+      if (!datos.visitas) return mensaje("Elegí cuántas visitas mensuales tiene tu tienda, aproximadamente.", "mal");
       const btn = $("btn-enviar-demo");
       btn.disabled = true;
-      mensaje(nota, "Enviando...", "");
-      const r = await api("demo", { ...datos, telefono: verificado.telefono, constancia: verificado.constancia });
+      mensaje("Enviando...", "");
+      let r;
+      try {
+        const res = await fetch("/api/demo", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...datos, telefono: tel }) });
+        r = { ok: res.ok, status: res.status, ...(await res.json().catch(() => ({}))) };
+      } catch {
+        r = { ok: false, status: 0, error: "No hay conexión. Probá de nuevo." };
+      }
       if (!r.ok) {
         btn.disabled = false;
-        return mensaje(nota, r.status === 503 ? "El formulario no está disponible por ahora. Probá de nuevo más tarde." : r.error || "No pudimos enviar tu pedido. Probá de nuevo.", "mal");
+        return mensaje(r.status === 503 ? "El formulario no está disponible por ahora. Probá de nuevo más tarde." : r.error || "No pudimos enviar tu pedido. Probá de nuevo.", "mal");
       }
       f.querySelectorAll("input, select, button").forEach((x) => (x.disabled = true));
-      mensaje(nota, "¡Listo! Recibimos tu pedido. Te escribimos por email o teléfono para coordinar la demo.", "ok");
+      mensaje("¡Listo! Recibimos tu pedido. Te escribimos por email o teléfono para coordinar la demo.", "ok");
     });
   }
 })();

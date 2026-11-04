@@ -1,5 +1,5 @@
-// POST /api/demo  -> recibe el pedido de demo (con el teléfono ya verificado), lo guarda y avisa por email.
-import { json, error, leerJson, origenValido, telefonoValido, emailValido, limpiar, constanciaValida, limitar, verificacionConfigurada } from "./_comun.js";
+// POST /api/demo  -> recibe el pedido de demo, lo guarda y avisa por email.
+import { json, error, leerJson, origenValido, telefonoValido, emailValido, limpiar, limitar } from "./_comun.js";
 
 const DESTINO_POR_DEFECTO = "agustin@guidelia.com.ar";
 
@@ -26,16 +26,10 @@ export async function onRequestPost({ request, env }) {
   const visitas = VISITAS.includes(c.visitas) ? c.visitas : null;
   if (!nombre || !tienda || !emailValido(email) || !plataforma || !visitas) return error("datos", "Revisá los datos del formulario.");
   if (!telefonoValido(c.telefono)) return error("telefono", "Revisá el número de teléfono.");
-  // Con la verificación por SMS activa, el teléfono tiene que estar verificado. Si todavía no está activa, el pedido entra igual
-  // y el aviso lo marca como "sin verificar".
-  const exigeVerificacion = verificacionConfigurada(env);
-  if (exigeVerificacion && !(await constanciaValida(c.constancia, c.telefono, env.FIRMA_SECRETO))) {
-    return error("verificacion", "Verificá tu teléfono para continuar.", 403);
-  }
   const ip = request.headers.get("CF-Connecting-IP") || "sin-ip";
   if (!(await limitar(env, `demo:${ip}`, 5, 3600))) return error("limite", "Enviaste varios pedidos seguidos. Probá más tarde.", 429);
 
-  const lead = { nombre, tienda, email, telefono: c.telefono, telefonoVerificado: exigeVerificacion, plataforma, visitas, fecha: new Date().toISOString(), pais: request.headers.get("CF-IPCountry") || "" };
+  const lead = { nombre, tienda, email, telefono: c.telefono, plataforma, visitas, fecha: new Date().toISOString(), pais: request.headers.get("CF-IPCountry") || "" };
   if (env.LEADS) await env.LEADS.put(`lead:${lead.fecha}:${crypto.randomUUID().slice(0, 8)}`, JSON.stringify(lead));
 
   const texto = [
@@ -44,7 +38,7 @@ export async function onRequestPost({ request, env }) {
     `Nombre: ${nombre}`,
     `Tienda: ${tienda}`,
     `Email: ${email}`,
-    `Teléfono${exigeVerificacion ? " (verificado por SMS)" : " (SIN verificar)"}: ${c.telefono}`,
+    `Teléfono: ${c.telefono}`,
     `Plataforma: ${plataforma}`,
     `Visitas mensuales estimadas: ${visitas}`,
     `Fecha: ${lead.fecha}${lead.pais ? ` · País: ${lead.pais}` : ""}`,

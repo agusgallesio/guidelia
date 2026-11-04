@@ -1,9 +1,8 @@
 // Utilidades compartidas por las funciones del formulario de demo (Cloudflare Pages Functions).
-// Secretos necesarios (se cargan en Cloudflare Pages > Settings > Variables and Secrets):
-//   TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_VERIFY_SID   verificación del teléfono por SMS
-//   FIRMA_SECRETO                                               texto largo y al azar para firmar la verificación
-//   RESEND_API_KEY, EMAIL_DESTINO, EMAIL_ORIGEN                 aviso por email de cada contacto nuevo
-//   LEADS (opcional, KV)                                        guarda cada contacto y limita pedidos repetidos
+// Variables (se cargan en Cloudflare Pages > Settings > Variables and Secrets):
+//   APPS_SCRIPT_URL                 dirección del script de Google que manda el aviso por email (ver aviso-por-email.gs)
+//   (o RESEND_API_KEY, EMAIL_DESTINO, EMAIL_ORIGEN si se prefiere Resend)
+//   LEADS (opcional, KV)            guarda cada contacto y limita pedidos repetidos
 
 export const json = (datos, status = 200) =>
   new Response(JSON.stringify(datos), { status, headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" } });
@@ -35,35 +34,6 @@ export const telefonoValido = (t) => typeof t === "string" && /^\+[1-9]\d{9,14}$
 export const emailValido = (e) => typeof e === "string" && e.length <= 120 && /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]{2,}$/.test(e);
 export const limpiar = (v, max) => (typeof v === "string" ? v.replace(/[\u0000-\u001F\u007F]/g, " ").trim().slice(0, max) : "");
 
-const enc = new TextEncoder();
-const b64 = (buf) => btoa(String.fromCharCode(...new Uint8Array(buf))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
-
-async function firmar(texto, secreto) {
-  const clave = await crypto.subtle.importKey("raw", enc.encode(secreto), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
-  return b64(await crypto.subtle.sign("HMAC", clave, enc.encode(texto)));
-}
-
-// Constancia de que el teléfono se verificó: dura 30 minutos y solo sirve para ese número.
-export async function crearConstancia(telefono, secreto) {
-  const carga = `${telefono}|${Date.now() + 30 * 60 * 1000}`;
-  return `${b64(enc.encode(carga))}.${await firmar(carga, secreto)}`;
-}
-
-export async function constanciaValida(constancia, telefono, secreto) {
-  if (typeof constancia !== "string" || !secreto) return false;
-  const [cargaB64, firma] = constancia.split(".");
-  if (!cargaB64 || !firma) return false;
-  let carga;
-  try {
-    carga = atob(cargaB64.replace(/-/g, "+").replace(/_/g, "/"));
-  } catch {
-    return false;
-  }
-  const [tel, vence] = carga.split("|");
-  if (tel !== telefono || Number(vence) < Date.now()) return false;
-  return (await firmar(carga, secreto)) === firma;
-}
-
 // Límite de pedidos por clave (número de teléfono o IP). Si no hay KV configurado, no limita (Twilio igual limita).
 export async function limitar(env, clave, maximo, segundos) {
   if (!env.LEADS) return true;
@@ -73,15 +43,3 @@ export async function limitar(env, clave, maximo, segundos) {
   await env.LEADS.put(k, String(n + 1), { expirationTtl: segundos });
   return true;
 }
-
-export async function twilio(env, ruta, datos) {
-  const auth = btoa(`${env.TWILIO_ACCOUNT_SID}:${env.TWILIO_AUTH_TOKEN}`);
-  const res = await fetch(`https://verify.twilio.com/v2/Services/${env.TWILIO_VERIFY_SID}/${ruta}`, {
-    method: "POST",
-    headers: { Authorization: `Basic ${auth}`, "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams(datos),
-  });
-  return { ok: res.ok, status: res.status, datos: await res.json().catch(() => ({})) };
-}
-
-export const verificacionConfigurada = (env) => Boolean(env.TWILIO_ACCOUNT_SID && env.TWILIO_AUTH_TOKEN && env.TWILIO_VERIFY_SID && env.FIRMA_SECRETO);
