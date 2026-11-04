@@ -33,7 +33,7 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Guidelia", "url": "https://guidelia.com.ar/", "logo": "https://guidelia.com.ar/icon-512.png", "description": "Asesor de compras con IA para tiendas online."}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Guidelia", "url": "https://guidelia.com.ar/", "inLanguage": "es-AR"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Guidelia", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "description": "Chatbot con IA para tiendas online: responde dudas con los datos de tu catálogo, 24 h, y guía al carrito. Tu equipo deja de contestar siempre lo mismo.", "url": "https://guidelia.com.ar/", "image": "https://guidelia.com.ar/og-image.png", "offers": {"@type": "AggregateOffer", "priceCurrency": "USD", "lowPrice": "99", "highPrice": "399", "offerCount": "3"}}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿De dónde saca la información?", "acceptedAnswer": {"@type": "Answer", "text": "De tu catálogo y tus políticas: precio, stock, variantes y características de cada ficha, sincronizados con tu tienda. Por eso responde con los datos exactos de cada producto y compara modelos con números reales."}}, {"@type": "Question", "name": "¿Qué pasa si un cliente pregunta algo que el asesor no sabe?", "acceptedAnswer": {"@type": "Answer", "text": "Le dice con claridad que ese dato no lo tiene confirmado y lo deriva a tu equipo, con tu WhatsApp o tu email. La pregunta queda en el panel para que completes la ficha, y desde ese momento el asesor la responde solo."}}, {"@type": "Question", "name": "¿Qué cuenta como una conversación?", "acceptedAnswer": {"@type": "Answer", "text": "Una charla completa de un visitante con el asesor, sin importar cuántos mensajes tenga. Si vuelve otro día, es otra conversación."}}, {"@type": "Question", "name": "¿Cuánto tarda en estar funcionando?", "acceptedAnswer": {"@type": "Answer", "text": "Nosotros conectamos tu catálogo, configuramos el asesor con tu marca y lo probamos con preguntas reales de tu rubro antes de publicarlo. En tu sitio solo se agrega una línea de código."}}, {"@type": "Question", "name": "¿Puedo cambiar cómo habla o qué recomienda?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, desde el panel. Podés ajustar el tono, cargar información extra como políticas o preguntas frecuentes, definir qué hacer en cada situación y potenciar los productos que quieras mover."}}, {"@type": "Question", "name": "¿Funciona en celulares?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. En el celular el chat ocupa toda la pantalla para que leer y comprar sea cómodo, y en la computadora se puede abrir flotante o como panel lateral."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿De dónde saca la información?", "acceptedAnswer": {"@type": "Answer", "text": "De tu catálogo y tus políticas: precio, stock, variantes y características de cada ficha, sincronizados con tu tienda. Por eso responde con los datos exactos de cada producto y compara modelos con números reales."}}, {"@type": "Question", "name": "¿Qué pasa si un cliente pregunta algo que el asesor no sabe?", "acceptedAnswer": {"@type": "Answer", "text": "Le dice con claridad que ese dato no lo tiene confirmado y lo deriva a tu equipo, con tu WhatsApp o tu email. La pregunta queda en el panel para que completes la ficha, y desde ese momento el asesor la responde solo."}}, {"@type": "Question", "name": "¿Qué cuenta como una conversación?", "acceptedAnswer": {"@type": "Answer", "text": "Una charla completa de un visitante con el asesor, sin importar cuántos mensajes tenga. Si vuelve otro día, es otra conversación."}}, {"@type": "Question", "name": "¿Cómo se miden las ventas asistidas?", "acceptedAnswer": {"@type": "Answer", "text": "Mostramos por separado las ventas directas (el producto que recomendó el asesor aparece en la orden) y las influenciadas (la persona chateó con el asesor antes de comprar, dentro de una ventana de unos 7 días). Solo contamos órdenes pagadas. Es una medición de asociación, no una prueba de causa: por eso en el piloto comparamos también con y sin conversación."}}, {"@type": "Question", "name": "¿Cuánto tarda en estar funcionando?", "acceptedAnswer": {"@type": "Answer", "text": "Nosotros conectamos tu catálogo, configuramos el asesor con tu marca y lo probamos con preguntas reales de tu rubro antes de publicarlo. En tu sitio solo se agrega una línea de código."}}, {"@type": "Question", "name": "¿Puedo cambiar cómo habla o qué recomienda?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, desde el panel. Podés ajustar el tono, cargar información extra como políticas o preguntas frecuentes, definir qué hacer en cada situación y potenciar los productos que quieras mover."}}, {"@type": "Question", "name": "¿Funciona en celulares?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. En el celular el chat ocupa toda la pantalla para que leer y comprar sea cómodo, y en la computadora se puede abrir flotante o como panel lateral."}}]}</script>
 <style>
   /* Layout: hero en dos columnas (texto + escenario de chat en vivo), bandas que alternan
      papel y niebla, y dos bandas hondas en petróleo (panel y cierre). Un solo mundo visual:
@@ -498,10 +498,11 @@
   .precio small { font-size: 15px; color: var(--texto-2); font-weight: 600; }
   .precio b { font-family: var(--f-display); font-size: 54px; line-height: 1; letter-spacing: -.03em; color: var(--texto); font-variant-numeric: tabular-nums; }
   .precio span { color: var(--texto-2); font-size: 14.5px; }
-  .planes .precio--consultar b { font-size: 36px; letter-spacing: -.02em; }
+  .planes .precio--consultar { min-height: 48px; align-items: center; }
+  .planes .precio--consultar b { font-size: 27px; letter-spacing: -.02em; white-space: nowrap; }
   .volumen { display: flex; align-items: baseline; gap: 8px; padding: 12px 14px; border-radius: 14px; background: var(--niebla); font-size: 14px; color: var(--texto-2); }
   .volumen b { font-family: var(--f-display); font-size: 20px; color: var(--petroleo); font-variant-numeric: tabular-nums; }
-  .incluye { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; font-size: 14.5px; color: var(--texto-2); flex: 1; }
+  .incluye { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; font-size: 14.5px; color: var(--texto-2); flex: 1; align-content: start; }
   .incluye li { display: flex; gap: 10px; align-items: flex-start; }
   .incluye svg { width: 17px; height: 17px; color: var(--petroleo-medio); flex-shrink: 0; margin-top: 3px; }
   .incluye strong { color: var(--texto); font-weight: 600; }
@@ -1419,21 +1420,22 @@
             <li><svg aria-hidden="true"><use href="#check"/></svg><span><strong>Panel de métricas</strong></span></li>
             <li><svg aria-hidden="true"><use href="#check"/></svg><span>Soporte por email</span></li>
           </ul>
-          <p class="no-incluye">No incluye Preguntale a la IA, potenciar productos ni enriquecimiento de catálogo.</p>
+          <p class="no-incluye">No incluye medición de ventas asistidas, Preguntale a la IA, potenciar productos ni enriquecimiento de catálogo.</p>
           <p class="alta">Alta única de US$ 150 · Pack extra de 100 conversaciones: US$ 35</p>
           <a class="btn btn--borde" href="#demo">Empezar con Inicial</a>
         </article>
         <article class="plan plan--destacado">
           <span class="plan-etq">Recomendado</span>
           <div class="plan-nombre">Esencial</div>
-          <p class="plan-para">Suma el análisis con IA, productos potenciados y soporte 24/7.</p>
+          <p class="plan-para">Suma la medición de ventas, el análisis con IA y los productos potenciados.</p>
           <div class="precio"><small>US$</small><b>199</b><span>/ mes</span></div>
           <div class="volumen"><b>500</b> conversaciones por mes</div>
           <ul class="incluye">
             <li><svg aria-hidden="true"><use href="#check"/></svg><span>Todo lo de <strong>Inicial</strong></span></li>
+            <li><svg aria-hidden="true"><use href="#check"/></svg><span><strong>Medición de ventas asistidas</strong></span></li>
             <li><svg aria-hidden="true"><use href="#check"/></svg><span><strong>Preguntale a la IA</strong>: reportes en lenguaje simple</span></li>
             <li><svg aria-hidden="true"><use href="#check"/></svg><span><strong>Potenciá productos</strong> para que el asesor los recomiende primero</span></li>
-            <li><svg aria-hidden="true"><use href="#check"/></svg><span><strong>Soporte por WhatsApp 24/7</strong></span></li>
+            <li><svg aria-hidden="true"><use href="#check"/></svg><span>Soporte por WhatsApp</span></li>
           </ul>
           <p class="alta">Alta única de US$ 300 · Pack extra de 100 conversaciones: US$ 30</p>
           <a class="btn btn--rojo" href="#demo">Empezar con Esencial</a>
@@ -1452,22 +1454,25 @@
           <a class="btn btn--borde" href="#demo">Elegir Crecimiento</a>
         </article>
         <article class="plan">
-          <div class="plan-nombre">Pro</div>
-          <p class="plan-para">Para marcas que quieren el asesor como parte de su identidad.</p>
-          <div class="precio precio--consultar"><b>Consultar</b></div>
-          <div class="volumen"><b>3.000</b> conversaciones por mes</div>
+          <div class="plan-nombre">A medida</div>
+          <p class="plan-para">Para marcas con mucho volumen o varias tiendas.</p>
+          <div class="precio precio--consultar"><b>Según tu tienda</b></div>
+          <div class="volumen"><b>Volumen</b> a medida</div>
           <ul class="incluye">
             <li><svg aria-hidden="true"><use href="#check"/></svg><span>Todo lo de <strong>Crecimiento</strong></span></li>
+            <li><svg aria-hidden="true"><use href="#check"/></svg><span><strong>Conversaciones a medida</strong>, con un tope acordado</span></li>
             <li><svg aria-hidden="true"><use href="#check"/></svg><span><strong>Marca propia</strong>, sin el cartel de Guidelia</span></li>
-            <li><svg aria-hidden="true"><use href="#check"/></svg><span>Sesión mensual de estrategia y atención prioritaria</span></li>
-            <li><svg aria-hidden="true"><use href="#check"/></svg><span>Medición de ventas asistidas (próximamente)</span></li>
+            <li><svg aria-hidden="true"><use href="#check"/></svg><span>Sesión mensual de estrategia y contacto directo con el equipo</span></li>
+            <li><svg aria-hidden="true"><use href="#check"/></svg><span>Acceso anticipado a funciones nuevas</span></li>
+            <li><svg aria-hidden="true"><use href="#check"/></svg><span>Integraciones a medida, cotizadas según el alcance</span></li>
           </ul>
-          <p class="alta">Precio y packs a medida · Alta bonificada</p>
-          <a class="btn btn--borde" href="#demo">Consultar por Pro</a>
+          <p class="alta">Alta bonificada</p>
+          <a class="btn btn--borde" href="#demo">Hablar con nosotros</a>
         </article>
       </div>
       <div class="notas-planes">
         <span><svg aria-hidden="true"><use href="#check"/></svg>Sin permanencia, mes a mes</span>
+        <!-- TODO(Agustín): regla de qué pasa al superar el cupo todavía sin definir; revisar este texto cuando se decida. -->
         <span><svg aria-hidden="true"><use href="#check"/></svg>Si superás el cupo, el asesor sigue atendiendo</span>
         <span><svg aria-hidden="true"><use href="#check"/></svg>Aviso al llegar al 80% del plan</span>
       </div>
@@ -1513,8 +1518,13 @@
           <p>Le dice con claridad que ese dato no lo tiene confirmado y lo deriva a tu equipo, con tu WhatsApp o tu email. La pregunta queda en el panel para que completes la ficha, y desde ese momento el asesor la responde solo.</p>
         </details>
         <details>
+          <!-- TODO(Agustín): la regla de qué cuenta como conversación todavía no está definida; revisar esta respuesta (y la del JSON-LD de arriba) cuando se decida. -->
           <summary>¿Qué cuenta como una conversación?</summary>
           <p>Una charla completa de un visitante con el asesor, sin importar cuántos mensajes tenga. Si vuelve otro día, es otra conversación.</p>
+        </details>
+        <details>
+          <summary>¿Cómo se miden las ventas asistidas?</summary>
+          <p>Mostramos por separado las ventas directas (el producto que recomendó el asesor aparece en la orden) y las influenciadas (la persona chateó con el asesor antes de comprar, dentro de una ventana de unos 7 días). Solo contamos órdenes pagadas. Es una medición de asociación, no una prueba de causa: por eso en el piloto comparamos también con y sin conversación.</p>
         </details>
         <details>
           <summary>¿Cuánto tarda en estar funcionando?</summary>
@@ -2523,9 +2533,8 @@
     { n: "Inicial", p: 99, c: 200 },
     { n: "Esencial", p: 199, c: 500 },
     { n: "Crecimiento", p: 399, c: 1500 },
-    { n: "Pro", p: 799, c: 3000 },
   ];
-  const PACK_PRO = 20; // US$ por cada 100 conversaciones extra en Pro
+  // Por encima de 1.500 conversaciones no hay plan de lista: corresponde "A medida" (sin precio publicado).
   // Mejora promedio de la tasa de conversión (relativa). Estimación propia y prudente, a reemplazar por el dato medido en el piloto.
   const MEJORA = 0.10;
   const num = (id) => { const v = parseFloat($(id).value.replace(",", ".")); return Number.isFinite(v) && v >= 0 ? v : 0; };
@@ -2535,10 +2544,7 @@
 
   function elegirPlan(conversaciones) {
     const plan = PLANES.find((x) => conversaciones <= x.c);
-    if (plan) return { plan, costo: plan.p, extra: 0 };
-    const pro = PLANES[PLANES.length - 1];
-    const packs = Math.ceil((conversaciones - pro.c) / 100);
-    return { plan: pro, costo: pro.p + packs * PACK_PRO, extra: packs };
+    return plan ? { plan, costo: plan.p } : { plan: null, costo: 0 };
   }
 
   function calcularRoi() {
@@ -2559,16 +2565,16 @@
     }
     const incMes = base * aumento;
     const conversaciones = sesiones * engage;
-    const { plan, costo, extra } = elegirPlan(conversaciones);
-    // El plan Pro no tiene precio publicado: se cotiza a medida.
-    const aMedida = plan.n === "Pro";
+    const { plan, costo } = elegirPlan(conversaciones);
+    // El plan A medida no tiene precio publicado: se cotiza según la tienda.
+    const aMedida = !plan;
     const roi = aMedida ? 0 : incMes / costo;
     const pedidosPago = aMedida ? 0 : Math.max(1, Math.ceil(costo / ticket));
 
     salida.innerHTML = `
       <div style="display:grid;gap:20px">
         ${aMedida
-          ? `<div><div class="roi-etq">Plan recomendado</div><div class="roi-grande"><b>Pro</b><span>precio a medida: consultanos</span></div></div>`
+          ? `<div><div class="roi-etq">Plan recomendado</div><div class="roi-grande"><b>A medida</b><span>según tu tienda: hablemos</span></div></div>`
           : `<div><div class="roi-etq">ROI estimado</div>
           <div class="roi-grande"><b id="roi-x">${fmt(roi, 1)}</b><span>× por cada dólar invertido</span></div></div>`}
         <div class="roi-filas">
@@ -2582,7 +2588,7 @@
           <div class="roi-fila"><span>Inversión por mes</span><b>${usd(costo)}</b></div>
           <div class="roi-fila"><span>Pedidos extra por mes para pagarse</span><b>${fmt(pedidosPago)}<small>${roi < 1 ? "con estos supuestos todavía no se paga" : `de ${fmt(Math.round(sesiones * conv))} que hacés hoy`}</small></b></div>`}
         </div>
-        <a class="btn btn--blanco" href="#demo">Agendá una demo ${icono("flecha")}</a>
+        <a class="btn btn--blanco" href="#demo">${aMedida ? "Hablar con nosotros" : "Agendá una demo"} ${icono("flecha")}</a>
         <p class="roi-aviso">Estimación con los supuestos de la izquierda. Habla de ingresos, no de ganancia, y no es una promesa de resultado.</p>
       </div>`;
 
@@ -2600,7 +2606,7 @@
       <li>Ingresos incrementales: <b>${fmt(sesiones)}</b> sesiones × (<b>${fmt(conv * (1 + aumento) * 100, 2)} %</b> − <b>${fmt(conv * 100, 2)} %</b>) × <b>${usd(ticket)}</b> = <b>+${usd(incMes)}</b> por mes (<b>+${usd(incMes * 12)}</b> por año).</li>
       <li>Conversaciones estimadas: <b>${fmt(sesiones)}</b> sesiones × <b>${fmt(engage * 100, 1)} %</b> que abre el chat = <b>${fmt(Math.round(conversaciones))}</b> por mes.</li>
       ${aMedida
-        ? `<li>Plan: con ese volumen corresponde el plan <b>Pro</b>, que se cotiza a medida. Consultanos y armamos la propuesta.</li>`
+        ? `<li>Plan: con ese volumen corresponde el plan <b>A medida</b>, que se cotiza según tu tienda. Hablá con nosotros y armamos la propuesta.</li>`
         : `<li>Plan: el más chico que las cubre es <b>${plan.n}</b> a <b>${usd(plan.p)}</b> por mes.</li>
       <li>ROI: <b>${usd(incMes)}</b> ÷ <b>${usd(costo)}</b> = <b>${fmt(roi, 1)}×</b>. No incluye el alta única del plan.</li>`}`;
   }
