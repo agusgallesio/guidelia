@@ -44,6 +44,7 @@ export async function onRequestPost({ request, env }) {
   const destino = env.EMAIL_DESTINO || DESTINO_POR_DEFECTO;
   const asunto = `Demo: ${tienda} (${plataforma}, ${visitas} visitas)`;
   let enviado = false;
+  let detalle = "";
   try {
     if (env.APPS_SCRIPT_URL) {
       const res = await fetch(env.APPS_SCRIPT_URL, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify({ asunto, texto, responderA: email }), redirect: "follow" });
@@ -65,10 +66,13 @@ export async function onRequestPost({ request, env }) {
       });
       const cuerpo = await res.json().catch(() => ({}));
       enviado = res.ok && String(cuerpo.success) === "true";
+      if (!enviado) detalle = `formsubmit ${res.status}: ${String(cuerpo.message || "").slice(0, 200)}`;
     }
-  } catch {
+  } catch (err) {
     enviado = false;
+    detalle = `excepción: ${String(err && err.message).slice(0, 160)}`;
   }
-  if (!enviado && !env.LEADS) return error("envio", "No pudimos registrar tu pedido. Probá de nuevo en un rato.", 502);
+  // Se responde con 424 (no 502) para que Cloudflare no reemplace el mensaje por su página de error.
+  if (!enviado && !env.LEADS) return json({ ok: false, codigo: "envio", error: "No pudimos registrar tu pedido. Probá de nuevo en un rato.", detalle }, 424);
   return json({ ok: true });
 }
