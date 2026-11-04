@@ -1,7 +1,9 @@
 // Utilidades compartidas por las funciones del formulario de demo (Cloudflare Pages Functions).
 // Variables (se cargan en Cloudflare Pages > Settings > Variables and Secrets):
-//   APPS_SCRIPT_URL                 dirección del script de Google que manda el aviso por email (ver aviso-por-email.gs)
-//   (o RESEND_API_KEY, EMAIL_DESTINO, EMAIL_ORIGEN si se prefiere Resend)
+// Ninguna es obligatoria: por defecto los pedidos se reenvían por FormSubmit a agustin@guidelia.com.ar.
+//   EMAIL_DESTINO                   cambia el mail de destino
+//   FORMSUBMIT_ID                   código que entrega FormSubmit para ocultar la dirección (opcional)
+//   APPS_SCRIPT_URL / RESEND_API_KEY  alternativas para mandar el aviso con un script de Google o con Resend
 //   LEADS (opcional, KV)            guarda cada contacto y limita pedidos repetidos
 
 export const json = (datos, status = 200) =>

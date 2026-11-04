@@ -8,8 +8,6 @@ const PLATAFORMAS = ["WooCommerce", "Tiendanube", "Shopify", "Otra"];
 
 export async function onRequestPost({ request, env }) {
   if (!origenValido(request)) return error("origen", "Pedido no permitido.", 403);
-  // El aviso sale por un script de Google (APPS_SCRIPT_URL) o por Resend (RESEND_API_KEY). Sin ninguno, no hay a dónde mandarlo.
-  if (!env.APPS_SCRIPT_URL && !env.RESEND_API_KEY) return error("no_configurado", "El formulario todavía no está disponible.", 503);
   let c;
   try {
     c = await leerJson(request, 6000);
@@ -50,13 +48,23 @@ export async function onRequestPost({ request, env }) {
     if (env.APPS_SCRIPT_URL) {
       const res = await fetch(env.APPS_SCRIPT_URL, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify({ asunto, texto, responderA: email }), redirect: "follow" });
       enviado = res.ok && (await res.json().catch(() => ({}))).ok === true;
-    } else {
+    } else if (env.RESEND_API_KEY) {
       const res = await fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },
         body: JSON.stringify({ from: env.EMAIL_ORIGEN || "Guidelia <onboarding@resend.dev>", to: [destino], reply_to: email, subject: asunto, text: texto }),
       });
       enviado = res.ok;
+    } else {
+      // Sin configurar nada: se usa FormSubmit, un servicio gratuito que reenvía el formulario al mail de destino.
+      // La primera vez manda un mail para activar la dirección (hay que tocar un botón una sola vez).
+      const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(env.FORMSUBMIT_ID || destino)}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json", Origin: "https://guidelia.com.ar", Referer: "https://guidelia.com.ar/" },
+        body: JSON.stringify({ _subject: asunto, _replyto: email, _captcha: "false", _template: "table", Nombre: nombre, Tienda: tienda, Email: email, "Teléfono": c.telefono, Plataforma: plataforma, "Visitas mensuales": visitas, Fecha: lead.fecha, "País": lead.pais }),
+      });
+      const cuerpo = await res.json().catch(() => ({}));
+      enviado = res.ok && String(cuerpo.success) === "true";
     }
   } catch {
     enviado = false;
