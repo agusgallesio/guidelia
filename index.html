@@ -2673,5 +2673,21 @@
 })();
 </script>
 
+<script>
+  // En el celular, "Agendá una demo" lleva directo al formulario y no al texto de arriba.
+  (function () {
+    var movil = window.matchMedia("(max-width: 900px)");
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest && e.target.closest('a[href="#demo"]');
+      var form = document.getElementById("form-demo");
+      if (!a || !form || !movil.matches) return;
+      e.preventDefault();
+      var cab = document.querySelector(".encabezado, header");
+      var alto = cab ? cab.getBoundingClientRect().height : 74;
+      window.scrollTo({ top: form.getBoundingClientRect().top + window.scrollY - alto - 12, behavior: "smooth" });
+      try { history.replaceState(null, "", "#demo"); } catch (_) {}
+    });
+  })();
+</script>
 </body>
 </html>
