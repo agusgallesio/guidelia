@@ -596,6 +596,8 @@
   .tel-estado.mal { color: #C2342F; }
   .form-demo .trampa { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
   .form-demo button[type="submit"]:disabled { opacity: .55; cursor: not-allowed; box-shadow: none; transform: none; }
+  .nota-cta { flex-basis: 100%; margin: 2px 0 0; font-size: 13.5px; color: var(--texto-2); }
+  .form-garantia { margin: 0; font-size: 13.5px; font-weight: 600; color: var(--texto); text-align: center; }
   .form-legal { margin: 0; font-size: 12.5px; color: var(--texto-2); text-align: center; }
   .form-legal a { color: var(--petroleo); font-weight: 600; }
   .form-demo input:focus, .form-demo select:focus { outline: none; border-color: var(--petroleo-medio); background: #fff; box-shadow: 0 0 0 3px var(--cielo); }
@@ -934,7 +936,7 @@
       <a href="#planes">Planes</a>
       <a href="/blog/">Blog</a>
     </nav>
-    <a class="btn btn--rojo" href="#demo">Agendá una demo</a>
+    <a class="btn btn--rojo" href="#demo">Probalo en tu tienda</a>
     <button type="button" class="menu-movil-btn" id="menu-movil-btn" aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú"><svg aria-hidden="true"><use href="#menu"/></svg></button>
   </div>
 </header>
@@ -949,7 +951,7 @@
   <a class="enlace" href="#roi">Calculadora de ROI</a>
   <a class="enlace" href="#planes">Planes</a>
   <a class="enlace" href="/blog/">Blog</a>
-  <a class="enlace" href="#demo">Agendá una demo</a>
+  <a class="enlace" href="#demo">Probalo en tu tienda</a>
 </div>
 
 <main id="inicio">
@@ -963,8 +965,9 @@
         <p class="hero-rubro">Hecho para tiendas de <span class="rot" id="rot"><span class="act">belleza</span><span>indumentaria</span><span>bazar</span><span>muebles y deco</span><span>jugueterías</span></span></p>
         <p class="bajada">Guidelia conoce todo tu catálogo, responde al instante y acompaña a cada cliente hasta el carrito, así tu equipo deja de contestar siempre las mismas preguntas. Responde con los datos exactos de cada producto, habla con tu tono y se ve como tu marca.</p>
         <div class="hero-acciones">
-          <a class="btn btn--rojo" href="#demo">Agendá una demo <svg aria-hidden="true"><use href="#flecha"/></svg></a>
+          <a class="btn btn--rojo" href="#demo">Ver cómo queda en mi tienda <svg aria-hidden="true"><use href="#flecha"/></svg></a>
           <a class="btn btn--borde" href="#como-funciona">Cómo funciona <svg aria-hidden="true"><use href="#abajo"/></svg></a>
+          <p class="nota-cta">Sin costo y sin compromiso. Usamos tus productos reales.</p>
         </div>
         <div class="hero-pruebas">
           <span><svg aria-hidden="true"><use href="#check"/></svg>Atiende las 24 horas</span>
@@ -1553,8 +1556,8 @@
     <div class="envoltura">
       <div class="demo-izq">
         <div class="cabeza-seccion" style="margin-bottom:0">
-          <span class="ceja"><svg aria-hidden="true"><use href="#chispa"/></svg>Demo</span>
-          <h2>Miralo funcionando con tus propios productos</h2>
+          <span class="ceja"><svg aria-hidden="true"><use href="#chispa"/></svg>Probalo sin compromiso</span>
+          <h2>Te mostramos el asesor funcionando en tu tienda</h2>
           <p class="bajada">Te mostramos el asesor respondiendo con tu catálogo real, y vemos juntos qué plan le conviene a tu tienda.</p>
         </div>
         <ol class="camino" aria-label="El camino desde la demo hasta tener el asesor activo">
@@ -1567,11 +1570,11 @@
         </ol>
       </div>
       <form class="form-demo" id="form-demo" novalidate>
+        <label for="f-tienda">Dirección de tu tienda<input id="f-tienda" name="tienda" type="text" maxlength="120" placeholder="https://tutienda.com"></label>
         <div class="form-dos">
           <label for="f-nombre">Nombre<input id="f-nombre" name="nombre" type="text" autocomplete="name" maxlength="80" placeholder="Tu nombre"></label>
-          <label for="f-tienda">Tienda<input id="f-tienda" name="tienda" type="text" maxlength="120" placeholder="Nombre o sitio web"></label>
+          <label for="f-email">Email<input id="f-email" name="email" type="email" autocomplete="email" maxlength="120" placeholder="vos@tutienda.com"></label>
         </div>
-        <label for="f-email">Email<input id="f-email" name="email" type="email" autocomplete="email" maxlength="120" placeholder="vos@tutienda.com"></label>
         <div class="campo-tel">
           <label for="f-tel">Teléfono</label>
           <div class="tel-fila">
@@ -1601,8 +1604,9 @@
           </select>
         </label>
         <input type="text" name="sitio_web" id="f-trampa" class="trampa" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button class="btn btn--rojo" id="btn-enviar-demo" type="submit">Agendá tu demo <svg aria-hidden="true"><use href="#flecha"/></svg></button>
+        <button class="btn btn--rojo" id="btn-enviar-demo" type="submit">Ver cómo queda en mi tienda <svg aria-hidden="true"><use href="#flecha"/></svg></button>
         <p class="form-nota" id="form-nota" role="status" aria-live="polite" hidden></p>
+        <p class="form-garantia">Sin costo y sin compromiso. Usamos tus productos reales.</p>
         <p class="form-legal">Al enviar aceptás que te contactemos por este pedido. Mirá la <a href="/privacidad/">política de privacidad</a>.</p>
       </form>
     </div>
@@ -2167,7 +2171,7 @@
             <h1>${r.titulo}</h1>
             <p class="bajada">${r.bajada}</p>
             <div class="hero-acciones">
-              <a class="btn btn--rojo" href="#demo">Agendá una demo ${icono("flecha")}</a>
+              <a class="btn btn--rojo" href="#demo">Ver cómo queda en mi tienda ${icono("flecha")}</a>
               <a class="btn btn--borde" href="#planes">Ver planes</a>
             </div>
           </div>
@@ -2222,7 +2226,7 @@
       <section class="banda banda--honda cierre cierre-corto">
         <div class="envoltura">
           <h2>Miralo funcionando con tu catálogo de ${r.corto.toLowerCase()}</h2>
-          <a class="btn btn--blanco" href="#demo">Agendá una demo ${icono("flecha")}</a>
+          <a class="btn btn--blanco" href="#demo">Ver cómo queda en mi tienda ${icono("flecha")}</a>
         </div>
       </section>`;
     prepararReveal($("vista-rubro"));
@@ -2594,7 +2598,7 @@
           <div class="roi-fila"><span>Inversión por mes</span><b>${usd(costo)}</b></div>
           <div class="roi-fila"><span>Pedidos extra por mes para pagarse</span><b>${fmt(pedidosPago)}<small>${roi < 1 ? "con estos supuestos todavía no se paga" : `de ${fmt(Math.round(sesiones * conv))} que hacés hoy`}</small></b></div>`}
         </div>
-        <a class="btn btn--blanco" href="#demo">${aMedida ? "Hablar con nosotros" : "Agendá una demo"} ${icono("flecha")}</a>
+        <a class="btn btn--blanco" href="#demo">${aMedida ? "Hablar con nosotros" : "Ver cómo queda en mi tienda"} ${icono("flecha")}</a>
         <p class="roi-aviso">Estimación con los supuestos de la izquierda. Habla de ingresos, no de ganancia, y no es una promesa de resultado.</p>
       </div>`;
 
@@ -2660,7 +2664,7 @@
       e.preventDefault();
       const datos = { nombre: $("f-nombre").value.trim(), tienda: $("f-tienda").value.trim(), email: $("f-email").value.trim(), visitas: $("f-visitas").value, plataforma: $("f-plataforma").value, sitio_web: $("f-trampa").value };
       const tel = telefono();
-      if (!datos.nombre || !datos.tienda) return mensaje("Completá tu nombre y el de tu tienda.", "mal");
+      if (!datos.nombre || !datos.tienda) return mensaje("Completá la dirección de tu tienda y tu nombre.", "mal");
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(datos.email)) return mensaje("Revisá el email.", "mal");
       if (!tel) return mensaje("Revisá el teléfono: con código de área, sin 0 ni 15.", "mal");
       if (!datos.visitas) return mensaje("Elegí cuántas visitas mensuales tiene tu tienda, aproximadamente.", "mal");
@@ -2686,7 +2690,7 @@
 </script>
 
 <script>
-  // En el celular, "Agendá una demo" lleva directo al formulario y no al texto de arriba.
+  // En el celular, los botones que van a #demo llevan directo al formulario y no al texto de arriba.
   (function () {
     var movil = window.matchMedia("(max-width: 900px)");
     document.addEventListener("click", function (e) {
