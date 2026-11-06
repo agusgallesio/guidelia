@@ -504,6 +504,14 @@
   .volumen b { font-family: var(--f-display); font-size: 20px; color: var(--petroleo); font-variant-numeric: tabular-nums; }
   .visitas { font-size: 14px; color: var(--texto-2); margin-top: -6px; }
   .visitas b { color: var(--petroleo); font-weight: 700; font-variant-numeric: tabular-nums; }
+  /* En 4 columnas, cada bloque de la tarjeta ocupa el mismo alto para que todo quede alineado. */
+  @media (min-width: 1121px) {
+    .planes .plan-para { min-height: 4.8em; }
+    .planes .precio { min-height: 48px; }
+    .planes .volumen { white-space: nowrap; font-size: 13px; padding-inline: 12px; min-height: 50px; align-items: center; }
+    .planes .volumen b { font-size: 18px; }
+    .planes .visitas { min-height: 3em; }
+  }
   .nota-visitas { margin: 14px auto 0; max-width: 62ch; text-align: center; font-size: 13px; color: var(--apagado); }
   .incluye { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; font-size: 14.5px; color: var(--texto-2); flex: 1; align-content: start; }
   .incluye li { display: flex; gap: 10px; align-items: flex-start; }
@@ -1473,7 +1481,7 @@
           <p class="plan-para">Para marcas con mucho volumen o varias tiendas.</p>
           <div class="precio precio--consultar"><b>Según tu tienda</b></div>
           <div class="volumen"><b>Volumen</b> a medida</div>
-          <p class="visitas">Para tiendas de más de <b>50.000</b> visitas por mes o con varias tiendas</p>
+          <p class="visitas">Para más de <b>50.000</b> visitas por mes o varias tiendas</p>
           <ul class="incluye">
             <li><svg aria-hidden="true"><use href="#check"/></svg><span>Todo lo de <strong>Crecimiento</strong></span></li>
             <li><svg aria-hidden="true"><use href="#check"/></svg><span><strong>Conversaciones a medida</strong>, con un tope acordado</span></li>
