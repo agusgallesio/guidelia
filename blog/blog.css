@@ -2,7 +2,7 @@
   --petroleo: #0E4A62; --petroleo-hondo: #072C3B; --petroleo-medio: #1C6280;
   --rojo: #F2383B; --rojo-suave: #FFE8E7; --niebla: #F2F7F9; --cielo: #DCECF2; --papel: #FFFFFF;
   --texto: #0B2833; --texto-2: #4B6570; --apagado: #8BA1A9; --linea: #E0EAEE;
-  --f-display: 'Quicksand', 'Nunito', ui-rounded, system-ui, sans-serif;
+  --f-display: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   --f-texto: 'Figtree', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --f-mono: 'DM Mono', ui-monospace, 'SF Mono', Menlo, monospace;
   --r-xl: 28px; --r-lg: 20px; --r-md: 14px; --r-sm: 10px;
@@ -314,3 +314,7 @@ img, svg { max-width: 100%; }
 .priv h2 { font-size: 22px; margin: 32px 0 8px; }
 .priv p, .priv li { color: var(--texto-2); }
 .priv a { color: var(--petroleo); }
+
+/* Tipografía sobria (7-nov-2026): titulares y números en Figtree 600 (antes Quicksand 700) */
+h1, h2, h3, .stat-n, .paso-n, .nodo-n, .faq-item summary { font-weight: 600; }
+h1 { letter-spacing: -.035em; } h2 { letter-spacing: -.025em; }
