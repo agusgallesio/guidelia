@@ -31,10 +31,10 @@
     placeholder: "Escribí tu consulta…",
     tienda: { marca: "Tu tienda", nav: ["Alisadores", "Secadores", "Rizadores", "Ofertas"] },
     producto: { nombre: V492.nombre, precio: V492.precio, antes: V492.antes, img: V492.img, boton: "Agregar al carrito",
-      puntos: ["1000 W", "Control de temperatura", "Cable giratorio", "Función anti-frizz"], ruta: "Cepillos" },
+      puntos: ["1000 W", "Control de temperatura", "Cable giratorio", "Función anti-frizz"], ruta: "Cepillos" },
     chat: {
       pregunta: "Busco algo para alisar. ¿Qué me conviene?",
-      respuesta: "Te recomiendo el **cepillo secador alisador**: seca y alisa a la vez, con **1000 W**, control de temperatura y cable giratorio.",
+      respuesta: "Te recomiendo el **cepillo secador alisador**: seca y alisa a la vez, con **1000 W**, control de temperatura y cable giratorio.",
       duda: "¿Tu pelo es lacio u ondulado?",
       opciones: ["Lacio", "Ondulado"], elegida: 1,
       reco: "Para pelo ondulado, su función **anti-frizz** te lo deja parejo. Mirá:",
