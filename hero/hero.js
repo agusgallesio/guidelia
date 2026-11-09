@@ -19,6 +19,7 @@
     aria: "Animación de Guidelia: el asesor de compra responde al instante con los datos del catálogo, recomienda y suma productos al carrito, se ve y habla como tu marca, muestra en un panel qué buscan tus clientes y recomienda primero lo que querés vender.",
     boton: "Ver cómo queda en mi tienda",
     cierre: "Tu mejor vendedor, en cada visita.",
+    cierreResalta: "en cada visita", // se escribe en celeste
     // tenue: posición (desde 1) de la palabra que queda a medio apagar en la primera línea
     tarjetas: [
       { l1: "Cada pregunta necesita", l2: "una respuesta precisa al instante.", tenue: 1 },
@@ -416,7 +417,9 @@
       var ini = a + 1.0, fin = ini + C.cierre.length / 38;
       linea.style.opacity = t >= ini ? 1 : 0;
       var ya = typed(C.cierre, t, ini, 38);
-      texto(lineaTx, ya); texto(lineaRs, C.cierre.slice(ya.length));
+      var iR = C.cierre.indexOf(C.cierreResalta);
+      html(lineaTx, iR < 0 || ya.length <= iR ? esc(ya) : esc(ya.slice(0, iR)) + '<span class="cel">' + esc(ya.slice(iR)) + "</span>");
+      texto(lineaRs, C.cierre.slice(ya.length));
       lineaCur.style.opacity = t < ini || t > b - 0.6 ? 0 : (t < fin + 0.1 || Math.floor((t - fin) * 2.4) % 2 === 0 ? 1 : 0);
       var pb = seg(t, fin + 0.25, fin + 0.75);
       put(btn, pb, (1 - pb) * 12, 0.96 + 0.04 * pb);

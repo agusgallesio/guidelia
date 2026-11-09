@@ -196,6 +196,7 @@
 .hf-st { position: absolute; width: calc(var(--u) * 6); height: calc(var(--u) * 6); color: var(--ha-rojo); left: calc(100% + var(--u) * .6); top: calc(var(--u) * -4); }
 .hf-st svg { width: 100%; height: 100%; }
 .hf-l { text-wrap: balance; max-width: 22ch; min-height: 1.2em; font-weight: 700; font-size: calc(var(--u) * 4.2); line-height: 1.15; letter-spacing: -.025em; opacity: 0; }
+.hf-l .cel { color: #6FCBF2; }
 .hf-b { display: inline-grid; place-items: center; height: calc(var(--u) * 6.2); padding: 0 calc(var(--u) * 3.2); border-radius: 99px; background: var(--ha-rojo); color: #fff; font-weight: 600; font-size: calc(var(--u) * 2); box-shadow: 0 10px 26px rgba(242, 56, 59, .35); opacity: 0; }
 
 /* ---------- Rótulo de función ---------- */
