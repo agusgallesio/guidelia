@@ -2427,7 +2427,10 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
         return mensaje(r.status === 503 ? "El formulario no está disponible por ahora. Probá de nuevo más tarde." : r.error || "No pudimos enviar tu pedido. Probá de nuevo.", "mal");
       }
       f.querySelectorAll("input, select, button").forEach((x) => (x.disabled = true));
-      mensaje("¡Listo! Recibimos tu pedido. Te escribimos por email o teléfono para coordinar la demo.", "ok");
+      mensaje("¡Listo! Recibimos tu pedido. Te llevamos a la página de próximos pasos…", "ok");
+      // Página de gracias: ahí se mide la conversión. Solo viajan el primer nombre y datos sin identidad, y por el navegador (no por la dirección).
+      try { sessionStorage.setItem("gd_demo", JSON.stringify({ n: datos.nombre.split(/\s+/)[0].slice(0, 30), p: datos.plataforma, v: datos.visitas, t: Date.now() })); } catch (_) {}
+      window.location.assign("/gracias/");
     });
   }
 })();
