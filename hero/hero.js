@@ -73,6 +73,9 @@
 
   // ============ LÍNEA DE TIEMPO (segundos) ============
   var DUR = 40.4, FINAL = 39;
+  // En el sitio, mientras se lee el titular, se ve una imagen fija (la tienda con el chat y las tarjetas)
+  // y el video arranca cuando terminaron de aparecer el titular y el subrayado.
+  var POSTER = 8.95, ARRANQUE_MS = 1900, FUNDIDO = 0.45;
   var TL = { c0: [0, 2.4], p: [2.4, 12], c1: [12, 13.8], m: [13.8, 19.8], c2: [19.8, 22], d: [22, 27.6], c3: [27.6, 29.4], w: [29.4, 35.2], f: [35.2, 40.4] };
   var T = { panel: 2.95, type: 3.45, send: 4.4, dots1: [4.55, 5.0], a1: 5.0, a2: 6.15, press: 6.95, u2: 7.1, dots2: [7.25, 7.65], a3: 7.65, add1: 8.7, dots3: [9.2, 9.6], a4: 9.6, add2: 10.85 };
   var MARCA_T = [14.7, 15.3, 15.9, 16.5, 17.1, 17.7];
@@ -426,6 +429,13 @@
     }
 
     function render(t) {
+      // antes de empezar: la imagen fija se funde con la primera tarjeta
+      if (t < 0) {
+        render(POSTER);
+        renderTarjeta(cards[0], 0);
+        cards[0].n.style.opacity = clamp(1 + t / FUNDIDO).toFixed(3);
+        return;
+      }
       t = ((t % DUR) + DUR) % DUR;
       cards.forEach(function (c) { renderTarjeta(c, t); });
       renderP(t); renderM(t); renderD(t); renderW(t); renderF(t); renderRotulos(t);
@@ -437,7 +447,7 @@
     vertical();
     if (mq.addEventListener) mq.addEventListener("change", function () { vertical(); medir(); render(reloj); });
 
-    var reloj = 0, ultimo = 0, corriendo = false, raf = 0, visible = true;
+    var reloj = opciones.manual ? 0 : POSTER, ultimo = 0, corriendo = false, raf = 0, visible = true, primera = !opciones.manual, espera = 0;
     medir();
     if (window.ResizeObserver) new ResizeObserver(function () { medir(); if (!corriendo) render(reloj); }).observe(el);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { medir(); render(reloj); });
@@ -449,16 +459,25 @@
     function tic(ahora) {
       if (!corriendo) return;
       var dt = Math.min(0.1, (ahora - ultimo) / 1000); ultimo = ahora;
-      reloj = (reloj + dt) % DUR; render(reloj);
+      reloj += dt; if (reloj >= DUR) reloj -= DUR;
+      render(reloj);
       raf = requestAnimationFrame(tic);
     }
-    function arrancar() { if (corriendo || quieto || opciones.manual) return; corriendo = true; ultimo = performance.now(); raf = requestAnimationFrame(tic); }
-    function parar() { corriendo = false; cancelAnimationFrame(raf); }
+    function arrancar() {
+      if (corriendo || quieto || opciones.manual) return;
+      if (primera) {
+        // la primera vez espera a que se lea el titular (si la persona llega más tarde con el scroll, casi no espera)
+        if (!espera) espera = setTimeout(function () { espera = 0; primera = false; reloj = -FUNDIDO; revisar(); }, Math.max(300, ARRANQUE_MS - performance.now()));
+        return;
+      }
+      corriendo = true; ultimo = performance.now(); raf = requestAnimationFrame(tic);
+    }
+    function parar() { corriendo = false; cancelAnimationFrame(raf); if (espera) { clearTimeout(espera); espera = 0; } }
     function revisar() { (visible && !document.hidden) ? arrancar() : parar(); }
     document.addEventListener("visibilitychange", revisar);
     if (quieto) { render(FINAL); }
     else {
-      render(0);
+      render(reloj);
       if ("IntersectionObserver" in window) new IntersectionObserver(function (es) { visible = es[0].isIntersecting; revisar(); }, { threshold: 0.2 }).observe(el);
       else revisar();
     }

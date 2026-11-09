@@ -2341,11 +2341,9 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
             ? `<div class="roi-fila"><span>Conversaciones estimadas</span><b>${fmt(Math.round(conversaciones))}<small>por mes</small></b></div>
           <div class="roi-fila"><span>Inversión por mes</span><b>A medida<small>la definimos juntos según tu volumen</small></b></div>`
             : `<div class="roi-fila"><span>Plan recomendado</span><b>${plan.n}<small>${`hasta ${fmt(plan.c)} conversaciones`}</small></b></div>
-          <div class="roi-fila"><span>Inversión por mes</span><b>${usd(costo)}</b></div>
-          <div class="roi-fila"><span>Pedidos extra por mes para pagarse</span><b>${fmt(pedidosPago)}<small>${roi < 1 ? "con estos supuestos todavía no se paga" : `de ${fmt(Math.round(sesiones * conv))} que hacés hoy`}</small></b></div>`}
+          <div class="roi-fila"><span>Inversión por mes</span><b>${usd(costo)}</b></div>`}
         </div>
         <a class="btn btn--blanco" href="#demo">${aMedida ? "Hablar con nosotros" : "Ver cómo queda en mi tienda"} ${icono("flecha")}</a>
-        <p class="roi-aviso">Estimación con los supuestos de la izquierda. Habla de ingresos, no de ganancia, y no es una promesa de resultado.</p>
       </div>`;
 
     // El número grande cuenta hasta su valor la primera vez que se calcula con la sección a la vista
