@@ -776,6 +776,14 @@
   .hero h1 em { background: linear-gradient(100deg, var(--petroleo) 34%, #3C8FB3 50%, var(--petroleo) 66%); background-size: 260% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: brilloT 7s ease-in-out infinite; }
   @keyframes brilloT { 0%, 100% { background-position: 100% 0; } 50% { background-position: 0 0; } }
   .hero-rubro { font-family: var(--f-display); font-weight: 600; font-size: clamp(19px, 2vw, 25px); color: var(--texto-2); display: flex; align-items: baseline; gap: .45em; flex-wrap: wrap; margin-top: -8px; }
+  /* Subrayado a mano en «Aumentá tus ventas»: se dibuja al cargar, con un segundo trazo más fino (imperfecto a propósito) */
+  .subr { position: relative; white-space: nowrap; display: inline-block; }
+  .subr-trazo { position: absolute; left: -2%; bottom: -.16em; width: 104%; height: .34em; overflow: visible; pointer-events: none; }
+  .subr-trazo path { fill: none; stroke: var(--rojo); stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; animation: trazo .8s 1s cubic-bezier(.2,.8,.2,1) forwards; }
+  .subr-trazo path:first-child { stroke-width: 6; }
+  .subr-trazo path + path { stroke-width: 3; opacity: .55; animation-delay: 1.35s; animation-duration: .6s; }
+  @keyframes trazo { to { stroke-dashoffset: 0; } }
+  @media (prefers-reduced-motion: reduce) { .subr-trazo path { animation: none; stroke-dashoffset: 0; } }
   /* Hero centrado en todas las pantallas: titular, rubro, animación y, debajo, el texto y los botones */
   .hero .envoltura { display: flex; flex-direction: column; align-items: center; gap: clamp(20px, 2.4vw, 28px); text-align: center; }
   .hero-texto { display: contents; }
@@ -989,7 +997,7 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
     <div class="hero-fondo" aria-hidden="true"><div class="mancha mancha--1"></div><div class="mancha mancha--2"></div></div>
     <div class="envoltura">
       <div class="hero-texto">
-        <h1>Aumentá tus ventas con un asesor que acompaña a cada cliente <em>hasta la compra<svg aria-hidden="true"><use href="#chispa"/></svg></em></h1>
+        <h1><span class="subr">Aumentá tus ventas<svg class="subr-trazo" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M4 15 C 52 9, 104 7, 156 9 S 248 15, 296 8"/><path pathLength="1" d="M18 19 C 84 14, 170 13, 282 15"/></svg></span> con un asesor que acompaña a cada cliente <em>hasta la compra<svg aria-hidden="true"><use href="#chispa"/></svg></em></h1>
         <p class="hero-rubro">Hecho para tiendas de <span class="rot" id="rot"><span class="act">belleza</span><span>indumentaria</span><span>bazar</span><span>muebles y deco</span><span>jugueterías</span></span></p>
         <p class="bajada"><strong>Tu mejor vendedor, en cada visita.</strong> Responde las dudas con los datos reales de tu catálogo, recomienda lo que le sirve a cada cliente y lo acompaña hasta la compra. A cualquier hora, con tu tono y tu marca.</p>
         <div class="hero-acciones">
