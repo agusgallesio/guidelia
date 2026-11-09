@@ -11,6 +11,7 @@
   position: relative; width: 100%; aspect-ratio: 16 / 10; overflow: hidden; border-radius: 22px;
   background: var(--ha-negro); color: #fff; container-type: inline-size; isolation: isolate;
   font-family: var(--ha-f); -webkit-font-smoothing: antialiased; user-select: none;
+  text-align: left; /* el hero de la portada está centrado: la animación no hereda ese centrado */
   box-shadow: 0 24px 60px rgba(7, 44, 59, .18), 0 0 0 1px rgba(7, 44, 59, .06);
 }
 :root[data-theme="dark"] .ha { box-shadow: 0 24px 60px rgba(0, 0, 0, .5), 0 0 0 1px rgba(255, 255, 255, .08); }
