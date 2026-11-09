@@ -1,4 +1,4 @@
-// POST /api/demo  -> recibe el pedido de demo, lo guarda y avisa por email.
+// POST /api/demo  -> recibe la solicitud de demo, lo guarda y avisa por email.
 import { json, error, leerJson, origenValido, telefonoValido, emailValido, limpiar, limitar } from "./_comun.js";
 
 const DESTINO_POR_DEFECTO = "agustin@guidelia.com.ar";
@@ -7,12 +7,12 @@ const VISITAS = ["Menos de 5.000", "De 5.000 a 10.000", "De 10.000 a 30.000", "M
 const PLATAFORMAS = ["WooCommerce", "Tiendanube", "Shopify", "Otra"];
 
 export async function onRequestPost({ request, env }) {
-  if (!origenValido(request)) return error("origen", "Pedido no permitido.", 403);
+  if (!origenValido(request)) return error("origen", "Solicitud no permitida.", 403);
   let c;
   try {
     c = await leerJson(request, 6000);
   } catch {
-    return error("pedido", "Pedido inválido.");
+    return error("pedido", "Solicitud inválida.");
   }
   // Campo trampa: las personas no lo ven ni lo completan; los robots sí.
   if (c.sitio_web) return json({ ok: true });
@@ -25,13 +25,13 @@ export async function onRequestPost({ request, env }) {
   if (!nombre || !tienda || !emailValido(email) || !plataforma || !visitas) return error("datos", "Revisá los datos del formulario.");
   if (!telefonoValido(c.telefono)) return error("telefono", "Revisá el número de teléfono.");
   const ip = request.headers.get("CF-Connecting-IP") || "sin-ip";
-  if (!(await limitar(env, `demo:${ip}`, 5, 3600))) return error("limite", "Enviaste varios pedidos seguidos. Probá más tarde.", 429);
+  if (!(await limitar(env, `demo:${ip}`, 5, 3600))) return error("limite", "Enviaste varias solicitudes seguidas. Probá más tarde.", 429);
 
   const lead = { nombre, tienda, email, telefono: c.telefono, plataforma, visitas, fecha: new Date().toISOString(), pais: request.headers.get("CF-IPCountry") || "" };
   if (env.LEADS) await env.LEADS.put(`lead:${lead.fecha}:${crypto.randomUUID().slice(0, 8)}`, JSON.stringify(lead));
 
   const texto = [
-    "Nuevo pedido de demo de Guidelia",
+    "Nueva solicitud de demo de Guidelia",
     "",
     `Nombre: ${nombre}`,
     `Tienda: ${tienda}`,
@@ -73,6 +73,6 @@ export async function onRequestPost({ request, env }) {
     detalle = `excepción: ${String(err && err.message).slice(0, 160)}`;
   }
   // Se responde con 424 (no 502) para que Cloudflare no reemplace el mensaje por su página de error.
-  if (!enviado && !env.LEADS) return json({ ok: false, codigo: "envio", error: "No pudimos registrar tu pedido. Probá de nuevo en un rato.", detalle }, 424);
+  if (!enviado && !env.LEADS) return json({ ok: false, codigo: "envio", error: "No pudimos registrar tu solicitud. Probá de nuevo en un rato.", detalle }, 424);
   return json({ ok: true });
 }

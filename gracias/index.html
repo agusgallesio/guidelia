@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>¡Recibimos tu pedido de demo! | Guidelia</title>
-<meta name="description" content="Recibimos tu pedido de demo de Guidelia. Mirá los próximos pasos y, si querés, escribinos por WhatsApp ahora.">
+<title>¡Recibimos tu solicitud de demo! | Guidelia</title>
+<meta name="description" content="Recibimos tu solicitud de demo de Guidelia. Mirá los próximos pasos y, si querés, escribinos por WhatsApp ahora.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://guidelia.com.ar/gracias/">
 <meta name="theme-color" content="#0B4B64">
@@ -26,28 +26,45 @@
     --texto: #0B2833; --texto-2: #4B6570; --apagado: #8BA1A9; --linea: #E0EAEE; --ok: #1F9D62;
     --f: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
     --sombra-1: 0 1px 2px rgba(7,44,59,.05), 0 4px 14px rgba(7,44,59,.06);
-    --sombra-2: 0 30px 70px rgba(7,44,59,.14), 0 4px 14px rgba(7,44,59,.06);
+    --ancho: 1180px;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { margin: 0; font-family: var(--f); font-size: 16px; line-height: 1.6; color: var(--texto); background: var(--niebla); -webkit-font-smoothing: antialiased; min-height: 100vh; display: flex; flex-direction: column; }
+  body { margin: 0; background: var(--papel); color: var(--texto); font-family: var(--f); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
   a { color: inherit; }
-  :focus-visible { outline: 2.5px solid var(--rojo); outline-offset: 3px; border-radius: 8px; }
-  .envoltura { width: 100%; max-width: 1040px; margin: 0 auto; padding-inline: max(20px, env(safe-area-inset-left, 0px)); }
+  svg { max-width: 100%; }
+  :focus-visible { outline: 2.5px solid var(--rojo); outline-offset: 3px; border-radius: 6px; }
+  .envoltura { max-width: var(--ancho); margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+  h1, h2, h3 { font-weight: 700; letter-spacing: -.02em; line-height: 1.08; margin: 0; text-wrap: balance; color: var(--texto); }
+  p { margin: 0; }
 
-  .encabezado { background: rgba(255,255,255,.9); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--linea); }
-  .encabezado .envoltura { display: flex; align-items: center; justify-content: space-between; height: 72px; }
-  .logo { display: inline-flex; line-height: 0; color: #0B4B64; }
-  .logo svg { height: 34px; width: auto; aspect-ratio: 908 / 213; display: block; }
-  .volver { font-size: 14.5px; font-weight: 600; color: var(--texto-2); text-decoration: none; }
-  .volver:hover { color: var(--petroleo); }
+  /* Botones y logo (iguales a la home) */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; height: 52px; padding: 0 24px; border-radius: 999px; font-weight: 600; font-size: 15.5px; text-decoration: none; border: 0; cursor: pointer; transition: transform .2s cubic-bezier(.2,.8,.2,1), box-shadow .2s, background .2s; white-space: nowrap; }
+  .btn--rojo { background: var(--rojo); color: #fff; box-shadow: 0 10px 26px rgba(242,56,59,.32); }
+  .btn--rojo:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(242,56,59,.4); }
+  .logo { flex-shrink: 0; display: inline-flex; line-height: 0; text-decoration: none; color: #0B4B64; }
+  .logo svg { display: block; height: 36px; width: auto; aspect-ratio: 908 / 213; }
+  .logo--claro { color: #fff; }
 
-  main { flex: 1; position: relative; padding-block: clamp(32px, 6vw, 72px) clamp(48px, 8vw, 96px); overflow: hidden; }
-  main::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 420px; background: radial-gradient(60% 100% at 50% 0%, #CFE6EF 0%, rgba(207,230,239,0) 70%); pointer-events: none; }
-  .tarjeta { position: relative; background: var(--papel); border-radius: 28px; box-shadow: var(--sombra-2); padding: clamp(28px, 5vw, 56px); }
+  /* Encabezado */
+  .encabezado { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.86); backdrop-filter: saturate(1.4) blur(14px); -webkit-backdrop-filter: saturate(1.4) blur(14px); border-bottom: 1px solid var(--linea); }
+  .encabezado .envoltura { display: flex; align-items: center; gap: 28px; height: 74px; }
+  .nav { display: flex; gap: 26px; margin-left: auto; }
+  .nav a { text-decoration: none; font-weight: 500; font-size: 15px; color: var(--texto-2); white-space: nowrap; transition: color .15s; }
+  .nav a:hover { color: var(--petroleo); }
+  .encabezado .btn { height: 44px; padding: 0 20px; font-size: 14.5px; }
+  @media (max-width: 1120px) { .nav { display: none; } .encabezado .btn { margin-left: auto; } }
+  @media (max-width: 560px) { .encabezado .envoltura { gap: 10px; } .encabezado .btn { flex-shrink: 0; padding: 0 14px; font-size: 13.5px; } .logo svg { height: 30px; } }
 
   /* Confirmación */
-  .ok { text-align: center; display: grid; justify-items: center; gap: 14px; }
+  .hero { position: relative; overflow: hidden; padding-block: clamp(48px, 7vw, 92px) clamp(56px, 7vw, 90px); text-align: center; }
+  .hero-fondo { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  .hero-fondo::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(14,74,98,.09) 1px, transparent 1.4px); background-size: 26px 26px; mask-image: radial-gradient(ellipse 70% 70% at 50% 35%, #000 30%, transparent 78%); -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 35%, #000 30%, transparent 78%); }
+  .mancha { position: absolute; border-radius: 50%; filter: blur(60px); opacity: .55; animation: deriva 18s ease-in-out infinite alternate; }
+  .mancha--1 { width: 520px; height: 520px; background: #CFE6EF; right: -120px; top: -140px; }
+  .mancha--2 { width: 380px; height: 380px; background: #FFE1DF; left: -100px; bottom: -150px; animation-duration: 22s; opacity: .45; }
+  @keyframes deriva { to { transform: translate(-50px, 40px) scale(1.08); } }
+  .hero .envoltura { position: relative; display: grid; justify-items: center; gap: 22px; }
   .ok-ico { position: relative; width: 84px; height: 84px; border-radius: 50%; background: var(--ok); display: grid; place-items: center; box-shadow: 0 14px 34px rgba(31,157,98,.35); animation: pop .6s cubic-bezier(.2,.8,.2,1) both; }
   .ok-ico::after { content: ""; position: absolute; inset: -10px; border-radius: 50%; border: 2px solid rgba(31,157,98,.28); animation: onda 2.4s ease-out .6s infinite; }
   .ok-ico svg { width: 42px; height: 42px; }
@@ -55,133 +72,179 @@
   @keyframes pop { from { transform: scale(.6); opacity: 0; } to { transform: none; opacity: 1; } }
   @keyframes trazo { to { stroke-dashoffset: 0; } }
   @keyframes onda { 0% { transform: scale(.9); opacity: .9; } 100% { transform: scale(1.35); opacity: 0; } }
-  h1 { margin: 8px 0 0; font-size: clamp(32px, 5vw, 48px); line-height: 1.08; letter-spacing: -.03em; text-wrap: balance; }
-  h1 em { font-style: normal; color: var(--petroleo); }
-  .sub { margin: 0; max-width: 56ch; color: var(--texto-2); font-size: clamp(16px, 1.6vw, 18.5px); }
-  .sub b { color: var(--texto); }
+  .hero h1 { font-size: clamp(36px, 5.4vw, 64px); letter-spacing: -.035em; max-width: 24ch; }
+  .hero h1 em { font-style: normal; color: var(--petroleo); }
+  .hero h1 .ult { position: relative; display: inline-block; white-space: nowrap; }
+  .hero h1 em svg { position: absolute; right: -.42em; top: -.12em; width: .38em; height: .38em; color: var(--rojo); animation: titila 3.6s ease-in-out infinite; }
+  @keyframes titila { 0%, 100% { transform: scale(1) rotate(0); } 50% { transform: scale(.72) rotate(45deg); } }
+  .bajada { font-size: clamp(17px, 1.6vw, 19.5px); color: var(--texto-2); max-width: 56ch; line-height: 1.6; }
+  .bajada b { color: var(--texto); }
 
-  /* Dónde está tu pedido */
-  .estado { margin: clamp(28px, 4vw, 40px) 0 clamp(22px, 3vw, 30px); display: grid; gap: 12px; }
+  /* Próximos pasos */
+  .banda { padding-block: clamp(64px, 8vw, 104px); }
+  .banda--niebla { background: var(--niebla); }
+  .banda--honda { background: var(--petroleo-hondo); color: #E7F1F5; }
+  .cabeza { display: grid; gap: 16px; max-width: 760px; margin: 0 auto clamp(36px, 4.5vw, 56px); text-align: center; justify-items: center; }
+  .cabeza h2 { font-size: clamp(30px, 4vw, 46px); }
+  .estado { width: 100%; max-width: 520px; display: grid; gap: 10px; text-align: left; }
   .estado-fila { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-weight: 700; }
   .estado-fila span:last-child { font-weight: 600; color: var(--texto-2); }
   .estado-fila b { color: var(--petroleo); }
   .barra { height: 10px; border-radius: 99px; background: var(--cielo); overflow: hidden; }
   .barra i { display: block; height: 100%; width: 50%; border-radius: 99px; background: linear-gradient(90deg, var(--petroleo), var(--petroleo-medio)); transform-origin: 0 50%; animation: llena 1s .5s cubic-bezier(.2,.8,.2,1) both; }
   @keyframes llena { from { transform: scaleX(.25); } }
-
-  .pasos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; counter-reset: p; }
-  .paso { position: relative; display: grid; gap: 8px; align-content: start; padding: 20px 18px 22px; border-radius: 18px; background: var(--niebla); box-shadow: inset 0 0 0 1px var(--linea); animation: sube .6s cubic-bezier(.2,.8,.2,1) both; }
+  .pasos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; }
+  .paso { position: relative; background: var(--papel); border-radius: 20px; padding: 28px 24px; box-shadow: var(--sombra-1); display: grid; gap: 10px; align-content: start; animation: sube .6s cubic-bezier(.2,.8,.2,1) both; }
   .paso:nth-child(2) { animation-delay: .08s; } .paso:nth-child(3) { animation-delay: .16s; } .paso:nth-child(4) { animation-delay: .24s; }
   @keyframes sube { from { opacity: 0; transform: translateY(14px); } }
-  .num { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 15px; background: #fff; color: var(--texto-2); box-shadow: inset 0 0 0 1.5px #C9D9DF; }
-  .num svg { width: 17px; height: 17px; }
+  .num { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--cielo); color: var(--petroleo); font-weight: 700; font-size: 15px; }
+  .num svg { width: 18px; height: 18px; }
   .num svg path { fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
-  .paso h2 { margin: 4px 0 0; font-size: 17px; line-height: 1.25; letter-spacing: -.01em; }
-  .paso p { margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--texto-2); }
-  .etq { justify-self: start; font-size: 11.5px; font-weight: 700; letter-spacing: .02em; padding: 3px 10px; border-radius: 99px; }
-  .paso.hecho { background: #EAF7F0; box-shadow: inset 0 0 0 1px #BFE5D1; }
-  .paso.hecho .num { background: var(--ok); color: #fff; box-shadow: none; }
-  .paso.hecho .etq { background: #D5F0E2; color: #17774A; }
-  .paso.actual { background: #fff; box-shadow: 0 0 0 2px var(--petroleo), 0 18px 40px rgba(14,74,98,.16); transform: translateY(-4px); }
-  .paso.actual .num { background: var(--petroleo); color: #fff; box-shadow: none; }
+  .paso h3 { font-size: 20px; line-height: 1.25; letter-spacing: -.01em; }
+  .paso p { color: var(--texto-2); font-size: 15.5px; line-height: 1.55; }
+  .etq { justify-self: start; font-size: 12px; font-weight: 700; letter-spacing: .02em; padding: 3px 11px; border-radius: 99px; }
+  .paso.hecho .num { background: var(--ok); color: #fff; }
+  .paso.hecho .etq { background: #DDF3E8; color: #17774A; }
+  .paso.actual { box-shadow: 0 0 0 2px var(--petroleo), 0 22px 48px rgba(14,74,98,.18); transform: translateY(-6px); }
+  .paso.actual .num { background: var(--petroleo); color: #fff; }
   .paso.actual .etq { background: var(--rojo); color: #fff; }
-  .paso.actual h2 { color: var(--petroleo); }
+  .paso.actual h3 { color: var(--petroleo); }
 
   /* WhatsApp */
-  .wa-caja { margin-top: clamp(26px, 4vw, 40px); position: relative; overflow: hidden; border-radius: 24px; padding: clamp(24px, 4vw, 40px); background: radial-gradient(120% 140% at 0% 0%, #0F5C78 0%, var(--petroleo-hondo) 70%); color: #fff; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px; align-items: center; }
-  .wa-caja::after { content: ""; position: absolute; width: 360px; height: 360px; right: -120px; top: -160px; border-radius: 50%; background: radial-gradient(closest-side, rgba(37,211,102,.28), transparent 70%); pointer-events: none; }
-  .wa-caja h2 { margin: 0 0 6px; font-size: clamp(22px, 2.6vw, 28px); line-height: 1.15; letter-spacing: -.02em; }
-  .wa-caja p { margin: 0; color: #B5D3DE; max-width: 46ch; }
-  .wa-btn { position: relative; z-index: 1; display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 64px; padding: 0 30px 0 22px; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: 17.5px; color: #fff; background: linear-gradient(135deg, #2BE07A 0%, #12B24E 100%); box-shadow: 0 16px 36px rgba(18,178,78,.45), inset 0 1px 0 rgba(255,255,255,.35); transition: transform .2s cubic-bezier(.2,.8,.2,1), box-shadow .2s; white-space: nowrap; }
-  .wa-btn::before { content: ""; position: absolute; inset: -6px; border-radius: inherit; border: 2px solid rgba(43,224,122,.45); animation: latido 2.6s ease-out infinite; pointer-events: none; }
+  .wa { position: relative; overflow: hidden; text-align: center; }
+  .wa::before { content: ""; position: absolute; width: 620px; height: 620px; left: 50%; top: -260px; transform: translateX(-50%); background: radial-gradient(closest-side, rgba(28,98,128,.55), transparent 70%); pointer-events: none; }
+  .wa .envoltura { position: relative; display: grid; justify-items: center; gap: 22px; }
+  .wa h2 { color: #fff; font-size: clamp(30px, 4vw, 46px); }
+  .wa .bajada { color: #A9C7D2; }
+  .wa-btn { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 14px; min-height: 68px; padding: 0 34px 0 22px; margin-top: 6px; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: 18px; color: #fff; background: linear-gradient(135deg, #2BE07A 0%, #12B24E 100%); box-shadow: 0 18px 40px rgba(18,178,78,.4), inset 0 1px 0 rgba(255,255,255,.35); transition: transform .2s cubic-bezier(.2,.8,.2,1), box-shadow .2s; }
+  .wa-btn::before { content: ""; position: absolute; inset: -7px; border-radius: inherit; border: 2px solid rgba(43,224,122,.45); animation: latido 2.6s ease-out infinite; pointer-events: none; }
   @keyframes latido { 0% { transform: scale(.97); opacity: .9; } 70%, 100% { transform: scale(1.08); opacity: 0; } }
-  .wa-btn:hover { transform: translateY(-3px); box-shadow: 0 22px 44px rgba(18,178,78,.55), inset 0 1px 0 rgba(255,255,255,.4); }
-  .wa-btn:active { transform: translateY(-1px); }
-  .wa-ico { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,.2); display: grid; place-items: center; flex-shrink: 0; }
-  .wa-ico svg { width: 22px; height: 22px; fill: #fff; }
+  .wa-btn:hover { transform: translateY(-3px); box-shadow: 0 24px 48px rgba(18,178,78,.5), inset 0 1px 0 rgba(255,255,255,.4); }
+  .wa-ico { width: 42px; height: 42px; border-radius: 50%; background: rgba(255,255,255,.2); display: grid; place-items: center; flex-shrink: 0; }
+  .wa-ico svg { width: 24px; height: 24px; fill: #fff; }
+  .extra { display: flex; gap: 8px 24px; flex-wrap: wrap; justify-content: center; font-size: 14.5px; color: #8FB6C5; }
+  .extra a { color: #CFE6EF; font-weight: 600; text-underline-offset: 3px; }
 
-  .extra { margin: clamp(22px, 3vw, 30px) 0 0; display: flex; gap: 8px 22px; flex-wrap: wrap; justify-content: center; font-size: 14.5px; color: var(--texto-2); }
-  .extra a { color: var(--petroleo-medio); font-weight: 600; text-underline-offset: 3px; }
+  /* Pie (igual al de la home) */
+  .pie { background: var(--petroleo-hondo); color: #8FB6C5; padding-block: 48px calc(40px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid rgba(255,255,255,.06); }
+  .pie .envoltura { display: flex; gap: 20px 40px; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+  .pie nav { display: flex; gap: 22px; flex-wrap: wrap; font-size: 14.5px; }
+  .pie .pie-rubros { flex-basis: 100%; padding-top: 6px; border-top: 1px solid rgba(255,255,255,.1); }
+  .pie nav a { text-decoration: none; }
+  .pie nav a:hover { color: #fff; }
+  .pie small { font-size: 13px; }
 
-  .pie { padding: 26px 0 max(26px, env(safe-area-inset-bottom, 0px)); text-align: center; font-size: 13px; color: var(--apagado); }
-  .pie a { color: inherit; }
-
-  @media (max-width: 900px) {
-    .pasos { grid-template-columns: 1fr; }
-    .paso { grid-template-columns: auto 1fr; column-gap: 14px; padding: 16px; }
+  @media (max-width: 600px) { .hero h1 .ult { white-space: normal; } }
+  @media (max-width: 1000px) { .pasos { grid-template-columns: repeat(2, minmax(0, 1fr)); } .paso.actual { transform: none; } }
+  @media (max-width: 600px) {
+    .pasos { grid-template-columns: 1fr; gap: 14px; }
+    .paso { grid-template-columns: auto 1fr; column-gap: 16px; padding: 20px; }
     .paso .num { grid-row: 1 / span 3; }
-    .paso.actual { transform: none; }
-    .wa-caja { grid-template-columns: 1fr; text-align: center; justify-items: center; }
-    .wa-btn { width: 100%; max-width: 420px; white-space: normal; text-align: left; }
+    .wa-btn { width: 100%; white-space: normal; text-align: left; padding-inline: 18px 22px; }
   }
   @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } .ok-ico path { stroke-dashoffset: 0; } }
 </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="logo-guidelia" viewBox="0 0 908 213"><g transform="translate(-0.25 198.26) scale(0.26069)"><path fill="currentColor" d="M396 10Q323 10 259.5 -17.5Q196 -45 148.5 -94.0Q101 -143 74.0 -208.0Q47 -273 47 -348Q47 -423 74.0 -487.5Q101 -552 149.0 -601.0Q197 -650 261.5 -677.0Q326 -704 402 -704Q485 -704 555.0 -672.0Q625 -640 672 -580L607 -515Q574 -563 520.0 -588.5Q466 -614 402 -614Q326 -614 267.5 -580.0Q209 -546 176.5 -486.0Q144 -426 144 -348Q144 -269 177.0 -209.0Q210 -149 266.0 -115.0Q322 -81 394 -81Q467 -81 520.5 -109.0Q574 -137 603.0 -191.5Q632 -246 632 -325L689 -284H389V-370H729V-356Q729 -235 686.5 -153.5Q644 -72 568.5 -31.0Q493 10 396 10Z"/><path fill="currentColor" d="M1009 10Q950 10 903.5 -16.5Q857 -43 831.0 -90.0Q805 -137 805 -199V-475H895V-203Q895 -164 908.5 -135.5Q922 -107 948.0 -92.0Q974 -77 1009 -77Q1062 -77 1092.0 -110.5Q1122 -144 1122 -203V-475H1212V-199Q1212 -137 1186.0 -90.0Q1160 -43 1114.5 -16.5Q1069 10 1009 10Z"/><path fill="currentColor" d="M1312 0V-475H1402V0ZM1357 -570Q1332 -570 1316.0 -586.5Q1300 -603 1300 -628Q1300 -652 1316.0 -668.5Q1332 -685 1357 -685Q1382 -685 1398.0 -668.5Q1414 -652 1414 -628Q1414 -603 1398.0 -586.5Q1382 -570 1357 -570Z"/><path fill="currentColor" d="M1714 10Q1648 10 1596.0 -22.5Q1544 -55 1513.5 -111.0Q1483 -167 1483 -237Q1483 -307 1513.5 -363.0Q1544 -419 1596.0 -452.0Q1648 -485 1714 -485Q1767 -485 1810.0 -462.5Q1853 -440 1879.5 -400.5Q1906 -361 1909 -309V-166Q1906 -115 1880.0 -75.0Q1854 -35 1811.0 -12.5Q1768 10 1714 10ZM1729 -75Q1774 -75 1807.5 -96.0Q1841 -117 1860.0 -153.5Q1879 -190 1879 -237Q1879 -286 1859.5 -322.0Q1840 -358 1806.5 -379.0Q1773 -400 1728 -400Q1683 -400 1649.0 -379.0Q1615 -358 1595.5 -321.5Q1576 -285 1576 -238Q1576 -190 1595.5 -153.5Q1615 -117 1649.5 -96.0Q1684 -75 1729 -75ZM1964 0H1873V-128L1890 -244L1873 -359V-714H1964Z"/><path fill="currentColor" d="M2293 10Q2222 10 2165.0 -22.5Q2108 -55 2075.0 -111.0Q2042 -167 2042 -238Q2042 -308 2074.5 -364.0Q2107 -420 2162.5 -452.5Q2218 -485 2287 -485Q2353 -485 2403.5 -455.0Q2454 -425 2482.5 -372.0Q2511 -319 2511 -252Q2511 -242 2510.0 -230.5Q2509 -219 2506 -204H2105V-279H2458L2425 -250Q2425 -298 2408.0 -331.5Q2391 -365 2360.0 -383.5Q2329 -402 2285 -402Q2239 -402 2204.0 -382.0Q2169 -362 2150.0 -326.0Q2131 -290 2131 -241Q2131 -191 2151.0 -153.5Q2171 -116 2208.0 -95.5Q2245 -75 2293 -75Q2333 -75 2366.5 -89.0Q2400 -103 2424 -131L2482 -72Q2448 -32 2398.5 -11.0Q2349 10 2293 10Z"/><path fill="currentColor" d="M2587 0V-714H2677V0Z"/><path fill="#FF3231" d="M2787 0V-475H2877V0Z"/><path fill="#FF3231" d="M3189 10Q3124 10 3071.0 -22.5Q3018 -55 2987.5 -111.0Q2957 -167 2957 -237Q2957 -307 2987.5 -363.0Q3018 -419 3070.5 -452.0Q3123 -485 3189 -485Q3243 -485 3285.5 -462.5Q3328 -440 3354.0 -400.5Q3380 -361 3383 -309V-166Q3380 -115 3354.5 -75.0Q3329 -35 3286.5 -12.5Q3244 10 3189 10ZM3204 -75Q3271 -75 3312.0 -120.5Q3353 -166 3353 -237Q3353 -286 3334.5 -322.5Q3316 -359 3282.0 -379.5Q3248 -400 3203 -400Q3158 -400 3123.5 -379.0Q3089 -358 3069.5 -321.5Q3050 -285 3050 -238Q3050 -190 3069.5 -153.5Q3089 -117 3124.0 -96.0Q3159 -75 3204 -75ZM3347 0V-128L3364 -244L3347 -359V-475H3438V0Z"/><path fill="#FF3231" transform="translate(2757.0 -673.0) scale(6.250)" d="M12 0c.9 6.2 4.9 10.6 12 12-7.1 1.4-11.1 5.8-12 12-.9-6.2-4.9-10.6-12-12C7.1 10.6 11.1 6.2 12 0Z"/></g></symbol></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="logo-guidelia" viewBox="0 0 908 213"><g transform="translate(-0.25 198.26) scale(0.26069)"><path fill="currentColor" d="M396 10Q323 10 259.5 -17.5Q196 -45 148.5 -94.0Q101 -143 74.0 -208.0Q47 -273 47 -348Q47 -423 74.0 -487.5Q101 -552 149.0 -601.0Q197 -650 261.5 -677.0Q326 -704 402 -704Q485 -704 555.0 -672.0Q625 -640 672 -580L607 -515Q574 -563 520.0 -588.5Q466 -614 402 -614Q326 -614 267.5 -580.0Q209 -546 176.5 -486.0Q144 -426 144 -348Q144 -269 177.0 -209.0Q210 -149 266.0 -115.0Q322 -81 394 -81Q467 -81 520.5 -109.0Q574 -137 603.0 -191.5Q632 -246 632 -325L689 -284H389V-370H729V-356Q729 -235 686.5 -153.5Q644 -72 568.5 -31.0Q493 10 396 10Z"/><path fill="currentColor" d="M1009 10Q950 10 903.5 -16.5Q857 -43 831.0 -90.0Q805 -137 805 -199V-475H895V-203Q895 -164 908.5 -135.5Q922 -107 948.0 -92.0Q974 -77 1009 -77Q1062 -77 1092.0 -110.5Q1122 -144 1122 -203V-475H1212V-199Q1212 -137 1186.0 -90.0Q1160 -43 1114.5 -16.5Q1069 10 1009 10Z"/><path fill="currentColor" d="M1312 0V-475H1402V0ZM1357 -570Q1332 -570 1316.0 -586.5Q1300 -603 1300 -628Q1300 -652 1316.0 -668.5Q1332 -685 1357 -685Q1382 -685 1398.0 -668.5Q1414 -652 1414 -628Q1414 -603 1398.0 -586.5Q1382 -570 1357 -570Z"/><path fill="currentColor" d="M1714 10Q1648 10 1596.0 -22.5Q1544 -55 1513.5 -111.0Q1483 -167 1483 -237Q1483 -307 1513.5 -363.0Q1544 -419 1596.0 -452.0Q1648 -485 1714 -485Q1767 -485 1810.0 -462.5Q1853 -440 1879.5 -400.5Q1906 -361 1909 -309V-166Q1906 -115 1880.0 -75.0Q1854 -35 1811.0 -12.5Q1768 10 1714 10ZM1729 -75Q1774 -75 1807.5 -96.0Q1841 -117 1860.0 -153.5Q1879 -190 1879 -237Q1879 -286 1859.5 -322.0Q1840 -358 1806.5 -379.0Q1773 -400 1728 -400Q1683 -400 1649.0 -379.0Q1615 -358 1595.5 -321.5Q1576 -285 1576 -238Q1576 -190 1595.5 -153.5Q1615 -117 1649.5 -96.0Q1684 -75 1729 -75ZM1964 0H1873V-128L1890 -244L1873 -359V-714H1964Z"/><path fill="currentColor" d="M2293 10Q2222 10 2165.0 -22.5Q2108 -55 2075.0 -111.0Q2042 -167 2042 -238Q2042 -308 2074.5 -364.0Q2107 -420 2162.5 -452.5Q2218 -485 2287 -485Q2353 -485 2403.5 -455.0Q2454 -425 2482.5 -372.0Q2511 -319 2511 -252Q2511 -242 2510.0 -230.5Q2509 -219 2506 -204H2105V-279H2458L2425 -250Q2425 -298 2408.0 -331.5Q2391 -365 2360.0 -383.5Q2329 -402 2285 -402Q2239 -402 2204.0 -382.0Q2169 -362 2150.0 -326.0Q2131 -290 2131 -241Q2131 -191 2151.0 -153.5Q2171 -116 2208.0 -95.5Q2245 -75 2293 -75Q2333 -75 2366.5 -89.0Q2400 -103 2424 -131L2482 -72Q2448 -32 2398.5 -11.0Q2349 10 2293 10Z"/><path fill="currentColor" d="M2587 0V-714H2677V0Z"/><path fill="#FF3231" d="M2787 0V-475H2877V0Z"/><path fill="#FF3231" d="M3189 10Q3124 10 3071.0 -22.5Q3018 -55 2987.5 -111.0Q2957 -167 2957 -237Q2957 -307 2987.5 -363.0Q3018 -419 3070.5 -452.0Q3123 -485 3189 -485Q3243 -485 3285.5 -462.5Q3328 -440 3354.0 -400.5Q3380 -361 3383 -309V-166Q3380 -115 3354.5 -75.0Q3329 -35 3286.5 -12.5Q3244 10 3189 10ZM3204 -75Q3271 -75 3312.0 -120.5Q3353 -166 3353 -237Q3353 -286 3334.5 -322.5Q3316 -359 3282.0 -379.5Q3248 -400 3203 -400Q3158 -400 3123.5 -379.0Q3089 -358 3069.5 -321.5Q3050 -285 3050 -238Q3050 -190 3069.5 -153.5Q3089 -117 3124.0 -96.0Q3159 -75 3204 -75ZM3347 0V-128L3364 -244L3347 -359V-475H3438V0Z"/><path fill="#FF3231" transform="translate(2757.0 -673.0) scale(6.250)" d="M12 0c.9 6.2 4.9 10.6 12 12-7.1 1.4-11.1 5.8-12 12-.9-6.2-4.9-10.6-12-12C7.1 10.6 11.1 6.2 12 0Z"/></g></symbol><symbol id="chispa" viewBox="0 0 24 24"><path d="M12 0c.9 6.2 4.9 10.6 12 12-7.1 1.4-11.1 5.8-12 12-.9-6.2-4.9-10.6-12-12C7.1 10.6 11.1 6.2 12 0Z" fill="currentColor"/></symbol></svg>
+
 <header class="encabezado">
   <div class="envoltura">
     <a class="logo" href="/" aria-label="Guidelia, inicio"><svg viewBox="0 0 908 213" role="img" aria-label="Guidelia"><use href="#logo-guidelia" width="908" height="213"/></svg></a>
-    <a class="volver" href="/">Volver al inicio</a>
+    <nav class="nav" aria-label="Secciones">
+      <a href="/#como-funciona">Cómo funciona</a>
+      <a href="/#funciones">Funciones</a>
+      <a href="/#personaliza">Personalización</a>
+      <a href="/#panel">Panel</a>
+      <a href="/#planes">Planes</a>
+      <a href="/blog/">Blog</a>
+    </nav>
+    <a class="btn btn--rojo" href="/">Volver al inicio</a>
   </div>
 </header>
 
 <main>
-  <div class="envoltura">
-    <div class="tarjeta">
-      <section class="ok" aria-labelledby="titulo">
-        <div class="ok-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
-        <h1 id="titulo"><span id="saludo">¡Listo!</span> <em>Recibimos tu pedido de demo</em></h1>
-        <p class="sub">Ya tenemos los datos de tu tienda. <b>Te escribimos por email y por teléfono</b> para coordinar el día y la hora de la demo.</p>
-      </section>
+  <section class="hero" aria-labelledby="titulo">
+    <div class="hero-fondo" aria-hidden="true"><div class="mancha mancha--1"></div><div class="mancha mancha--2"></div></div>
+    <div class="envoltura">
+      <div class="ok-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+      <h1 id="titulo"><span id="saludo">¡Listo!</span> <em>Recibimos tu <span class="ult">solicitud de demo<svg aria-hidden="true" viewBox="0 0 24 24"><use href="#chispa"/></svg></span></em></h1>
+      <p class="bajada">Ya tenemos los datos de tu tienda. <b>Te escribimos por email y por teléfono</b> para coordinar el día y la hora de la demo.</p>
+    </div>
+  </section>
 
-      <section class="estado" aria-label="En qué paso está tu pedido">
-        <div class="estado-fila"><span>Estás en el <b>paso 2 de 4</b></span><span>Coordinamos tu demo</span></div>
-        <div class="barra" role="progressbar" aria-valuemin="1" aria-valuemax="4" aria-valuenow="2" aria-label="Paso 2 de 4"><i></i></div>
-      </section>
-
+  <section class="banda banda--niebla" aria-labelledby="proximos">
+    <div class="envoltura">
+      <div class="cabeza">
+        <h2 id="proximos">Esto es lo que sigue</h2>
+        <div class="estado" role="group" aria-label="En qué paso está tu solicitud">
+          <div class="estado-fila"><span>Estás en el <b>paso 2 de 4</b></span><span>Coordinamos tu demo</span></div>
+          <div class="barra" role="progressbar" aria-valuemin="1" aria-valuemax="4" aria-valuenow="2" aria-label="Paso 2 de 4"><i></i></div>
+        </div>
+      </div>
       <ol class="pasos">
         <li class="paso hecho">
           <span class="num"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
-          <h2>Pedido recibido</h2>
+          <h3>Solicitud recibida</h3>
           <p>Tus datos ya están con nuestro equipo.</p>
           <span class="etq">Listo</span>
         </li>
         <li class="paso actual" aria-current="step">
           <span class="num">2</span>
-          <h2>Coordinamos tu demo</h2>
+          <h3>Coordinamos tu demo</h3>
           <p>Te escribimos para elegir juntos un día y un horario.</p>
           <span class="etq">Estás acá</span>
         </li>
         <li class="paso">
           <span class="num">3</span>
-          <h2>Demo con tu catálogo</h2>
+          <h3>Demo con tu catálogo</h3>
           <p>Ves al asesor respondiendo con tus productos reales y definimos el plan que te conviene.</p>
         </li>
         <li class="paso">
           <span class="num">4</span>
-          <h2>Puesta en marcha</h2>
+          <h3>Puesta en marcha</h3>
           <p>Elegís nombre, colores y tono, lo probás con preguntas reales y lo activamos en tu tienda.</p>
         </li>
       </ol>
+    </div>
+  </section>
 
-      <section class="wa-caja" aria-labelledby="wa-titulo">
-        <div>
-          <h2 id="wa-titulo">¿Preferís no esperar?</h2>
-          <p>Escribinos por WhatsApp y te respondemos las dudas que tengas sobre la demo.</p>
-        </div>
-        <a class="wa-btn" id="wa-boton" href="https://wa.me/5491139344863?text=Hola%2C%20acabo%20de%20pedir%20una%20demo%20de%20Guidelia%20y%20quiero%20hablar%20con%20un%20asesor." target="_blank" rel="noopener">
-          <span class="wa-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></span>
-          <span>Quiero hablar con un asesor ahora</span>
-        </a>
-      </section>
-
+  <section class="banda banda--honda wa" aria-labelledby="wa-titulo">
+    <div class="envoltura">
+      <h2 id="wa-titulo">¿Preferís no esperar?</h2>
+      <p class="bajada">Escribinos por WhatsApp y te respondemos las dudas que tengas sobre la demo.</p>
+      <a class="wa-btn" id="wa-boton" href="https://wa.me/5491139344863?text=Hola%2C%20acabo%20de%20enviar%20una%20solicitud%20de%20demo%20de%20Guidelia%20y%20quiero%20hablar%20con%20un%20asesor." target="_blank" rel="noopener">
+        <span class="wa-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></span>
+        <span>Quiero hablar con un asesor ahora</span>
+      </a>
       <p class="extra"><span>Mientras tanto:</span> <a href="/#como-funciona">ver cómo funciona</a> <a href="/blog/">leer el blog</a></p>
     </div>
-  </div>
+  </section>
 </main>
 
-<footer class="pie"><div class="envoltura">© 2026 Guidelia · <a href="/privacidad/">Política de privacidad</a></div></footer>
+<footer class="pie">
+  <div class="envoltura">
+    <a class="logo logo--claro" href="/" aria-label="Guidelia, inicio"><svg viewBox="0 0 908 213" role="img" aria-label="Guidelia"><use href="#logo-guidelia" width="908" height="213"/></svg></a>
+    <nav aria-label="Pie de página">
+      <a href="/#horas">Horas ahorradas</a>
+      <a href="/#como-funciona">Cómo funciona</a>
+      <a href="/#funciones">Funciones</a>
+      <a href="/#roi">Calculadora</a>
+      <a href="/#planes">Planes</a>
+      <a href="/blog/">Blog</a>
+      <a href="/#demo">Demo</a>
+      <a href="/privacidad/">Privacidad</a>
+    </nav>
+    <nav class="pie-rubros" aria-label="Soluciones por rubro">
+      <a href="/soluciones/belleza/">Belleza</a>
+      <a href="/soluciones/indumentaria/">Indumentaria</a>
+      <a href="/soluciones/bazar/">Bazar</a>
+      <a href="/soluciones/muebles-y-deco/">Muebles y deco</a>
+      <a href="/soluciones/jugueterias/">Jugueterías</a>
+    </nav>
+    <small>© 2026 Guidelia · Asesor de compras con IA</small>
+  </div>
+</footer>
 
 <script>
   (function () {

@@ -1033,7 +1033,7 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
           <li><b>Responde siempre.</b><span>De noche, el fin de semana y en los días de campaña, cuando todos preguntan a la vez.</span></li>
           <li><b>Tu equipo recupera tiempo.</b><span>Stock, medidas, envíos, «¿cuál me conviene?»: lo que se repite todos los días lo contesta el asesor.</span></li>
         </ul>
-        <p class="horas-pie">Si hace falta una persona (una cotización mayorista, por ejemplo), el pedido llega a tu panel con los datos del cliente.</p>
+        <p class="horas-pie">Si hace falta una persona (una cotización mayorista, por ejemplo), la solicitud llega a tu panel con los datos del cliente.</p>
       </div>
 
       <div class="horas-calc" aria-label="Calculadora de horas ahorradas">
@@ -1587,7 +1587,7 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
         <button class="btn btn--rojo" id="btn-enviar-demo" type="submit">Ver cómo queda en mi tienda <svg aria-hidden="true"><use href="#flecha"/></svg></button>
         <p class="form-nota" id="form-nota" role="status" aria-live="polite" hidden></p>
         <p class="form-garantia">Sin costo y sin compromiso. Usamos tus productos reales.</p>
-        <p class="form-legal">Al enviar aceptás que te contactemos por este pedido. Mirá la <a href="/privacidad/">política de privacidad</a>.</p>
+        <p class="form-legal">Al enviar aceptás que te contactemos por esta solicitud. Mirá la <a href="/privacidad/">política de privacidad</a>.</p>
       </form>
     </div>
   </section>
@@ -2424,10 +2424,10 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
       }
       if (!r.ok) {
         btn.disabled = false;
-        return mensaje(r.status === 503 ? "El formulario no está disponible por ahora. Probá de nuevo más tarde." : r.error || "No pudimos enviar tu pedido. Probá de nuevo.", "mal");
+        return mensaje(r.status === 503 ? "El formulario no está disponible por ahora. Probá de nuevo más tarde." : r.error || "No pudimos enviar tu solicitud. Probá de nuevo.", "mal");
       }
       f.querySelectorAll("input, select, button").forEach((x) => (x.disabled = true));
-      mensaje("¡Listo! Recibimos tu pedido. Te llevamos a la página de próximos pasos…", "ok");
+      mensaje("¡Listo! Recibimos tu solicitud. Te llevamos a la página de próximos pasos…", "ok");
       // Página de gracias: ahí se mide la conversión. Solo viajan el primer nombre y datos sin identidad, y por el navegador (no por la dirección).
       try { sessionStorage.setItem("gd_demo", JSON.stringify({ n: datos.nombre.split(/\s+/)[0].slice(0, 30), p: datos.plataforma, v: datos.visitas, t: Date.now() })); } catch (_) {}
       window.location.assign("/gracias/");
