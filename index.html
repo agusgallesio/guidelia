@@ -435,6 +435,8 @@
   .horas-filas div { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,.12); font-size: 14px; }
   .horas-filas span { color: #A9C7D2; }
   .horas-filas b { color: #fff; font-weight: 700; text-align: right; font-variant-numeric: tabular-nums; }
+  /* PLANES OCULTOS (temporal, semana del 10-nov-2026): se esconden los enlaces a la sección de planes */
+  a[href="#planes"], a[href="/#planes"] { display: none !important; }
   /* Calculadoras unidas en pestañas */
   .calc-tabs { margin-top: 6px; }
   .calc-panel[hidden] { display: none; }
@@ -1403,7 +1405,8 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
   </section>
 
   <!-- ================= PLANES ================= -->
-  <section class="banda banda--niebla" id="planes">
+  <!-- TEMPORAL (semana del 10-nov-2026): sección de planes oculta. Para volver a mostrarla: sacar el atributo hidden de abajo y las reglas «PLANES OCULTOS» del CSS (acá y en /blog/blog.css). -->
+  <section class="banda banda--niebla" id="planes" hidden>
     <div class="envoltura">
       <div class="cabeza-seccion cabeza-seccion--centro">
         <h2>Un plan según cuánto conversa tu tienda</h2>
