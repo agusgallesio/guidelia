@@ -16,7 +16,7 @@
   var V519 = { nombre: "Planchita rizadora", precio: "$44.200", antes: "$57.100", desc: "-23%", img: "img/p519.webp" };
 
   var CONFIG = {
-    aria: "Animación de Guidelia: el asesor de compra responde al instante con los datos del catálogo, recomienda y suma productos al carrito, se ve y habla como tu marca, muestra en un panel qué buscan tus clientes y recomienda primero lo que querés vender.",
+    aria: "Animación de Guidelia: el asesor de compra responde al instante con los datos del catálogo, recomienda y suma productos al carrito, se ve y habla como tu marca, muestra en un panel qué buscan tus clientes y recomienda primero lo que querés mover.",
     boton: "Ver cómo queda en mi tienda",
     cierre: "Tu mejor vendedor, en cada visita.",
     cierreResalta: "en cada visita", // se escribe en celeste
@@ -63,7 +63,7 @@
       sinRespuesta: { t: "Para sumar a tus fichas", n: 7, ej: "«¿Sirve para pelo muy rizado?»" },
       contactos: { t: "Contactos para llamar", filas: [["Mayoristas", 27], ["Avisos de stock", 18]] },
       potenciar: {
-        t: "Potenciá lo que querés vender", badge: "Potenciado", vista: "Así lo ve tu cliente", recomendado: "Recomendado",
+        t: "Potenciá lo que querés mover", badge: "Potenciado", vista: "Así lo ve tu cliente", recomendado: "Recomendado",
         filas: [[V492.nombre, V492.img], [V519.nombre, V519.img], [V528.nombre, V528.img]],
         cliente: "Quiero hacerme ondas.",
         asesor: "Te recomiendo la **buclera de 5 ondas**.",
