@@ -73,15 +73,15 @@
   };
 
   // ============ LÍNEA DE TIEMPO (segundos) ============
-  var DUR = 40.4, FINAL = 39;
+  var DUR = 39.8, FINAL = 38.4;
   // En el sitio, mientras se lee el titular, se ve una imagen fija (la tienda con el chat y las tarjetas)
   // y el video arranca cuando terminaron de aparecer el titular y el subrayado.
   var POSTER = 8.95, ARRANQUE_MS = 1900, FUNDIDO = 0.45;
-  var TL = { c0: [0, 2.4], p: [2.4, 12], c1: [12, 13.8], m: [13.8, 19.8], c2: [19.8, 22], d: [22, 27.6], c3: [27.6, 29.4], w: [29.4, 35.2], f: [35.2, 40.4] };
+  var TL = { c0: [0, 2.4], p: [2.4, 12], c1: [12, 13.8], m: [13.8, 19.8], c2: [19.8, 22], d: [22, 27.6], c3: [27.6, 29.4], w: [29.4, 34.6], f: [34.6, 39.8] };
   var T = { panel: 2.95, type: 3.45, send: 4.4, dots1: [4.55, 5.0], a1: 5.0, a2: 6.15, press: 6.95, u2: 7.1, dots2: [7.25, 7.65], a3: 7.65, add1: 8.7, dots3: [9.2, 9.6], a4: 9.6, add2: 10.85 };
   var MARCA_T = [14.7, 15.3, 15.9, 16.5, 17.1, 17.7];
-  var TW = { on: 30.8, move: 31.0, vista: 32.0, c: 32.15, a: 32.65, card: 33.05 };
-  var RG = [[2.75, 9.15], [9.15, 12], [14.1, 19.8], [22.3, 27.6], [29.7, 35.2]];
+  var TW = { vista: 29.7, c: 30.05, on: 30.9, move: 31.1, dots: [31.3, 31.8], a: 31.8, card: 32.2 };
+  var RG = [[2.75, 9.15], [9.15, 12], [14.1, 19.8], [22.3, 27.6], [29.7, 34.6]];
   var CPS = 45;
 
   // ============ UTILIDADES ============
@@ -134,7 +134,7 @@
     // Tarjetas de producto como las del widget real: carrusel, foto cuadrada, descuento, nombre, precio (y tachado), stock y botón oscuro
     var tc = function (lista, badge) {
       return '<div class="tcs">' + lista.map(function (p, i) {
-        return '<div class="tc"><div class="tc-foto">' + img(p.img, p.nombre) + (badge && i === 0 ? '<span class="tc-bd">' + esc(badge) + "</span>" : "") + (p.desc ? '<span class="tc-ds">' + esc(p.desc) + "</span>" : "") + '</div><div class="tc-n">' + esc(p.nombre) + '</div><div class="tc-pr"><b>' + esc(p.precio) + "</b>" + (p.antes ? "<s>" + esc(p.antes) + "</s>" : "") + '</div><div class="tc-s">' + esc(ch.stock) + '</div><div class="tc-b">' + icono("carrito") + "<span>" + esc(ch.agregar) + "</span></div></div>";
+        return '<div class="tc"><div class="tc-foto">' + img(p.img, p.nombre) + (badge && i === 0 ? '<span class="tc-bd">' + esc(badge) + "</span>" : "") + (p.desc ? '<span class="tc-ds">' + esc(p.desc) + "</span>" : "") + '</div><div class="tc-n">' + esc(p.nombre) + '</div><div class="tc-pr"><b>' + esc(p.precio) + "</b>" + (p.antes ? "<s>" + esc(p.antes) + "</s>" : "") + '</div><div class="tc-s">' + esc(ch.stock) + '</div><div class="tc-b"><i class="rp"></i>' + icono("carrito") + "<span>" + esc(ch.agregar) + "</span></div></div>";
       }).join("") + "</div>";
     };
     // Página de producto de una tienda (para que se vea una web real, no una ilustración)
@@ -146,11 +146,11 @@
 
     // 1. Tarjeta + asesor de compra + complemento
     h += tarjeta(C.tarjetas[0], 0);
-    h += '<div class="ha-sc hp" data-sc="p"><div class="hp-bg">' + img(pr.img, "") + '</div><div class="ha-cam">' + pagina() +
+    h += '<div class="ha-sc hp" data-sc="p"><div class="hp-bg">' + img(pr.img, "") + '</div><div class="ha-cam">' + pagina() + '<div class="pg-sc"></div>' +
       '<div class="ch ch-dock">' + cabeza(C.asesor) + '<div class="ch-b"><div class="ch-s">' +
       '<div class="sl"><div class="m mc">' + esc(ch.pregunta) + "</div></div>" +
       '<div class="sl">' + puntos + '<div class="m ma">' + rich(ch.respuesta) + "</div></div>" +
-      '<div class="sl"><div class="m ma">' + esc(ch.duda) + '<div class="qs">' + ch.opciones.map(function (o) { return '<span class="q">' + esc(o) + "</span>"; }).join("") + "</div></div></div>" +
+      '<div class="sl"><div class="m ma">' + esc(ch.duda) + '<div class="qs">' + ch.opciones.map(function (o) { return '<span class="q">' + esc(o) + '<i class="rp"></i></span>'; }).join("") + "</div></div></div>" +
       '<div class="sl"><div class="m mc">' + esc(ch.opciones[ch.elegida]) + "</div></div>" +
       '<div class="sl">' + puntos + '<div class="m ma">' + rich(ch.reco) + "</div>" + tc(ch.p1) + "</div>" +
       '<div class="sl">' + puntos + '<div class="m ma">' + rich(ch.complemento) + "</div>" + tc(ch.p2) + "</div>" +
@@ -167,7 +167,7 @@
     };
     h += '<div class="ha-sc hm" data-sc="m"><div class="ha-cam"><div class="mk"><div class="mk-t">' + esc(mk.titulo) + "</div>" +
       mk.ajustes.map(function (f) { return '<div class="mk-r"><span class="mk-l">' + esc(f[0]) + '</span><span class="mk-v"><span class="a">' + muestra(f, 1) + '</span><span class="b">' + muestra(f, 2) + '</span></span><i class="mk-ok">' + icono("check") + "</i></div>"; }).join("") +
-      '</div><div class="ch">' + cabeza(C.asesor) + '<div class="ch-b"><div class="ch-s"><div class="tono hola"><div class="m ma">' + esc(mk.holaA) + '</div><div class="m ma">' + esc(mk.holaB) + '</div></div><div class="m mc">' + esc(mk.cliente) + '</div><div class="tono"><div class="m ma">' + rich(mk.tonoA) + '</div><div class="m ma">' + rich(mk.tonoB) + '</div></div><div class="qs">' + mk.sugeridas.map(function (o) { return '<span class="q">' + esc(o) + "</span>"; }).join("") + "</div></div></div>" + entrada(C.placeholder) + "</div></div></div>";
+      '</div><div class="ch">' + cabeza(C.asesor) + '<div class="ch-b"><div class="ch-s"><div class="tono hola"><div class="m ma">' + esc(mk.holaA) + '</div><div class="m ma">' + esc(mk.holaB) + '</div></div><div class="m mc">' + esc(mk.cliente) + '</div><div class="tono"><div class="m ma">' + rich(mk.tonoA) + '</div><div class="m ma">' + rich(mk.tonoB) + "</div></div>" + tc([V492]) + '<div class="qs">' + mk.sugeridas.map(function (o) { return '<span class="q">' + esc(o) + "</span>"; }).join("") + "</div></div></div>" + entrada(C.placeholder) + "</div></div></div>";
 
     // 3. Tarjeta + panel
     h += tarjeta(C.tarjetas[2], 2);
@@ -186,7 +186,7 @@
     // 4. Tarjeta + potenciar productos
     h += tarjeta(C.tarjetas[3], 3);
     h += '<div class="ha-sc hw" data-sc="w"><div class="ha-cam"><div class="pc po-l"><div class="pc-t">' + esc(po.t) + '</div><div class="po-rows">' + po.filas.map(function (f) { return '<div class="po-r"><span class="th">' + img(f[1], "") + '</span><span class="po-n">' + esc(f[0]) + '</span><em class="po-b">' + esc(po.badge) + '</em><span class="sw"><i></i></span></div>'; }).join("") + "</div></div>" +
-      '<div class="ch po-v">' + cabeza(po.vista, C.asesor) + '<div class="ch-b"><div class="ch-s"><div class="m mc">' + esc(po.cliente) + '</div><div class="m ma">' + rich(po.asesor) + "</div>" + tc(po.producto, po.recomendado) + "</div></div></div></div></div>";
+      '<div class="ch po-v">' + cabeza(po.vista, C.asesor) + '<div class="ch-b"><div class="ch-s"><div class="m mc">' + esc(po.cliente) + '</div><div class="sl">' + puntos + '<div class="m ma">' + rich(po.asesor) + "</div></div>" + tc(po.producto, po.recomendado) + "</div></div></div></div></div>";
 
     // 5. Cierre
     h += '<div class="ha-sc hf" data-sc="f"><div class="hf-logo"><svg viewBox="0 0 908 213" role="img" aria-label="Guidelia"><use href="#logo-guidelia" width="908" height="213"/></svg><span class="hf-st">' + icono("chispa") + '</span></div><div class="hf-l"><span class="tx"></span><i class="hc-cur"></i><span class="rs"></span></div><div class="hf-b">' + esc(C.boton) + "</div></div>";
@@ -196,6 +196,7 @@
       var p = r.split(" "), ult = p.pop();
       h += '<div class="ha-lab">' + (p.length ? esc(p.join(" ")) + " <i>" + esc(ult) + "</i>" : esc(ult)) + "</div>";
     });
+    h += '<div class="ha-pg">' + C.rotulos.map(function () { return "<i><b></b></i>"; }).join("") + "</div>";
     raiz.innerHTML = '<div class="ha-in" aria-hidden="true">' + h + "</div>";
   }
 
@@ -261,7 +262,7 @@
     }
 
     // --- 1. asesor de compra + complemento
-    var P = sc.p, camP = q(".ha-cam", P), dock = q(".ch-dock", P), cartPg = q(".pg-cart", P), cartN = q(".pg-cart em", P);
+    var P = sc.p, velo = q(".pg-sc", P), camP = q(".ha-cam", P), dock = q(".ch-dock", P), cartPg = q(".pg-cart", P), cartN = q(".pg-cart em", P);
     var slots = qa(".sl", P), stack = q(".ch-s", P), cuerpo = q(".ch-b", P), inP = q(".ch-it", P), qsP = qa(".q", P);
     var add1 = qa(".tc-b", slots[4])[0], add2 = qa(".tc-b", slots[5])[0];
     var msgs = slots.map(function (s) { return { s: s, m: q(".m", s), d: q(".dots", s), c: q(".tcs", s) }; });
@@ -296,7 +297,13 @@
       }
       return y;
     }
+    function onda(n, t, cuando) {
+      var r = n._rp || (n._rp = q(".rp", n)), p = lin(t, cuando - 0.05, cuando + 0.45);
+      r.style.opacity = (p > 0 && p < 1 ? 0.42 * (1 - p) : 0).toFixed(3);
+      r.style.transform = "scale(" + p.toFixed(3) + ")";
+    }
     function boton(n, t, cuando) {
+      onda(n, t, cuando);
       var ok = t >= cuando;
       clase(n, "on", ok);
       texto(q("span", n), ok ? C.chat.agregado : C.chat.agregar);
@@ -310,6 +317,7 @@
       var pe = seg(t, T.panel, T.panel + 0.5);
       dock.style.transform = v ? "translate3d(0," + ((1 - pe) * 106).toFixed(2) + "%,0)" : "translate3d(" + ((1 - pe) * 106).toFixed(2) + "%,0,0)";
       dock.style.opacity = clamp((t - T.panel) / 0.12).toFixed(3);
+      velo.style.opacity = pe.toFixed(3);
       msgs.forEach(function (x, i) {
         var p = seg(t, tIn[i], tIn[i] + 0.28);
         put(x.m, p, (1 - p) * 12);
@@ -322,6 +330,7 @@
         if (i !== C.chat.elegida) return;
         clase(n, "on", t >= T.press);
         put(n, 1, 0, 1 - 0.08 * pulso(t, T.press, 0.25));
+        onda(n, t, T.press);
       });
       boton(add1, t, T.add1);
       boton(add2, t, T.add2);
@@ -372,11 +381,19 @@
 
     // --- 3. panel
     var D = sc.d, camD = q(".ha-cam", D), cardsD = qa(".pc", D), nums = qa("[data-n]", D), barras = qa("[data-r]", D), cubierta = q(".cub", D), area = q(".ar", D);
+    var FOCO = [0, 2, 3, 4];
     function renderD(t) {
       var a = TL.d[0], b = TL.d[1];
       D.style.opacity = escena(t, a, b, 0.3).toFixed(3);
       entradaCam(camD, t, a, b, 3, 10, 5);
-      cardsD.forEach(function (c, i) { var p = seg(t, a + 0.15 + i * 0.12, a + 0.65 + i * 0.12); put(c, p, (1 - p) * 30); });
+      // cuando ya se leyó el conjunto, un foco recorre las tarjetas que dicen qué hacer
+      var f0 = a + 2.6, paso = 0.65, todo = ventana(t, f0, f0 + FOCO.length * paso, 0.18);
+      cardsD.forEach(function (c, i) {
+        var p = seg(t, a + 0.15 + i * 0.12, a + 0.65 + i * 0.12), k = FOCO.indexOf(i);
+        var w = k < 0 ? 0 : ventana(t, f0 + k * paso, f0 + (k + 1) * paso, 0.18);
+        put(c, p * (1 - 0.36 * todo * (1 - w)), (1 - p) * 30, 1 + 0.035 * w);
+        clase(c, "foco", w > 0.5);
+      });
       nums.forEach(function (n) { texto(n, num(+n.getAttribute("data-n") * seg(t, a + 0.5, a + 2.0))); });
       barras.forEach(function (n) { n.style.transform = "scaleX(" + (+n.getAttribute("data-r") * seg(t, a + 0.6, a + 2.0)).toFixed(3) + ")"; });
       cubierta.style.transform = "scaleX(" + (1 - seg(t, a + 0.9, a + 3.0)).toFixed(4) + ")";
@@ -385,7 +402,7 @@
 
     // --- 4. potenciar productos
     var W = sc.w, camW = q(".ha-cam", W), poL = q(".po-l", W), poRows = qa(".po-r", W), poV = q(".po-v", W), poMsgs = qa(".po-v .m", W), poCards = q(".po-v .tcs", W);
-    var poBadge = q(".po-b", poRows[2]), poSw = q(".sw", poRows[2]);
+    var poBadge = q(".po-b", poRows[2]), poSw = q(".sw", poRows[2]), poDots = q(".po-v .dots", W);
     function renderW(t) {
       var a = TL.w[0], b = TL.w[1];
       W.style.opacity = escena(t, a, b, 0.3).toFixed(3);
@@ -402,6 +419,7 @@
       put(poMsgs[0], m1, (1 - m1) * 12);
       put(poMsgs[1], m2, (1 - m2) * 12);
       put(poCards, m3, (1 - m3) * 14);
+      poDots.style.opacity = ventana(t, TW.dots[0], TW.dots[1], 0.15).toFixed(3);
     }
 
     // --- 5. cierre
@@ -431,6 +449,10 @@
       rot.forEach(function (r, i) { var p = fade(t, RG[i][0], RG[i][1], 0.3); put(r, p, (1 - p) * 10); });
     }
 
+    var avance = qa(".ha-pg b"), SEG = [[0, TL.p[1]], [TL.c1[0], TL.m[1]], [TL.c2[0], TL.d[1]], [TL.c3[0], TL.w[1]], [TL.f[0], FINAL]];
+    function renderAvance(t) {
+      avance.forEach(function (n, i) { n.style.transform = "scaleX(" + lin(t, SEG[i][0], SEG[i][1]).toFixed(4) + ")"; });
+    }
     function render(t) {
       // antes de empezar: la imagen fija se funde con la primera tarjeta
       if (t < 0) {
@@ -441,7 +463,7 @@
       }
       t = ((t % DUR) + DUR) % DUR;
       cards.forEach(function (c) { renderTarjeta(c, t); });
-      renderP(t); renderM(t); renderD(t); renderW(t); renderF(t); renderRotulos(t);
+      renderP(t); renderM(t); renderD(t); renderW(t); renderF(t); renderRotulos(t); renderAvance(t);
     }
 
     // --- vertical (4:5) en celular, apaisado (16:10) en escritorio
