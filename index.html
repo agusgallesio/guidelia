@@ -981,6 +981,112 @@
     .dia-mini { display: block; margin-top: 8px; }
   }
 
+  /* ---------- Panel: ventana de ejemplo ---------- */
+  .pn { padding: 0; gap: 0; grid-template-columns: minmax(0, 1fr); overflow: hidden; background: #F4F8FA; color: var(--texto); }
+  .pn-top { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; padding: 12px 18px; background: #0B3344; color: #fff; }
+  .pn-top b { font-family: var(--f-display); font-weight: 600; font-size: 14px; }
+  .pn-top .ejemplo { justify-self: end; }
+  .pn-luces { display: flex; gap: 6px; } .pn-luces i { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.22); }
+  .pn-cuerpo { display: grid; grid-template-columns: 218px minmax(0, 1fr); }
+  .pn-menu { background: #fff; border-right: 1px solid var(--linea); padding: 22px 14px 22px 20px; }
+  .pn-logo { width: 104px; height: auto; color: var(--petroleo); display: block; margin-bottom: 16px; }
+  .pn-lista { display: grid; gap: 1px; }
+  .pn-g { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--apagado); margin: 14px 0 5px; }
+  .pn-g:first-child { margin-top: 0; }
+  .pn-it, .pn-no { all: unset; box-sizing: border-box; display: flex; align-items: center; gap: 8px; font-family: var(--f-texto); font-size: 14px; line-height: 1.3; padding: 7px 10px; border-radius: 9px; }
+  .pn-no { color: var(--apagado); }
+  .pn-it { color: var(--texto); font-weight: 500; cursor: pointer; transition: background .2s; }
+  .pn-it::before, .pn-no::before { content: ""; width: 7px; height: 7px; border-radius: 50%; box-shadow: inset 0 0 0 1.5px var(--cielo); flex-shrink: 0; }
+  .pn-it::before { box-shadow: inset 0 0 0 1.5px var(--petroleo-medio); }
+  .pn-it:hover { background: var(--niebla); }
+  .pn-it.act { background: var(--niebla); font-weight: 600; }
+  .pn-it.act::before { background: var(--rojo); box-shadow: none; }
+  .pn-it:focus-visible { outline: 2.5px solid var(--rojo); outline-offset: 2px; }
+  .pn-it em, .pn-sub em { font-style: normal; font-family: var(--f-mono); font-size: 10.5px; background: var(--petroleo); color: #fff; border-radius: 999px; padding: 1px 7px; margin-left: auto; }
+  .pn-vistas { padding: clamp(16px, 2.4vw, 28px); min-width: 0; min-height: 640px; }
+  .pn-v { display: grid; gap: 14px; align-content: start; animation: pnEntra .35s ease both; }
+  .pn-v[hidden] { display: none; }
+  @keyframes pnEntra { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .pn-cab { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
+  .pn-ceja { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--apagado); }
+  .banda--honda .pn h3, .banda--honda .pn h4 { color: var(--texto); }
+  .pn-cab h3 { font-size: 24px; margin: 2px 0 0; }
+  .pn-per, .pn-sub { display: inline-flex; gap: 2px; background: #fff; border: 1px solid var(--linea); border-radius: 999px; padding: 3px; font-size: 12.5px; color: var(--texto-2); }
+  .pn-per span, .pn-sub span { padding: 5px 12px; border-radius: 999px; display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; }
+  .pn-per .on, .pn-sub .on { background: var(--niebla); color: var(--texto); font-weight: 600; }
+  .pn-sub { justify-self: start; max-width: 100%; overflow: hidden; }
+  .pn-ks { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+  .pn-k { background: #fff; border: 1px solid var(--linea); border-radius: 14px; padding: 14px; display: grid; gap: 2px; align-content: start; }
+  .pn-k svg { width: 28px; height: 28px; padding: 6px; border-radius: 8px; background: var(--niebla); color: var(--petroleo); margin-bottom: 8px; }
+  .pn-k b { font-family: var(--f-display); font-weight: 600; font-size: 24px; line-height: 1.15; color: var(--texto); font-variant-numeric: tabular-nums; }
+  .pn-k span { font-size: 13px; color: var(--texto); line-height: 1.35; }
+  .pn-k small { font-size: 11.5px; color: var(--apagado); line-height: 1.35; margin-top: 4px; }
+  .pn-ks:not(.pn-ks--4) .pn-k--hondo { grid-column: span 2; }
+  .pn-k--hondo { background: linear-gradient(150deg, #0E4A62, #072C3B); border-color: transparent; }
+  .pn-k--hondo b, .pn-k--hondo span { color: #fff; } .pn-k--hondo small { color: #A9C7D2; }
+  .pn-k--hondo svg { background: rgba(255,255,255,.14); color: #fff; }
+  .pn-dos { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; align-items: start; }
+  .pn-caja { background: #fff; border: 1px solid var(--linea); border-radius: 14px; padding: 16px; }
+  .pn-caja h4 { font-family: var(--f-display); font-weight: 600; font-size: 15px; margin: 0 0 12px; display: flex; align-items: center; gap: 8px; }
+  .pn-bar { display: grid; grid-template-columns: 84px minmax(0, 1fr) 36px; align-items: center; gap: 10px; font-size: 13px; padding: 5px 0; }
+  .pn-bar i { height: 8px; border-radius: 99px; background: var(--niebla); overflow: hidden; }
+  .pn-bar u { display: block; height: 100%; border-radius: 99px; background: var(--petroleo-medio); }
+  .pn-bar:first-of-type u { background: var(--rojo); }
+  .pn-bar em { font-style: normal; font-family: var(--f-mono); font-size: 12px; color: var(--texto-2); text-align: right; }
+  .pn-prod, .pn-cont { display: flex; align-items: center; gap: 12px; padding: 8px 0; border-top: 1px dashed var(--linea); min-width: 0; }
+  .pn-caja h4 + .pn-prod, .pn-caja h4 + .pn-cont { border-top: 0; padding-top: 0; }
+  .pn-prod img { width: 40px; height: 40px; object-fit: contain; border-radius: 9px; background: var(--niebla); flex-shrink: 0; }
+  .pn-prod span, .pn-cont > span:not(.pn-av), .pn-preg-l > span:first-child { display: grid; min-width: 0; flex: 1; }
+  .pn-prod b, .pn-cont b, .pn-preg b { font-size: 13.5px; font-weight: 600; color: var(--texto); line-height: 1.35; }
+  .pn-prod small, .pn-cont small, .pn-preg-l small { font-size: 12px; color: var(--texto-2); line-height: 1.4; }
+  .pn-e { font-style: normal; font-family: var(--f-mono); font-size: 10.5px; padding: 3px 9px; border-radius: 999px; background: var(--niebla); color: var(--texto-2); white-space: nowrap; flex-shrink: 0; font-weight: 400; }
+  .pn-e--ok { background: #E5F6EE; color: #17774A; } .pn-e--nuevo { background: #E3EEF3; color: var(--petroleo); }
+  .pn-nota { display: grid; gap: 4px; background: transparent; border-style: dashed; padding: 12px 16px; } .pn-nota p { margin: 0; font-size: 13px; color: var(--texto-2); } .pn-nota b { color: var(--texto); }
+  .pn-fila { display: grid; grid-template-columns: 96px minmax(0, 1fr) auto 78px; align-items: center; gap: 12px; padding: 9px 0; border-top: 1px dashed var(--linea); font-size: 13.5px; }
+  .pn-caja h4 + .pn-fila { border-top: 0; padding-top: 0; }
+  .pn-cuando { font-family: var(--f-mono); font-size: 11.5px; color: var(--apagado); }
+  .pn-que { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } .pn-fila b { font-variant-numeric: tabular-nums; } .pn-fila .pn-e { justify-self: end; }
+  .pn-av { width: 34px; height: 34px; border-radius: 50%; background: var(--niebla); color: var(--petroleo); display: grid; place-items: center; font-family: var(--f-display); font-weight: 600; font-size: 12px; flex-shrink: 0; }
+  .pn-av svg { width: 17px; height: 17px; }
+  .pn-pie { margin: 12px 0 0; font-size: 12.5px; color: var(--texto-2); }
+  .pn-pregs { padding: 6px 16px; }
+  .pn-preg { padding: 12px 0; border-top: 1px dashed var(--linea); display: grid; gap: 10px; } .pn-preg:first-child { border-top: 0; }
+  .pn-preg-l { display: flex; align-items: center; gap: 12px; }
+  .pn-boton { font-family: var(--f-texto); font-size: 12.5px; font-weight: 600; padding: 7px 14px; border-radius: 999px; background: var(--petroleo); color: #fff; white-space: nowrap; flex-shrink: 0; }
+  .pn-boton--linea { background: transparent; color: var(--petroleo); box-shadow: inset 0 0 0 1.5px var(--cielo); }
+  .pn-resp { display: flex; align-items: flex-end; gap: 10px; background: var(--niebla); border-radius: 12px; padding: 12px; box-shadow: inset 0 0 0 1.5px var(--petroleo-medio); }
+  .pn-resp p { margin: 0; flex: 1; font-size: 13.5px; color: var(--texto); line-height: 1.5; }
+  .pn-cursor { display: inline-block; width: 1.5px; height: 1em; background: var(--petroleo); margin-left: 2px; vertical-align: -2px; animation: pnCursor 1s steps(1) infinite; }
+  @keyframes pnCursor { 50% { opacity: 0; } }
+  .pn-ayuda { font-size: 12px; color: var(--texto-2); }
+  .pn-guia { text-align: center; font-size: 14px; color: #8FB6C5; margin: 16px 0 0; } .pn-guia b { color: #CFE2E9; font-weight: 500; }
+  .pn-mas { list-style: none; padding: 0; margin: clamp(28px, 4vw, 44px) 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .pn-mas li { display: flex; gap: 14px; align-items: flex-start; background: rgba(255,255,255,.05); box-shadow: inset 0 0 0 1px rgba(255,255,255,.07); border-radius: var(--r-lg); padding: 18px; text-align: left; }
+  .pn-mas svg { width: 38px; height: 38px; padding: 9px; border-radius: 11px; background: rgba(255,255,255,.08); color: #FF7A7C; flex-shrink: 0; }
+  .pn-mas h3 { font-size: 16.5px; margin: 0 0 4px; } .pn-mas p { margin: 0; font-size: 14px; color: #A9C7D2; line-height: 1.5; }
+  @media (max-width: 1040px) { .pn-ks { grid-template-columns: repeat(3, minmax(0, 1fr)); } .pn-ks--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .pn-ks:not(.pn-ks--4) .pn-k--hondo { grid-column: span 3; } }
+  @media (max-width: 860px) {
+    .pn-cuerpo { grid-template-columns: minmax(0, 1fr); }
+    .pn-menu { border-right: 0; border-bottom: 1px solid var(--linea); padding: 10px 12px; }
+    .pn-logo, .pn-g, .pn-no { display: none; }
+    .pn-lista { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; } .pn-lista::-webkit-scrollbar { display: none; }
+    .pn-it { white-space: nowrap; flex-shrink: 0; padding: 8px 13px; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--linea); }
+    .pn-it::before { display: none; } .pn-it em { margin-left: 2px; }
+    .pn-it.act { background: var(--petroleo); color: #fff; box-shadow: none; } .pn-it.act em { background: #fff; color: var(--petroleo); }
+    .pn-vistas { min-height: 0; }
+    .pn-dos { grid-template-columns: 1fr; }
+    .pn-mas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 560px) {
+    .pn-top { grid-template-columns: auto 1fr; } .pn-luces { display: none; }
+    .pn-ks, .pn-ks--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .pn-ks:not(.pn-ks--4) .pn-k--hondo, .pn-ks--4 .pn-k--hondo { grid-column: span 2; } .pn-ks--4 .pn-k:last-child { grid-column: span 2; }
+    .pn-k b { font-size: 21px; }
+    .pn-fila { grid-template-columns: minmax(0, 1fr) auto; gap: 2px 10px; } .pn-cuando { grid-column: 1 / -1; } .pn-fila .pn-e { grid-column: 1 / -1; justify-self: start; }
+    .pn-sub span:not(.on) { display: none; }
+    .pn-preg-l { flex-wrap: wrap; } .pn-resp { flex-direction: column; align-items: stretch; } .pn-resp .pn-boton { align-self: flex-end; }
+    .pn-mas { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) { .pn-v, .pn-cursor { animation: none; } }
   /* ---------- Panel: actividad en vivo ---------- */
   .feed { display: grid; gap: 10px; }
   .feed-t { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #8FB6C5; }
@@ -1068,6 +1174,7 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
+    <symbol id="pn-reloj" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol><symbol id="pn-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></symbol><symbol id="pn-carrito" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M3 4h2.5l2.2 11h10.1l2-8H6.6"/></symbol><symbol id="pn-duda" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.5a2.5 2.5 0 1 1 3.6 2.2c-.8.4-1.2 1-1.2 1.8"/><path d="M12 17h.01"/></symbol><symbol id="pn-maletin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.500 4h3A1.5 1.5 0 0 1 15 5.5V7"/></symbol><symbol id="pn-caja" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></symbol><symbol id="pn-ficha" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2.500"/><path d="M9 8h6M9 12h6M9 16h3"/></symbol><symbol id="pn-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.500l4.500 4.500L19 7.500"/></symbol><symbol id="pn-flechas" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13l-3-3M20 16H7l3 3"/></symbol><symbol id="pn-torta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9h-9z"/><path d="M15.500 3.700A9 9 0 0 1 20.300 8.500H15.500z"/></symbol><symbol id="pn-subir" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l5.500-5.500 3.500 3.500L20 8"/><path d="M14.500 8H20v5.500"/></symbol><symbol id="pn-perilla" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></symbol>
     <symbol id="logo-guidelia" viewBox="0 0 908 213"><g transform="translate(-0.25 198.26) scale(0.26069)"><path fill="currentColor" d="M396 10Q323 10 259.5 -17.5Q196 -45 148.5 -94.0Q101 -143 74.0 -208.0Q47 -273 47 -348Q47 -423 74.0 -487.5Q101 -552 149.0 -601.0Q197 -650 261.5 -677.0Q326 -704 402 -704Q485 -704 555.0 -672.0Q625 -640 672 -580L607 -515Q574 -563 520.0 -588.5Q466 -614 402 -614Q326 -614 267.5 -580.0Q209 -546 176.5 -486.0Q144 -426 144 -348Q144 -269 177.0 -209.0Q210 -149 266.0 -115.0Q322 -81 394 -81Q467 -81 520.5 -109.0Q574 -137 603.0 -191.5Q632 -246 632 -325L689 -284H389V-370H729V-356Q729 -235 686.5 -153.5Q644 -72 568.5 -31.0Q493 10 396 10Z"/><path fill="currentColor" d="M1009 10Q950 10 903.5 -16.5Q857 -43 831.0 -90.0Q805 -137 805 -199V-475H895V-203Q895 -164 908.5 -135.5Q922 -107 948.0 -92.0Q974 -77 1009 -77Q1062 -77 1092.0 -110.5Q1122 -144 1122 -203V-475H1212V-199Q1212 -137 1186.0 -90.0Q1160 -43 1114.5 -16.5Q1069 10 1009 10Z"/><path fill="currentColor" d="M1312 0V-475H1402V0ZM1357 -570Q1332 -570 1316.0 -586.5Q1300 -603 1300 -628Q1300 -652 1316.0 -668.5Q1332 -685 1357 -685Q1382 -685 1398.0 -668.5Q1414 -652 1414 -628Q1414 -603 1398.0 -586.5Q1382 -570 1357 -570Z"/><path fill="currentColor" d="M1714 10Q1648 10 1596.0 -22.5Q1544 -55 1513.5 -111.0Q1483 -167 1483 -237Q1483 -307 1513.5 -363.0Q1544 -419 1596.0 -452.0Q1648 -485 1714 -485Q1767 -485 1810.0 -462.5Q1853 -440 1879.5 -400.5Q1906 -361 1909 -309V-166Q1906 -115 1880.0 -75.0Q1854 -35 1811.0 -12.5Q1768 10 1714 10ZM1729 -75Q1774 -75 1807.5 -96.0Q1841 -117 1860.0 -153.5Q1879 -190 1879 -237Q1879 -286 1859.5 -322.0Q1840 -358 1806.5 -379.0Q1773 -400 1728 -400Q1683 -400 1649.0 -379.0Q1615 -358 1595.5 -321.5Q1576 -285 1576 -238Q1576 -190 1595.5 -153.5Q1615 -117 1649.5 -96.0Q1684 -75 1729 -75ZM1964 0H1873V-128L1890 -244L1873 -359V-714H1964Z"/><path fill="currentColor" d="M2293 10Q2222 10 2165.0 -22.5Q2108 -55 2075.0 -111.0Q2042 -167 2042 -238Q2042 -308 2074.5 -364.0Q2107 -420 2162.5 -452.5Q2218 -485 2287 -485Q2353 -485 2403.5 -455.0Q2454 -425 2482.5 -372.0Q2511 -319 2511 -252Q2511 -242 2510.0 -230.5Q2509 -219 2506 -204H2105V-279H2458L2425 -250Q2425 -298 2408.0 -331.5Q2391 -365 2360.0 -383.5Q2329 -402 2285 -402Q2239 -402 2204.0 -382.0Q2169 -362 2150.0 -326.0Q2131 -290 2131 -241Q2131 -191 2151.0 -153.5Q2171 -116 2208.0 -95.5Q2245 -75 2293 -75Q2333 -75 2366.5 -89.0Q2400 -103 2424 -131L2482 -72Q2448 -32 2398.5 -11.0Q2349 10 2293 10Z"/><path fill="currentColor" d="M2587 0V-714H2677V0Z"/><path fill="#FF3231" d="M2787 0V-475H2877V0Z"/><path fill="#FF3231" d="M3189 10Q3124 10 3071.0 -22.5Q3018 -55 2987.5 -111.0Q2957 -167 2957 -237Q2957 -307 2987.5 -363.0Q3018 -419 3070.5 -452.0Q3123 -485 3189 -485Q3243 -485 3285.5 -462.5Q3328 -440 3354.0 -400.5Q3380 -361 3383 -309V-166Q3380 -115 3354.5 -75.0Q3329 -35 3286.5 -12.5Q3244 10 3189 10ZM3204 -75Q3271 -75 3312.0 -120.5Q3353 -166 3353 -237Q3353 -286 3334.5 -322.5Q3316 -359 3282.0 -379.5Q3248 -400 3203 -400Q3158 -400 3123.5 -379.0Q3089 -358 3069.5 -321.5Q3050 -285 3050 -238Q3050 -190 3069.5 -153.5Q3089 -117 3124.0 -96.0Q3159 -75 3204 -75ZM3347 0V-128L3364 -244L3347 -359V-475H3438V0Z"/><path fill="#FF3231" transform="translate(2757.0 -673.0) scale(6.250)" d="M12 0c.9 6.2 4.9 10.6 12 12-7.1 1.4-11.1 5.8-12 12-.9-6.2-4.9-10.6-12-12C7.1 10.6 11.1 6.2 12 0Z"/></g></symbol>
     <symbol id="chispa" viewBox="0 0 24 24"><path d="M12 0c.9 6.2 4.9 10.6 12 12-7.1 1.4-11.1 5.8-12 12-.9-6.2-4.9-10.6-12-12C7.1 10.6 11.1 6.2 12 0Z" fill="currentColor"/></symbol>
     <symbol id="check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -1456,46 +1563,112 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
 
   <!-- ================= PANEL ================= -->
   <section class="banda banda--honda" id="panel">
-    <div class="envoltura panel-grid">
-      <div>
-        <div class="cabeza-seccion" style="margin-bottom:0">
-          <h2>Descubrí cómo vender más</h2>
-          <p class="bajada">Cada conversación te muestra qué buscan tus clientes, qué productos mueven más y qué ficha completar para vender mejor.</p>
-        </div>
-        <ul class="lista-panel">
-          <li><svg aria-hidden="true"><use href="#chispa"/></svg>Qué productos y temas consultan más, y cuáles terminan en el carrito.</li>
-          <li><svg aria-hidden="true"><use href="#chispa"/></svg>Las preguntas nuevas de tus clientes, para sumarlas a tus fichas.</li>
-          <li><svg aria-hidden="true"><use href="#chispa"/></svg>«Preguntale a la IA»: pedí un reporte en lenguaje simple, sin planillas.</li>
-        </ul>
+    <div class="envoltura">
+      <div class="cabeza-seccion cabeza-seccion--centro">
+        <h2>Descubrí cómo vender más</h2>
+        <p class="bajada">Cada conversación te muestra qué buscan tus clientes, qué productos mueven más y qué ficha completar para vender mejor.</p>
       </div>
-      <div class="tablero" id="tablero">
-        <div class="tablero-top"><b>Resumen del mes</b><span class="ejemplo">Datos de ejemplo</span></div>
-        <div class="kpis">
-          <div class="kpi"><small>Conversaciones</small><b data-k="conv" data-contar="1284">1.284</b></div>
-          <div class="kpi"><small>Agregados al carrito</small><b data-k="carrito" data-contar="312">312</b></div>
-          <div class="kpi"><small>Leads mayoristas</small><b data-k="lead" data-contar="27">27</b></div>
-          <div class="kpi"><small>Sin respuesta</small><b data-k="sin" data-contar="18">18</b></div>
-        </div>
-        <div class="tablero-fila">
-          <div class="caja">
-            <div class="caja-t">Temas más consultados</div>
-            <div class="barra"><span>Productos</span><span class="riel"><span class="lleno" style="width:54%"></span></span><span>54%</span></div>
-            <div class="barra"><span>Envíos</span><span class="riel"><span class="lleno" style="width:18%"></span></span><span>18%</span></div>
-            <div class="barra"><span>Garantía</span><span class="riel"><span class="lleno" style="width:11%"></span></span><span>11%</span></div>
-            <div class="barra"><span>Mayoristas</span><span class="riel"><span class="lleno" style="width:9%"></span></span><span>9%</span></div>
-            <div class="barra"><span>Pagos</span><span class="riel"><span class="lleno" style="width:8%"></span></span><span>8%</span></div>
+      <div class="pn tablero" id="tablero">
+        <div class="pn-top"><span class="pn-luces" aria-hidden="true"><i></i><i></i><i></i></span><b>El panel de tu tienda</b><span class="ejemplo">Datos de ejemplo</span></div>
+        <div class="pn-cuerpo">
+          <div class="pn-menu">
+            <svg class="pn-logo" viewBox="0 0 908 213" role="img" aria-label="Guidelia"><use href="#logo-guidelia"/></svg>
+            <div class="pn-lista" role="tablist" aria-label="Secciones del panel">
+              <span class="pn-g">Resultados</span>
+              <button type="button" class="pn-it act" role="tab" aria-selected="true" aria-controls="pn-v-resumen" id="pn-t-resumen" data-v="resumen">Resumen</button>
+              <button type="button" class="pn-it" role="tab" aria-selected="false" aria-controls="pn-v-ventas" id="pn-t-ventas" data-v="ventas" tabindex="-1">Ventas asistidas</button>
+              <span class="pn-no">Conversaciones</span>
+              <button type="button" class="pn-it" role="tab" aria-selected="false" aria-controls="pn-v-contactos" id="pn-t-contactos" data-v="contactos" tabindex="-1">Contactos<em>5</em></button>
+              <span class="pn-no">Reportes</span>
+              <span class="pn-g">Mi asesor</span>
+              <button type="button" class="pn-it" role="tab" aria-selected="false" aria-controls="pn-v-conocimiento" id="pn-t-conocimiento" data-v="conocimiento" tabindex="-1">Conocimiento</button>
+              <span class="pn-no">Comportamiento</span>
+              <span class="pn-no">Apariencia</span>
+              <span class="pn-g">Catálogo</span>
+              <span class="pn-no">Enriquecimiento de catálogo</span>
+              <span class="pn-no">Potenciar productos</span>
+              <span class="pn-g">Cuenta</span>
+              <span class="pn-no">Primeros pasos</span>
+              <span class="pn-no">Instalación</span>
+              <span class="pn-no">Plan y consumo</span>
+            </div>
           </div>
-          <div class="caja ia-caja" style="display:grid">
-            <div class="caja-t lbl"><svg aria-hidden="true"><use href="#chispa"/></svg>Preguntale a la IA</div>
-            <div class="preg">¿Qué me preguntan que no puedo responder?</div>
-            <div class="resp" id="ia-resp">Esta semana <b>7 personas</b> preguntaron si el secador trae difusor y <b>5</b> si la planchita sirve para pelo rizado. Sumá esos datos a las fichas y el asesor los va a responder solo.</div>
+          <div class="pn-vistas">
+            <div class="pn-v" id="pn-v-resumen" role="tabpanel" aria-labelledby="pn-t-resumen">
+              <div class="pn-cab"><div><span class="pn-ceja">Resultados</span><h3>Resumen</h3></div><div class="pn-per" aria-hidden="true"><span>Hoy</span><span>7 días</span><span class="on">30 días</span></div></div>
+              <div class="pn-ks">
+                <div class="pn-k pn-k--hondo"><svg aria-hidden="true"><use href="#pn-reloj"/></svg><b>105 h</b><span>Horas ahorradas al equipo (estimadas)</span><small>1.266 consultas resueltas por el asesor × 5 min</small></div>
+                <div class="pn-k"><svg aria-hidden="true"><use href="#pn-chat"/></svg><b>1.284</b><span>Consultas</span></div>
+                <div class="pn-k"><svg aria-hidden="true"><use href="#pn-carrito"/></svg><b>312</b><span>Agregados al carrito (asistidos)</span></div>
+                <div class="pn-k"><svg aria-hidden="true"><use href="#pn-duda"/></svg><b>18</b><span>Preguntas sin responder</span></div>
+                <div class="pn-k"><svg aria-hidden="true"><use href="#pn-maletin"/></svg><b>27</b><span>Leads mayoristas</span></div>
+                <div class="pn-k"><svg aria-hidden="true"><use href="#pn-caja"/></svg><b>14</b><span>Alertas de stock pedidas</span></div>
+                <div class="pn-k"><svg aria-hidden="true"><use href="#pn-ficha"/></svg><b>61</b><span>Fichas por completar</span></div>
+              </div>
+              <div class="pn-dos">
+                <div class="pn-caja"><h4>Temas más consultados</h4><div class="pn-bar"><span>Productos</span><i><u style="width:54%"></u></i><em>54%</em></div><div class="pn-bar"><span>Envíos</span><i><u style="width:18%"></u></i><em>18%</em></div><div class="pn-bar"><span>Garantía</span><i><u style="width:11%"></u></i><em>11%</em></div><div class="pn-bar"><span>Mayoristas</span><i><u style="width:9%"></u></i><em>9%</em></div><div class="pn-bar"><span>Pagos</span><i><u style="width:8%"></u></i><em>8%</em></div></div>
+                <div class="pn-caja"><h4>Productos más recomendados</h4><div class="pn-prod"><img src="hero/img/p492.webp" alt="" width="440" height="649" loading="lazy"><span><b>Cepillo secador alisador</b><small>Recomendado 86 veces · 31 al carrito</small></span></div><div class="pn-prod"><img src="hero/img/p556.webp" alt="" width="440" height="649" loading="lazy"><span><b>Planchita de titanio</b><small>Recomendado 64 veces · 22 al carrito</small></span></div><div class="pn-prod"><img src="hero/img/p528.webp" alt="" width="440" height="649" loading="lazy"><span><b>Buclera de 5 ondas</b><small>Recomendado 41 veces · 12 al carrito</small></span></div></div>
+              </div>
+            </div>
+            <div class="pn-v" id="pn-v-ventas" role="tabpanel" aria-labelledby="pn-t-ventas" hidden>
+              <div class="pn-cab"><div><span class="pn-ceja">Resultados</span><h3>Ventas asistidas</h3></div><div class="pn-per" aria-hidden="true"><span>Hoy</span><span>7 días</span><span class="on">30 días</span></div></div>
+              <div class="pn-ks pn-ks--4">
+                <div class="pn-k pn-k--hondo"><svg aria-hidden="true"><use href="#pn-carrito"/></svg><b>$4.286.400</b><span>Ventas con ayuda del asesor</span><small>74 ventas en el período</small></div>
+                <div class="pn-k"><svg aria-hidden="true"><use href="#pn-check"/></svg><b>51</b><span>Directas</span><small>$3.012.700</small></div>
+                <div class="pn-k"><svg aria-hidden="true"><use href="#pn-flechas"/></svg><b>23</b><span>Indirectas</span><small>$1.273.700</small></div>
+                <div class="pn-k"><svg aria-hidden="true"><use href="#pn-torta"/></svg><b>18%</b><span>De todas tus ventas</span></div>
+              </div>
+              <div class="pn-caja pn-nota"><p><b>Directa:</b> compró algo que el asesor le mostró o le agregó al carrito.</p><p><b>Indirecta:</b> habló con el asesor y, dentro de los 7 días, compró otra cosa.</p></div>
+              <div class="pn-caja"><h4>Últimas ventas</h4>
+                <div class="pn-fila"><span class="pn-cuando">Hoy, 14:32</span><span class="pn-que">Cepillo secador alisador</span><b>$48.900</b><i class="pn-e pn-e--ok">Directa</i></div>
+                <div class="pn-fila"><span class="pn-cuando">Hoy, 11:05</span><span class="pn-que">Planchita de titanio</span><b>$69.800</b><i class="pn-e pn-e--ok">Directa</i></div>
+                <div class="pn-fila"><span class="pn-cuando">Ayer, 21:47</span><span class="pn-que">Buclera de 5 ondas y protector térmico</span><b>$74.200</b><i class="pn-e">Indirecta</i></div>
+                <div class="pn-fila"><span class="pn-cuando">Ayer, 16:20</span><span class="pn-que">Cepillo secador alisador × 2</span><b>$97.800</b><i class="pn-e pn-e--ok">Directa</i></div>
+              </div>
+            </div>
+            <div class="pn-v" id="pn-v-contactos" role="tabpanel" aria-labelledby="pn-t-contactos" hidden>
+              <div class="pn-cab"><div><span class="pn-ceja">Resultados</span><h3>Contactos</h3></div></div>
+              <div class="pn-dos">
+                <div class="pn-caja"><h4>Mayoristas <i class="pn-e pn-e--nuevo">3 nuevos</i></h4>
+                  <div class="pn-cont"><span class="pn-av">EN</span><span><b>Estudio Norte · Rosario</b><small>Quiere revender planchitas y secadores</small></span><i class="pn-e pn-e--nuevo">Nuevo</i></div>
+                  <div class="pn-cont"><span class="pn-av">SB</span><span><b>Salón Brisa · Córdoba</b><small>Pidió la lista de precios por mayor</small></span><i class="pn-e pn-e--nuevo">Nuevo</i></div>
+                  <div class="pn-cont"><span class="pn-av">AP</span><span><b>Aura Peluquería · Mendoza</b><small>Compra para tres sucursales</small></span><i class="pn-e pn-e--nuevo">Nuevo</i></div>
+                  <div class="pn-cont"><span class="pn-av">LM</span><span><b>Lía Make Up · La Plata</b><small>Consultó mínimo de compra</small></span><i class="pn-e">Visto</i></div>
+                </div>
+                <div class="pn-caja"><h4>Avisos de stock <i class="pn-e pn-e--nuevo">2 nuevos</i></h4>
+                  <div class="pn-cont"><span class="pn-av pn-av--caja"><svg aria-hidden="true"><use href="#pn-caja"/></svg></span><span><b>Depiladora facial 6 en 1</b><small>9 personas pidieron que les avises</small></span><i class="pn-e pn-e--nuevo">Nuevo</i></div>
+                  <div class="pn-cont"><span class="pn-av pn-av--caja"><svg aria-hidden="true"><use href="#pn-caja"/></svg></span><span><b>Planchita mini negra</b><small>5 personas pidieron que les avises</small></span><i class="pn-e pn-e--nuevo">Nuevo</i></div>
+                  <div class="pn-cont"><span class="pn-av pn-av--caja"><svg aria-hidden="true"><use href="#pn-caja"/></svg></span><span><b>Secador plegable 1200 W</b><small>3 personas pidieron que les avises</small></span><i class="pn-e">Visto</i></div>
+                  <p class="pn-pie">Ya sabés qué reponer primero y a quién avisarle.</p>
+                </div>
+              </div>
+            </div>
+            <div class="pn-v" id="pn-v-conocimiento" role="tabpanel" aria-labelledby="pn-t-conocimiento" hidden>
+              <div class="pn-cab"><div><span class="pn-ceja">Mi asesor</span><h3>Conocimiento</h3></div></div>
+              <div class="pn-sub" aria-hidden="true"><span>Notas</span><span>Documentos</span><span class="on">Preguntas sin respuesta <em>18</em></span></div>
+              <div class="pn-caja pn-pregs">
+                <div class="pn-preg pn-preg--abierta">
+                  <div class="pn-preg-l"><span><b>¿El cepillo secador trae difusor?</b><small>Lo preguntaron 7 personas esta semana</small></span><i class="pn-e pn-e--ok">Respondiendo</i></div>
+                  <div class="pn-resp"><p>No trae difusor. Viene con boquilla concentradora y funda térmica.<span class="pn-cursor"></span></p><span class="pn-boton">Guardar</span></div>
+                  <small class="pn-ayuda">Se guarda como una nota y el asesor la usa al instante.</small>
+                </div>
+                <div class="pn-preg"><div class="pn-preg-l"><span><b>¿La planchita sirve para pelo rizado?</b><small>Lo preguntaron 5 personas esta semana</small></span><span class="pn-boton pn-boton--linea">Responder</span></div></div>
+                <div class="pn-preg"><div class="pn-preg-l"><span><b>¿La planchita mini viene en negro?</b><small>Lo preguntaron 3 personas esta semana</small></span><span class="pn-boton pn-boton--linea">Responder</span></div></div>
+                <div class="pn-preg"><div class="pn-preg-l"><span><b>¿Hacen envíos a Tierra del Fuego?</b><small>Lo preguntaron 2 personas esta semana</small></span><span class="pn-boton pn-boton--linea">Responder</span></div></div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="caja feed">
-          <div class="feed-t"><span class="vivo"></span>Actividad en vivo (ejemplo)</div>
-          <div class="feed-lista" id="feed-lista" aria-live="off"></div>
         </div>
       </div>
+      <p class="pn-guia">Tocá <b>Resumen</b>, <b>Ventas asistidas</b>, <b>Contactos</b> o <b>Conocimiento</b> para recorrerlo.</p>
+      <ul class="pn-mas">
+        <li><svg aria-hidden="true"><use href="#pn-chat"/></svg><div><h3>Conversaciones</h3><p>Leé cada conversación completa, con búsqueda y filtros.</p></div></li>
+        <li><svg aria-hidden="true"><use href="#chispa"/></svg><div><h3>Reportes</h3><p>«Preguntale a la IA»: pedí un reporte en lenguaje simple y bajalo en PDF.</p></div></li>
+        <li><svg aria-hidden="true"><use href="#pn-ficha"/></svg><div><h3>Enriquecimiento de catálogo</h3><p>Te marca qué fichas están incompletas y qué dato les falta.</p></div></li>
+        <li><svg aria-hidden="true"><use href="#pn-subir"/></svg><div><h3>Potenciar productos</h3><p>Elegí lo que querés mover y el asesor lo recomienda primero.</p></div></li>
+        <li><svg aria-hidden="true"><use href="#pn-perilla"/></svg><div><h3>Apariencia y comportamiento</h3><p>Nombre, foto, colores, tono y qué hacer cuando no sabe algo.</p></div></li>
+        <li><svg aria-hidden="true"><use href="#pn-torta"/></svg><div><h3>Plan y consumo</h3><p>Cuántas conversaciones llevás en el mes contra el cupo de tu plan.</p></div></li>
+      </ul>
     </div>
   </section>
 
@@ -1948,40 +2121,22 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
     $("pv-nombre").textContent = e.target.value.trim() || "Asesor";
   });
 
-  // ---------- Panel: números que cuentan y respuesta que se escribe ----------
+  // ---------- Panel: pestañas de la ventana de ejemplo ----------
   const tablero = $("tablero");
-  const formato = (n) => n.toLocaleString("es-AR");
-  const respIA = $("ia-resp");
-  const htmlIA = respIA.innerHTML;
-  let tableroVisto = false;
-  function animarTablero() {
-    if (tableroVisto || QUIETO) return;
-    tableroVisto = true;
-    tablero.querySelectorAll("[data-contar]").forEach((el) => {
-      const fin = Number(el.dataset.contar);
-      const t0 = performance.now();
-      const dur = 1400;
-      const paso = (t) => {
-        const k = Math.min(1, (t - t0) / dur);
-        el.textContent = formato(Math.round(fin * (1 - Math.pow(1 - k, 3))));
-        if (k < 1) requestAnimationFrame(paso);
-      };
-      requestAnimationFrame(paso);
-    });
-    tablero.querySelectorAll(".lleno").forEach((el, k) => {
-      el.animate([{ transform: "scaleX(0)" }, { transform: "scaleX(1)" }], { duration: 900, delay: 150 + k * 90, easing: "cubic-bezier(.2,.8,.2,1)", fill: "backwards" });
-    });
-    // La respuesta de la IA se escribe palabra por palabra
-    const palabras = htmlIA.split(/(\s+)/);
-    respIA.innerHTML = "";
-    let i = 0;
-    const escribir = () => {
-      if (i >= palabras.length) { respIA.innerHTML = htmlIA; return; }
-      i += 2;
-      respIA.innerHTML = palabras.slice(0, i).join("");
-      setTimeout(escribir, 45);
+  const animarTablero = () => {};
+  {
+    const pest = [...tablero.querySelectorAll(".pn-it")];
+    const verPn = (b, foco) => {
+      pest.forEach((x) => { const on = x === b; x.classList.toggle("act", on); x.setAttribute("aria-selected", on ? "true" : "false"); x.tabIndex = on ? 0 : -1; $("pn-v-" + x.dataset.v).hidden = !on; });
+      if (foco) b.focus();
     };
-    setTimeout(escribir, 600);
+    pest.forEach((b, i) => {
+      b.addEventListener("click", () => verPn(b));
+      b.addEventListener("keydown", (e) => {
+        const d = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];
+        if (d) { e.preventDefault(); verPn(pest[(i + d + pest.length) % pest.length], true); }
+      });
+    });
   }
   // Contador de leads de la celda de funciones
   const numLeads = $("num-leads");
@@ -2376,46 +2531,6 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
     setTimeout(() => document.querySelectorAll(".dia-mini .pausa").forEach((w) => w.classList.remove("pausa")), 6000);
   } else {
     document.querySelectorAll(".dia-mini .pausa").forEach((w) => w.classList.remove("pausa"));
-  }
-
-  // --- Panel: actividad en vivo
-  const FEED = [
-    ["consulta", "Consulta", "¿Tiene difusor el secador de 2000 W?", "conv"],
-    ["carrito", "Carrito", "Planchita cerámica 5 niveles · US$ 52", "carrito"],
-    ["consulta", "Consulta", "¿Cuánto dura la batería de la depiladora?", "conv"],
-    ["lead", "Lead", "Estudio Norte · Rosario quiere revender", "lead"],
-    ["sin", "Sin respuesta", "¿La planchita mini viene en negro?", "sin"],
-    ["stock", "Stock", "Pidieron aviso: depiladora facial 6 en 1", null],
-    ["carrito", "Carrito", "Secador plegable 1200 W · US$ 39", "carrito"],
-    ["consulta", "Consulta", "¿Llega antes del viernes?", "conv"],
-  ];
-  const kpiVal = { conv: 1284, carrito: 312, lead: 27, sin: 18 };
-  const feedLista = $("feed-lista");
-  let feedN = 0, feedTimer = null;
-  function pushFeed() {
-    const [tipo, etq, txt, kpi] = FEED[feedN % FEED.length];
-    feedN++;
-    const it = document.createElement("div");
-    it.className = "feed-item";
-    it.innerHTML = `<i class="t-${tipo}">${etq}</i><span>${txt}</span>`;
-    feedLista.prepend(it);
-    while (feedLista.children.length > 5) feedLista.lastElementChild.remove();
-    if (kpi) {
-      kpiVal[kpi]++;
-      const el = document.querySelector(`[data-k="${kpi}"]`);
-      el.textContent = formato(kpiVal[kpi]);
-      el.classList.remove("tick"); void el.offsetWidth; el.classList.add("tick");
-    }
-  }
-  // Estado inicial completo (sin animar) para que la caja no aparezca vacía
-  for (let i = 0; i < 4; i++) { const [tipo, etq, txt] = FEED[(3 - i + FEED.length * 4) % FEED.length]; const it = document.createElement("div"); it.className = "feed-item"; it.style.animation = "none"; it.innerHTML = `<i class="t-${tipo}">${etq}</i><span>${txt}</span>`; feedLista.appendChild(it); }
-  feedN = 4;
-  if ("IntersectionObserver" in window && !QUIETO) {
-    new IntersectionObserver((es) => {
-      const vis = es[0].isIntersecting;
-      clearInterval(feedTimer);
-      if (vis) feedTimer = setInterval(pushFeed, 2600);
-    }, { threshold: 0.4 }).observe($("tablero"));
   }
 
   // --- Personalización en escritorio: la sección queda fija y el scroll recorre 4 cambios
