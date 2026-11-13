@@ -1825,8 +1825,8 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
           <div class="plan-nombre">Inicial</div>
           <p class="plan-para">El asesor completo y con tu marca, para arrancar.</p>
           <div class="precio"><small>US$</small><b>99</b><span>/ mes</span></div>
-          <div class="volumen"><b>200</b> conversaciones por mes</div>
-          <p class="visitas">Ideal para tiendas de hasta <b>6.500</b> visitas por mes</p>
+          <div class="volumen"><b>300</b> conversaciones por mes</div>
+          <p class="visitas">Ideal para tiendas de hasta <b>10.000</b> visitas por mes</p>
           <ul class="incluye">
             <li><svg aria-hidden="true"><use href="#check"/></svg><span><strong>Asesor completo</strong> con tu catálogo real, tarjetas de compra, test y comparador</span></li>
             <li><svg aria-hidden="true"><use href="#check"/></svg><span><strong>Apariencia personalizable</strong>: nombre, foto, color, bordes, tamaño y tipografía</span></li>
@@ -1843,8 +1843,8 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
           <div class="plan-nombre">Esencial</div>
           <p class="plan-para">Mide cuánto vende el asesor y te ayuda a potenciar lo que querés vender.</p>
           <div class="precio"><small>US$</small><b>199</b><span>/ mes</span></div>
-          <div class="volumen"><b>500</b> conversaciones por mes</div>
-          <p class="visitas">Ideal para tiendas de hasta <b>16.500</b> visitas por mes</p>
+          <div class="volumen"><b>1.000</b> conversaciones por mes</div>
+          <p class="visitas">Ideal para tiendas de hasta <b>33.000</b> visitas por mes</p>
           <ul class="incluye">
             <li><svg aria-hidden="true"><use href="#check"/></svg><span>Todo lo de <strong>Inicial</strong></span></li>
             <li><svg aria-hidden="true"><use href="#check"/></svg><span><strong>Medición de ventas asistidas</strong></span></li>
@@ -1859,8 +1859,8 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
           <div class="plan-nombre">Crecimiento</div>
           <p class="plan-para">Tus fichas mejoran cada mes con lo que preguntan tus clientes.</p>
           <div class="precio"><small>US$</small><b>399</b><span>/ mes</span></div>
-          <div class="volumen"><b>1.500</b> conversaciones por mes</div>
-          <p class="visitas">Ideal para tiendas de hasta <b>50.000</b> visitas por mes</p>
+          <div class="volumen"><b>2.500</b> conversaciones por mes</div>
+          <p class="visitas">Ideal para tiendas de hasta <b>83.000</b> visitas por mes</p>
           <ul class="incluye">
             <li><svg aria-hidden="true"><use href="#check"/></svg><span>Todo lo de <strong>Esencial</strong></span></li>
             <li><svg aria-hidden="true"><use href="#check"/></svg><span><strong>Enriquecimiento de catálogo</strong>: textos propuestos para fichas incompletas</span></li>
@@ -1874,7 +1874,7 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
           <p class="plan-para">Para marcas con mucho volumen o varias tiendas.</p>
           <div class="precio precio--consultar"><b>Según tu tienda</b></div>
           <div class="volumen"><b>Volumen</b> a medida</div>
-          <p class="visitas">Para más de <b>50.000</b> visitas por mes o varias tiendas</p>
+          <p class="visitas">Para más de <b>83.000</b> visitas por mes o varias tiendas</p>
           <ul class="incluye">
             <li><svg aria-hidden="true"><use href="#check"/></svg><span>Todo lo de <strong>Crecimiento</strong></span></li>
             <li><svg aria-hidden="true"><use href="#check"/></svg><span><strong>Conversaciones a medida</strong>, con un tope acordado</span></li>
@@ -2677,11 +2677,11 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
 
   // ---------- Calculadora de ROI ----------
   const PLANES = [
-    { n: "Inicial", p: 99, c: 200 },
-    { n: "Esencial", p: 199, c: 500 },
-    { n: "Crecimiento", p: 399, c: 1500 },
+    { n: "Inicial", p: 99, c: 300 },
+    { n: "Esencial", p: 199, c: 1000 },
+    { n: "Crecimiento", p: 399, c: 2500 },
   ];
-  // Por encima de 1.500 conversaciones no hay plan de lista: corresponde "A medida" (sin precio publicado).
+  // Por encima de 2.500 conversaciones no hay plan de lista: corresponde "A medida" (sin precio publicado).
   // Mejora promedio de la tasa de conversión (relativa). Estimación propia y prudente, a reemplazar por el dato medido en el piloto.
   const MEJORA = 0.10;
   const num = (id) => { const v = parseFloat($(id).value.replace(",", ".")); return Number.isFinite(v) && v >= 0 ? v : 0; };
