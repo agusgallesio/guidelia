@@ -318,3 +318,6 @@ img, svg { max-width: 100%; }
 /* Tipografía sobria (7-nov-2026): titulares y números en Figtree 600 (antes Quicksand 700) */
 h1, h2, h3, .stat-n, .paso-n, .nodo-n, .faq-item summary { font-weight: 600; }
 h1 { letter-spacing: -.035em; } h2 { letter-spacing: -.025em; }
+
+/* PLANES OCULTOS (temporal, 14-nov-2026): se esconden los enlaces a la sección de planes */
+a[href="#planes"], a[href="/#planes"] { display: none !important; }
