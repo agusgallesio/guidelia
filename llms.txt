@@ -19,6 +19,7 @@ Para dueños de tiendas online de Argentina, chicas y medianas. Se instala en la
 
 ## Artículos
 
+- [IA para Tiendanube: cómo sumar un asesor de compras a tu tienda](https://guidelia.com.ar/blog/ia-para-tiendanube-asesor-de-compras/): Cómo sumar inteligencia artificial a tu tienda Tiendanube: un asesor de compras que responde con tu catálogo, cómo se instala y qué medir.
 - [Cuántas horas ahorrás al automatizar la atención al cliente de tu tienda online](https://guidelia.com.ar/blog/automatizar-atencion-al-cliente-ecommerce-horas-ahorradas/): Cómo calcular cuántas horas ahorra automatizar la atención al cliente de tu tienda online, qué consultas conviene automatizar y cómo medir el resultado.
 - [Botón de WhatsApp o chat en la tienda: dónde conviene atender a tus compradores](https://guidelia.com.ar/blog/boton-de-whatsapp-o-chat-en-la-tienda-online/): Botón de WhatsApp vs chat dentro de la tienda online: ventajas, límites y cuándo conviene cada uno para atender dudas de compra sin perder ventas.
 - [Agente de IA para tienda online: qué es, cómo funciona y cuándo conviene](https://guidelia.com.ar/blog/agente-de-ia-para-tienda-online-que-es-y-cuando-conviene/): Qué es un agente de IA para tienda online, cómo funciona, en qué se diferencia de un chat con reglas y qué preguntarle a un proveedor antes de elegir.
