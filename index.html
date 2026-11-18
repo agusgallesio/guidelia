@@ -577,24 +577,44 @@
   /* PLANES OCULTOS (temporal, 14-nov-2026): se esconden los enlaces a la sección de planes */
   a[href="#planes"], a[href="/#planes"] { display: none !important; }
 
-  /* Comunicación para dueños (18-nov-2026): pilares en la portada, el problema, sin riesgo y quién está detrás */
+  /* Comunicación para dueños (18-nov-2026): pilares con datos, el problema, sin riesgo y quién está detrás */
   .hero-texto > .hero-pilares { order: 6; }
-  .hero-pilares { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; width: 100%; max-width: 980px; margin: 6px auto 0; text-align: left; }
-  .hero-pilares > div { background: #fff; border: 1px solid var(--linea); border-radius: var(--r-lg); padding: 18px 20px; box-shadow: var(--sombra-1); display: grid; gap: 4px; }
-  .hero-pilares .hp-n { font-family: var(--f-display); font-weight: 600; font-size: 13px; color: var(--rojo); }
-  .hero-pilares b { font-family: var(--f-display); font-weight: 600; font-size: 17.5px; color: var(--texto); line-height: 1.25; }
-  .hero-pilares span:not(.hp-n) { font-size: 14.5px; color: var(--texto-2); line-height: 1.5; }
-  @media (max-width: 760px) { .hero-pilares { grid-template-columns: 1fr; } }
-  .dolores { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-  .dolores article { background: var(--niebla); border-radius: var(--r-xl); padding: 28px; display: grid; gap: 10px; align-content: start; }
-  .dolores h3 { font-size: 21px; }
-  .dolores p { margin: 0; color: var(--texto-2); }
-  .dol-ico { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--rojo-suave); color: var(--rojo); }
-  .dol-ico svg { width: 22px; height: 22px; }
-  .dolores-pie { text-align: center; margin: 28px 0 0; font-size: 17px; color: var(--texto); font-weight: 500; }
-  .dolores-pie a { color: var(--petroleo); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
-  .dolores-pie svg { width: 16px; height: 16px; }
-  @media (max-width: 860px) { .dolores { grid-template-columns: 1fr; } }
+  .hero-pilares { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; max-width: 1080px; margin: 14px auto 0; text-align: left; background: #fff; border: 1px solid var(--linea); border-radius: var(--r-xl); box-shadow: var(--sombra-2); overflow: hidden; }
+  .hpil { position: relative; padding: 30px 28px 26px; display: grid; gap: 6px; align-content: start; transition: background .25s; }
+  .hpil + .hpil { border-left: 1px solid var(--linea); }
+  .hpil:hover { background: linear-gradient(180deg, #F7FBFC, #fff); }
+  .hpil::before { content: ""; position: absolute; left: 28px; right: 28px; top: 0; height: 3px; border-radius: 0 0 3px 3px; background: linear-gradient(90deg, var(--petroleo), var(--rojo)); opacity: 0; transition: opacity .25s; }
+  .hpil:hover::before { opacity: 1; }
+  .hpil-ic { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: var(--cielo); color: var(--petroleo); margin-bottom: 10px; }
+  .hpil-ic svg { width: 20px; height: 20px; }
+  .hpil-n { font-family: var(--f-display); font-weight: 600; font-size: clamp(38px, 3.6vw, 48px); line-height: 1; letter-spacing: -.03em; background: linear-gradient(180deg, var(--petroleo-medio), var(--petroleo-hondo)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hpil-dato { font-size: 14px; font-weight: 600; color: var(--petroleo-medio); line-height: 1.35; }
+  .hero .hpil-t, .hpil-t { font-size: 20px !important; letter-spacing: -.015em; line-height: 1.2; margin: 14px 0 2px; color: var(--texto); text-align: left; max-width: none; }
+  .hpil p { margin: 0; font-size: 15px; line-height: 1.55; color: var(--texto-2); }
+  .hpil small { margin-top: 8px; padding-top: 10px; border-top: 1px dashed var(--linea); font-size: 12.5px; line-height: 1.45; color: var(--apagado); }
+  @media (max-width: 860px) { .hero-pilares { grid-template-columns: 1fr; } .hpil + .hpil { border-left: 0; border-top: 1px solid var(--linea); } }
+  .prob { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
+  .prob-izq { display: grid; gap: 28px; position: sticky; top: 110px; }
+  .prob-dato { background: linear-gradient(150deg, var(--petroleo-hondo), var(--petroleo)); color: #fff; border-radius: var(--r-xl); padding: 28px 30px; display: grid; gap: 8px; box-shadow: var(--sombra-2); position: relative; overflow: hidden; }
+  .prob-dato::after { content: ""; position: absolute; right: -40px; top: -40px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(closest-side, rgba(255,50,49,.35), transparent); }
+  .prob-dato b { font-family: var(--f-display); font-weight: 600; font-size: clamp(56px, 6vw, 76px); line-height: 1; letter-spacing: -.04em; }
+  .prob-dato span { font-size: 18px; line-height: 1.4; color: #E7F1F5; max-width: 340px; }
+  .prob-dato small { font-size: 13px; color: #8FB6C5; }
+  .prob-dato small a { color: #fff; }
+  .prob-lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; position: relative; }
+  .prob-lista::before { content: ""; position: absolute; left: 31px; top: 30px; bottom: 30px; width: 2px; background: linear-gradient(var(--rojo-suave), var(--cielo)); }
+  .prob-lista li { position: relative; display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 18px; align-items: start; background: #fff; border: 1px solid var(--linea); border-radius: var(--r-lg); padding: 22px 22px 22px 0; box-shadow: var(--sombra-1); transition: transform .2s, box-shadow .2s; }
+  .prob-lista li:hover { transform: translateX(4px); box-shadow: var(--sombra-2); }
+  .prob-n { justify-self: center; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: #fff; border: 2px solid var(--rojo-suave); color: var(--rojo); font-family: var(--f-display); font-weight: 600; font-size: 14px; position: relative; z-index: 1; }
+  .prob-lista h3 { font-size: 19px; margin: 0 0 6px; }
+  .prob-lista p { margin: 0; font-size: 15.5px; color: var(--texto-2); line-height: 1.55; }
+  .prob-etq { align-self: center; white-space: nowrap; font-size: 12.5px; font-weight: 600; color: #C81E1E; background: var(--rojo-suave); padding: 6px 12px; border-radius: 999px; }
+  .prob-sol { background: linear-gradient(150deg, #F3FAF6, #fff) !important; border-color: #CDEBDB !important; }
+  .prob-sol .prob-n { background: var(--ok); border-color: var(--ok); color: #fff; }
+  .prob-sol .prob-n svg { width: 16px; height: 16px; }
+  .prob-sol a { color: var(--petroleo); font-weight: 600; }
+  @media (max-width: 900px) { .prob { grid-template-columns: 1fr; } .prob-izq { position: static; } }
+  @media (max-width: 560px) { .prob-lista li { grid-template-columns: 52px minmax(0, 1fr); padding-right: 18px; } .prob-lista::before { left: 25px; } .prob-etq { grid-column: 2; justify-self: start; } }
   .garantias { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
   .garantias > div { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: var(--r-lg); padding: 22px 20px; display: grid; gap: 8px; align-content: start; }
   .garantias svg { width: 22px; height: 22px; color: #7FE0B0; }
@@ -603,15 +623,21 @@
   .garantias-cta { text-align: center; margin-top: 32px; }
   @media (max-width: 1080px) { .garantias { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 560px) { .garantias { grid-template-columns: 1fr; } }
-  .quien { display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); gap: clamp(28px, 5vw, 64px); align-items: center; background: #fff; border: 1px solid var(--linea); border-radius: var(--r-xl); padding: clamp(28px, 4vw, 48px); box-shadow: var(--sombra-1); }
-  .quien-persona { display: grid; justify-items: center; gap: 14px; text-align: center; }
-  .quien-av { width: 132px; height: 132px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(150deg, var(--petroleo-hondo), var(--petroleo)); color: #fff; font-family: var(--f-display); font-weight: 600; font-size: 40px; }
-  .quien-persona .quien-av { color: #fff; font-size: 40px; }
+  .quien { display: grid; grid-template-columns: minmax(0, .65fr) minmax(0, 1.35fr); gap: clamp(28px, 5vw, 64px); align-items: center; background: linear-gradient(160deg, #fff, var(--niebla)); border: 1px solid var(--linea); border-radius: var(--r-xl); padding: clamp(28px, 4vw, 52px); box-shadow: var(--sombra-2); position: relative; overflow: hidden; }
+  .quien::before { content: ""; position: absolute; left: -80px; bottom: -80px; width: 260px; height: 260px; border-radius: 50%; background: radial-gradient(closest-side, #CFE6EF, transparent); opacity: .8; }
+  .quien-persona { position: relative; display: grid; justify-items: center; gap: 14px; text-align: center; }
+  .quien-persona .quien-av { width: 148px; height: 148px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(150deg, var(--petroleo-hondo), var(--petroleo)); color: #fff; font-family: var(--f-display); font-weight: 600; font-size: 44px; box-shadow: 0 0 0 8px #fff, 0 18px 40px rgba(7,44,59,.2); }
   .quien-persona b { display: block; font-family: var(--f-display); font-size: 19px; color: var(--texto); }
-  .quien-persona span { font-size: 14.5px; color: var(--texto-2); }
-  .quien-txt { display: grid; gap: 16px; }
-  .quien-txt h2 { font-size: clamp(26px, 3vw, 36px); }
-  .quien-txt p { margin: 0; color: var(--texto-2); font-size: 17px; }
+  .quien-persona span:not(.quien-av) { font-size: 14.5px; color: var(--texto-2); }
+  .quien-txt { position: relative; display: grid; gap: 18px; }
+  .quien-txt h2 { font-size: clamp(26px, 3vw, 38px); }
+  .quien-txt > p { margin: 0; color: var(--texto-2); font-size: 17px; line-height: 1.65; }
+  .quien-mision { border-left: 3px solid var(--rojo); padding: 4px 0 4px 18px; }
+  .quien-mision span { font-size: 13px; font-weight: 600; color: var(--rojo); }
+  .quien-mision p { margin: 4px 0 0; font-family: var(--f-display); font-weight: 600; font-size: clamp(18px, 1.8vw, 21px); line-height: 1.4; color: var(--texto); }
+  .quien-hechos { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 20px; }
+  .quien-hechos li { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; color: var(--texto-2); }
+  .quien-hechos svg { width: 16px; height: 16px; color: var(--ok); }
   .quien-primeros { background: var(--rojo-suave); border-radius: 14px; padding: 14px 16px; display: grid; gap: 2px; }
   .quien-primeros b { color: #C81E1E; font-size: 14px; }
   .quien-primeros span { font-size: 15px; color: var(--texto); }
@@ -1305,9 +1331,30 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
           <p class="nota-cta">Sin costo y sin compromiso. Usamos tus productos reales.</p>
         </div>
         <div class="hero-pilares">
-          <div><span class="hp-n">01</span><b>Vendé más</b><span>Responde con tu catálogo y lleva cada consulta hasta el carrito.</span></div>
-          <div><span class="hp-n">02</span><b>Disminuí la carga de tu equipo</b><span>Contesta lo que se repite, de día y de noche.</span></div>
-          <div><span class="hp-n">03</span><b>Mejorá la experiencia de tus clientes</b><span>Encuentran lo que necesitan conversando, sin esperar.</span></div>
+          <div class="hpil">
+            <span class="hpil-ic"><svg aria-hidden="true"><use href="#pn-subir"/></svg></span>
+            <b class="hpil-n">+21,7%</b>
+            <span class="hpil-dato">más conversión con un asistente de IA</span>
+            <h2 class="hpil-t">Vendé más</h2>
+            <p>Responde con tu catálogo, recomienda lo que le sirve a cada cliente y lo lleva hasta el carrito.</p>
+            <small>Experimento con 44.600 compradores. Columbia Business School, 2026.</small>
+          </div>
+          <div class="hpil">
+            <span class="hpil-ic"><svg aria-hidden="true"><use href="#pn-reloj"/></svg></span>
+            <b class="hpil-n">24 h</b>
+            <span class="hpil-dato">atiende a cualquier hora, todos los días</span>
+            <h2 class="hpil-t">Disminuí la carga de tu equipo</h2>
+            <p>Contesta stock, envíos, medidas y cuotas. Tu equipo se queda con lo que de verdad necesita una persona.</p>
+            <small>Lo que no sabe, lo deriva y queda en tu panel.</small>
+          </div>
+          <div class="hpil">
+            <span class="hpil-ic"><svg aria-hidden="true"><use href="#pn-check"/></svg></span>
+            <b class="hpil-n">−12,55%</b>
+            <span class="hpil-dato">devoluciones cuando el cliente decide mejor informado</span>
+            <h2 class="hpil-t">Mejorá la experiencia de tus clientes</h2>
+            <p>Encuentran lo que necesitan conversando, como en tu local, sin adivinar filtros ni esperar respuesta.</p>
+            <small>Experimento aleatorizado. Information Systems Research, 2025.</small>
+          </div>
         </div>
       </div>
 
@@ -1322,18 +1369,40 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
   </section>
 
   <!-- ================= EL PROBLEMA ================= -->
-  <section class="banda" id="problema">
-    <div class="envoltura">
-      <div class="cabeza-seccion cabeza-seccion--centro">
-        <h2>Pagás para que entren. Se van con una duda</h2>
-        <p class="bajada">Traer visitas es cada vez más caro. Lo que pasa después decide si se convierten en ventas.</p>
+  <section class="banda banda--niebla" id="problema">
+    <div class="envoltura prob">
+      <div class="prob-izq">
+        <div class="cabeza-seccion" style="margin-bottom:0">
+          <h2>Pagás para que entren. Se van con una duda</h2>
+          <p class="bajada">Traer visitas es cada vez más caro. Lo que pasa después decide si esa inversión se convierte en ventas o se pierde.</p>
+        </div>
+        <div class="prob-dato">
+          <b>70%</b>
+          <span>de los carritos de compra online se abandonan antes de pagar.</span>
+          <small>Promedio de 50 estudios. <a href="https://baymard.com/lists/cart-abandonment-rate" target="_blank" rel="noopener">Baymard Institute</a>, 2025.</small>
+        </div>
       </div>
-      <div class="dolores">
-        <article><span class="dol-ico"><svg aria-hidden="true"><use href="#pn-duda"/></svg></span><h3>La duda sin respuesta</h3><p>¿Me entra? ¿Llega antes del viernes? ¿Cuál me conviene? Si nadie contesta en el momento, el cliente cierra la pestaña y sigue buscando en otro lado.</p></article>
-        <article><span class="dol-ico"><svg aria-hidden="true"><use href="#pn-reloj"/></svg></span><h3>WhatsApp no da abasto</h3><p>En Hot Sale, en Cyber o un sábado a la noche, las consultas se acumulan. Cuando por fin respondés, muchas veces ya es tarde.</p></article>
-        <article><span class="dol-ico"><svg aria-hidden="true"><use href="#pn-chat"/></svg></span><h3>Tu equipo repite lo mismo</h3><p>Stock, envíos, medidas, cuotas. Horas por mes contestando preguntas que ya están en tus fichas.</p></article>
-      </div>
-      <p class="dolores-pie">Guidelia resuelve las tres sin que cambies tu tienda. <a href="#como-funciona">Mirá cómo funciona <svg aria-hidden="true"><use href="#flecha"/></svg></a></p>
+      <ol class="prob-lista">
+        <li>
+          <span class="prob-n">01</span>
+          <div><h3>La duda sin respuesta</h3><p>¿Me entra? ¿Llega antes del viernes? ¿Cuál me conviene? Si nadie contesta en ese momento, el cliente cierra la pestaña.</p></div>
+          <span class="prob-etq">Venta perdida</span>
+        </li>
+        <li>
+          <span class="prob-n">02</span>
+          <div><h3>WhatsApp no da abasto</h3><p>En Hot Sale, en Cyber o un sábado a la noche, las consultas se acumulan. Cuando por fin respondés, muchas veces ya compró en otro lado.</p></div>
+          <span class="prob-etq">Cliente que espera</span>
+        </li>
+        <li>
+          <span class="prob-n">03</span>
+          <div><h3>Tu equipo repite lo mismo</h3><p>Stock, envíos, medidas, cuotas. Horas por mes respondiendo preguntas que ya están en tus fichas.</p></div>
+          <span class="prob-etq">Horas del equipo</span>
+        </li>
+        <li class="prob-sol">
+          <span class="prob-n"><svg aria-hidden="true"><use href="#chispa"/></svg></span>
+          <div><h3>Guidelia resuelve las tres</h3><p>Sin cambiar tu tienda ni sumar gente. <a href="#como-funciona">Mirá cómo funciona</a></p></div>
+        </li>
+      </ol>
     </div>
   </section>
 
@@ -1976,20 +2045,29 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
   </section>
 
   <!-- ================= QUIÉN ESTÁ DETRÁS ================= -->
-  <section class="banda banda--niebla" id="quien">
+  <section class="banda" id="quien">
     <div class="envoltura">
       <div class="quien">
         <div class="quien-persona">
           <span class="quien-av" aria-hidden="true">AG</span>
-          <div><b>Agustín Gallesio</b><span>Fundador de Guidelia</span></div>
+          <div><b>Agustín Gallesio</b><span>Cofundador de Guidelia</span></div>
         </div>
         <div class="quien-txt">
-          <h2>Detrás de Guidelia hay una persona, no un formulario</h2>
-          <p>Guidelia nace en Argentina, para tiendas argentinas en Tiendanube y WooCommerce. Armo cada demo con tu catálogo real y te acompaño en la puesta en marcha, hasta que el asesor responde como vos querés.</p>
-          <div class="quien-primeros"><b>Primeros clientes</b><span>Estamos sumando las primeras tiendas, con condiciones especiales a cambio de compartir sus resultados.</span></div>
+          <h2>Hecho por gente que conoce el ecommerce argentino</h2>
+          <p>Agustín Gallesio viene del marketing digital para tiendas online: campañas de Google y Meta, conversión y medición de resultados. Desde ahí vio el mismo problema una y otra vez: tiendas que invierten para traer visitas y las pierden por una duda que nadie respondió a tiempo.</p>
+          <div class="quien-mision">
+            <span>La misión</span>
+            <p>Que cualquier tienda online argentina pueda atender a cada cliente como lo haría su mejor vendedor, con la tecnología de las grandes marcas y sin necesitar un equipo técnico.</p>
+          </div>
+          <ul class="quien-hechos">
+            <li><svg aria-hidden="true"><use href="#check"/></svg>Hecho en Argentina</li>
+            <li><svg aria-hidden="true"><use href="#check"/></svg>Para Tiendanube y WooCommerce</li>
+            <li><svg aria-hidden="true"><use href="#check"/></svg>Acompañamiento en la puesta en marcha</li>
+          </ul>
+          <div class="quien-primeros"><b>Primeros clientes</b><span>Guidelia está sumando sus primeras tiendas, con condiciones especiales a cambio de compartir sus resultados.</span></div>
           <div class="quien-acc">
             <a class="btn btn--rojo" href="#demo">Probalo en tu tienda <svg aria-hidden="true"><use href="#flecha"/></svg></a>
-            <a class="btn btn--borde" href="mailto:agustin@guidelia.com.ar?subject=Quiero%20saber%20m%C3%A1s%20de%20Guidelia">Escribime</a>
+            <a class="btn btn--borde" href="mailto:agustin@guidelia.com.ar?subject=Quiero%20saber%20m%C3%A1s%20de%20Guidelia">Escribile a Agustín</a>
           </div>
         </div>
       </div>
