@@ -602,6 +602,20 @@
   .hero .hpil-t, .hpil-t { grid-column: 1 / -1; font-size: 16.5px !important; margin: 10px 0 0; }
   .hpil small { grid-column: 1 / -1; margin-top: 4px; padding-top: 0; border-top: 0; font-size: 11.5px; }
   .hpil::before { left: 20px; right: 20px; }
+  @media (max-width: 860px) {
+    .hpil { grid-template-columns: 1fr; justify-items: center; text-align: center; padding: 18px 18px 16px; }
+    .hpil-ic { grid-row: auto; margin-bottom: 4px; }
+    .hpil-dato, .hero .hpil-t, .hpil-t, .hpil small { grid-column: 1; text-align: center; }
+    .hero .hpil-t, .hpil-t { margin-top: 6px; }
+  }
+  @media (max-width: 860px) { .hero-pilares { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; } .hpil + .hpil { border-top: 0 !important; border-left: 1px solid var(--linea) !important; } }
+  @media (max-width: 560px) {
+    .hpil { padding: 14px 6px 12px; gap: 2px; }
+    .hpil-ic, .hpil-dato, .hpil small { display: none; }
+    .hpil-n { font-size: 22px; letter-spacing: -.02em; }
+    .hero .hpil-t, .hpil-t { font-size: 12.5px !important; line-height: 1.3; margin: 4px 0 0; font-weight: 600; }
+    .hpil::before { left: 10px; right: 10px; }
+  }
   @media (max-width: 860px) { .hero-pilares { grid-template-columns: 1fr; } .hpil + .hpil { border-left: 0; border-top: 1px solid var(--linea); } }
   .prob { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
   .prob-izq { display: grid; gap: 28px; position: sticky; top: 110px; }
