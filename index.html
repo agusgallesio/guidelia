@@ -576,6 +576,47 @@
   .horas-filas b { color: #fff; font-weight: 700; text-align: right; font-variant-numeric: tabular-nums; }
   /* PLANES OCULTOS (temporal, 14-nov-2026): se esconden los enlaces a la sección de planes */
   a[href="#planes"], a[href="/#planes"] { display: none !important; }
+
+  /* Comunicación para dueños (18-nov-2026): pilares en la portada, el problema, sin riesgo y quién está detrás */
+  .hero-texto > .hero-pilares { order: 6; }
+  .hero-pilares { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; width: 100%; max-width: 980px; margin: 6px auto 0; text-align: left; }
+  .hero-pilares > div { background: #fff; border: 1px solid var(--linea); border-radius: var(--r-lg); padding: 18px 20px; box-shadow: var(--sombra-1); display: grid; gap: 4px; }
+  .hero-pilares .hp-n { font-family: var(--f-display); font-weight: 600; font-size: 13px; color: var(--rojo); }
+  .hero-pilares b { font-family: var(--f-display); font-weight: 600; font-size: 17.5px; color: var(--texto); line-height: 1.25; }
+  .hero-pilares span:not(.hp-n) { font-size: 14.5px; color: var(--texto-2); line-height: 1.5; }
+  @media (max-width: 760px) { .hero-pilares { grid-template-columns: 1fr; } }
+  .dolores { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+  .dolores article { background: var(--niebla); border-radius: var(--r-xl); padding: 28px; display: grid; gap: 10px; align-content: start; }
+  .dolores h3 { font-size: 21px; }
+  .dolores p { margin: 0; color: var(--texto-2); }
+  .dol-ico { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--rojo-suave); color: var(--rojo); }
+  .dol-ico svg { width: 22px; height: 22px; }
+  .dolores-pie { text-align: center; margin: 28px 0 0; font-size: 17px; color: var(--texto); font-weight: 500; }
+  .dolores-pie a { color: var(--petroleo); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+  .dolores-pie svg { width: 16px; height: 16px; }
+  @media (max-width: 860px) { .dolores { grid-template-columns: 1fr; } }
+  .garantias { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
+  .garantias > div { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: var(--r-lg); padding: 22px 20px; display: grid; gap: 8px; align-content: start; }
+  .garantias svg { width: 22px; height: 22px; color: #7FE0B0; }
+  .garantias b { color: #fff; font-family: var(--f-display); font-weight: 600; font-size: 17px; line-height: 1.25; }
+  .garantias span { color: #A9C7D2; font-size: 14.5px; line-height: 1.5; }
+  .garantias-cta { text-align: center; margin-top: 32px; }
+  @media (max-width: 1080px) { .garantias { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 560px) { .garantias { grid-template-columns: 1fr; } }
+  .quien { display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); gap: clamp(28px, 5vw, 64px); align-items: center; background: #fff; border: 1px solid var(--linea); border-radius: var(--r-xl); padding: clamp(28px, 4vw, 48px); box-shadow: var(--sombra-1); }
+  .quien-persona { display: grid; justify-items: center; gap: 14px; text-align: center; }
+  .quien-av { width: 132px; height: 132px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(150deg, var(--petroleo-hondo), var(--petroleo)); color: #fff; font-family: var(--f-display); font-weight: 600; font-size: 40px; }
+  .quien-persona .quien-av { color: #fff; font-size: 40px; }
+  .quien-persona b { display: block; font-family: var(--f-display); font-size: 19px; color: var(--texto); }
+  .quien-persona span { font-size: 14.5px; color: var(--texto-2); }
+  .quien-txt { display: grid; gap: 16px; }
+  .quien-txt h2 { font-size: clamp(26px, 3vw, 36px); }
+  .quien-txt p { margin: 0; color: var(--texto-2); font-size: 17px; }
+  .quien-primeros { background: var(--rojo-suave); border-radius: 14px; padding: 14px 16px; display: grid; gap: 2px; }
+  .quien-primeros b { color: #C81E1E; font-size: 14px; }
+  .quien-primeros span { font-size: 15px; color: var(--texto); }
+  .quien-acc { display: flex; gap: 12px; flex-wrap: wrap; }
+  @media (max-width: 860px) { .quien { grid-template-columns: 1fr; } }
   /* Calculadoras unidas en pestañas */
   .calc-tabs { margin-top: 6px; }
   .calc-panel[hidden] { display: none; }
@@ -1255,18 +1296,18 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
     <div class="hero-fondo" aria-hidden="true"><div class="mancha mancha--1"></div><div class="mancha mancha--2"></div></div>
     <div class="envoltura">
       <div class="hero-texto">
-        <h1><span class="subr">Aumentá tus ventas<svg class="subr-trazo" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M4 15 C 52 9, 104 7, 156 9 S 248 15, 296 8"/><path pathLength="1" d="M18 19 C 84 14, 170 13, 282 15"/></svg></span> con un asesor que acompaña a cada cliente <em>hasta la compra<svg aria-hidden="true"><use href="#chispa"/></svg></em></h1>
-        <p class="hero-rubro">Hecho para tiendas de <span class="rot" id="rot"><span class="act">belleza</span><span>indumentaria</span><span>bazar</span><span>muebles y deco</span><span>jugueterías</span></span></p>
-        <p class="bajada"><strong>Tu mejor vendedor, en cada visita.</strong> Responde las dudas con los datos reales de tu catálogo, recomienda lo que le sirve a cada cliente y lo acompaña hasta la compra. A cualquier hora, con tu tono y tu marca.</p>
+        <h1><span class="subr">Las visitas que pagás<svg class="subr-trazo" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M4 15 C 52 9, 104 7, 156 9 S 248 15, 296 8"/><path pathLength="1" d="M18 19 C 84 14, 170 13, 282 15"/></svg></span>, convertidas en <em>ventas<svg aria-hidden="true"><use href="#chispa"/></svg></em></h1>
+        <p class="hero-rubro">Hecho para tiendas de <span class="rot" id="rot"><span class="act">bazar</span><span>muebles y deco</span><span>jugueterías</span><span>belleza y cuidado personal</span></span></p>
+        <p class="bajada"><strong>Tus clientes preguntan. Tu tienda les responde.</strong> Un asesor de compras con IA que conoce tu catálogo, contesta en el momento y lleva cada consulta hasta la compra. A cualquier hora, con tu marca. Vos ves todo en un panel.</p>
         <div class="hero-acciones">
           <a class="btn btn--rojo" href="#demo">Ver cómo queda en mi tienda <svg aria-hidden="true"><use href="#flecha"/></svg></a>
           <a class="btn btn--borde" href="#como-funciona">Cómo funciona <svg aria-hidden="true"><use href="#abajo"/></svg></a>
           <p class="nota-cta">Sin costo y sin compromiso. Usamos tus productos reales.</p>
         </div>
-        <div class="hero-pruebas">
-          <span><svg aria-hidden="true"><use href="#check"/></svg>Atiende las 24 horas</span>
-          <span><svg aria-hidden="true"><use href="#check"/></svg>Se instala con una línea de código</span>
-          <span><svg aria-hidden="true"><use href="#check"/></svg>Sin permanencia</span>
+        <div class="hero-pilares">
+          <div><span class="hp-n">01</span><b>Vendé más</b><span>Responde con tu catálogo y lleva cada consulta hasta el carrito.</span></div>
+          <div><span class="hp-n">02</span><b>Disminuí la carga de tu equipo</b><span>Contesta lo que se repite, de día y de noche.</span></div>
+          <div><span class="hp-n">03</span><b>Mejorá la experiencia de tus clientes</b><span>Encuentran lo que necesitan conversando, sin esperar.</span></div>
         </div>
       </div>
 
@@ -1280,12 +1321,28 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
     <div class="fila-cinta" id="cinta-2"></div>
   </section>
 
+  <!-- ================= EL PROBLEMA ================= -->
+  <section class="banda" id="problema">
+    <div class="envoltura">
+      <div class="cabeza-seccion cabeza-seccion--centro">
+        <h2>Pagás para que entren. Se van con una duda</h2>
+        <p class="bajada">Traer visitas es cada vez más caro. Lo que pasa después decide si se convierten en ventas.</p>
+      </div>
+      <div class="dolores">
+        <article><span class="dol-ico"><svg aria-hidden="true"><use href="#pn-duda"/></svg></span><h3>La duda sin respuesta</h3><p>¿Me entra? ¿Llega antes del viernes? ¿Cuál me conviene? Si nadie contesta en el momento, el cliente cierra la pestaña y sigue buscando en otro lado.</p></article>
+        <article><span class="dol-ico"><svg aria-hidden="true"><use href="#pn-reloj"/></svg></span><h3>WhatsApp no da abasto</h3><p>En Hot Sale, en Cyber o un sábado a la noche, las consultas se acumulan. Cuando por fin respondés, muchas veces ya es tarde.</p></article>
+        <article><span class="dol-ico"><svg aria-hidden="true"><use href="#pn-chat"/></svg></span><h3>Tu equipo repite lo mismo</h3><p>Stock, envíos, medidas, cuotas. Horas por mes contestando preguntas que ya están en tus fichas.</p></article>
+      </div>
+      <p class="dolores-pie">Guidelia resuelve las tres sin que cambies tu tienda. <a href="#como-funciona">Mirá cómo funciona <svg aria-hidden="true"><use href="#flecha"/></svg></a></p>
+    </div>
+  </section>
+
   <!-- ================= UN DÍA CON EL ASESOR ================= -->
   <section class="banda" id="dia">
     <div class="envoltura">
       <div class="cabeza-seccion">
         <h2>Mientras vos hacés otra cosa, el asesor sigue vendiendo</h2>
-        <p class="bajada">Cuatro momentos de un día cualquiera. Son ejemplos ilustrativos.</p>
+        <p class="bajada">Cuatro momentos de un día cualquiera y lo que ves en tu panel. Son ejemplos ilustrativos.</p>
       </div>
       <div class="dia">
         <div class="dia-pasos" id="dia-pasos"></div>
@@ -1443,134 +1500,6 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
     </div>
   </section>
 
-  <!-- ================= FUNCIONES ================= -->
-  <section class="banda banda--niebla" id="funciones">
-    <div class="envoltura">
-      <div class="cabeza-seccion cabeza-seccion--centro">
-        <h2>Respuestas exactas que terminan en compra</h2>
-        <p class="bajada">Responde solo con lo que está en tu catálogo y tus políticas, así que podés confiar en cada respuesta. Si no lo sabe, se lo pasa a tu equipo.</p>
-      </div>
-      <div class="bento">
-        <article class="celda celda--a">
-          <span class="celda-ico" style="background:#E3EEF8;color:#1C6280"><svg aria-hidden="true"><use href="#check"/></svg></span>
-          <h3>Datos exactos de cada producto</h3>
-          <p>Batería, potencia, materiales y stock, como figuran en tu ficha, al pie de la letra.</p>
-          <div class="vis vis-honesto" aria-hidden="true">
-            <span class="q">¿Cuánto dura la batería?</span>
-            <span class="r"><b>90 minutos</b> por carga. Es <b>IPX7</b>.</span>
-          </div>
-        </article>
-        <article class="celda celda--b">
-          <span class="celda-ico" style="background:#E5F6EE;color:#17774A"><svg aria-hidden="true"><use href="#carrito"/></svg></span>
-          <h3>Respeta el presupuesto</h3>
-          <p>Si el cliente dice "hasta US$ 60", no ve nada más caro.</p>
-          <div class="vis vis-presu" aria-hidden="true">
-            <div class="item"><span>Planchita cerámica 230 °C</span><span>US$ 39</span></div>
-            <div class="item"><span>Planchita cerámica 5 niveles</span><span>US$ 52</span></div>
-            <div class="item fuera"><span>Kit planchita 4 en 1</span><span>US$ 89</span></div>
-          </div>
-        </article>
-        <article class="celda celda--c">
-          <span class="celda-ico" style="background:#FFF1E6;color:#D9731A"><svg aria-hidden="true"><use href="#rayo"/></svg></span>
-          <h3>Todo el catálogo a mano</h3>
-          <p>Encuentra y compara cualquier producto en segundos.</p>
-          <div class="vis vis-catalogo" aria-hidden="true"><div class="sync" id="sync-2"></div></div>
-        </article>
-        <article class="celda celda--d celda--honda">
-          <span class="celda-ico" style="background:rgba(255,255,255,.14);color:#fff"><svg aria-hidden="true"><use href="#chispa"/></svg></span>
-          <h3>Potenciá lo que querés vender</h3>
-          <p>Lo recomienda primero, siempre que le sirva al cliente.</p>
-          <div class="vis vis-potencia" aria-hidden="true">
-            <div class="item">Cepillo alisador antifrizz</div>
-            <div class="item">Planchita mini cerámica</div>
-            <div class="item prioridad">Secador plegable 1200 W <span class="badge">potenciado</span></div>
-          </div>
-        </article>
-        <article class="celda celda--e">
-          <span class="celda-ico" style="background:#FDE8EC;color:#C2405B"><svg aria-hidden="true"><use href="#persona"/></svg></span>
-          <h3>Capta contactos</h3>
-          <p>Mayoristas y avisos de stock, listos para llamar.</p>
-          <div class="vis vis-leads" aria-hidden="true"><span class="num" id="num-leads">27</span><small>contactos este mes<br>(ejemplo)</small></div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= PERSONALIZACIÓN ================= -->
-  <section class="banda perso-escena" id="personaliza">
-   <div class="perso-pegado">
-    <div class="envoltura perso">
-      <div>
-        <div class="cabeza-seccion" style="margin-bottom:0">
-          <h2>Se ve y habla como tu marca</h2>
-          <p class="bajada">Tus clientes sienten que hablan con alguien de tu tienda. Probalo: cada cambio se ve al instante.</p>
-        </div>
-        <div class="controles">
-          <div>
-            <div class="control-titulo" id="lbl-color">Color de tu marca</div>
-            <div class="muestras" role="group" aria-labelledby="lbl-color" id="muestras"></div>
-          </div>
-          <div>
-            <div class="control-titulo" id="lbl-bordes">Bordes</div>
-            <div class="segmento" role="group" aria-labelledby="lbl-bordes" id="bordes">
-              <button type="button" data-v="recto" aria-pressed="false">Rectos</button>
-              <button type="button" data-v="suave" aria-pressed="false">Suaves</button>
-              <button type="button" data-v="redondo" aria-pressed="true">Redondeados</button>
-            </div>
-          </div>
-          <div>
-            <div class="control-titulo" id="lbl-tipo">Tipografía</div>
-            <div class="segmento" role="group" aria-labelledby="lbl-tipo" id="tipografia">
-              <button type="button" data-v="moderna" aria-pressed="true">Moderna</button>
-              <button type="button" data-v="elegante" aria-pressed="false">Elegante</button>
-            </div>
-          </div>
-          <div>
-            <div class="control-titulo" id="lbl-foto">Foto de perfil</div>
-            <div class="muestras" role="group" aria-labelledby="lbl-foto" id="fotos">
-              <button type="button" class="foto-op logo" data-v="logo" aria-pressed="true" aria-label="Logo"><svg aria-hidden="true"><use href="#chispa"/></svg></button>
-              <button type="button" class="foto-op" data-v="lucia" aria-pressed="false" aria-label="Foto de Lucía"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#avatar-lucia"/></svg></button>
-              <button type="button" class="foto-op" data-v="mateo" aria-pressed="false" aria-label="Foto de Mateo"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#avatar-mateo"/></svg></button>
-            </div>
-          </div>
-          <div>
-            <div class="control-titulo" id="lbl-tono">Tono</div>
-            <div class="segmento" role="group" aria-labelledby="lbl-tono" id="tono">
-              <button type="button" data-v="cercano" aria-pressed="true">Cercano</button>
-              <button type="button" data-v="formal" aria-pressed="false">Formal</button>
-              <button type="button" data-v="experto" aria-pressed="false">Experto</button>
-            </div>
-          </div>
-          <div>
-            <label class="control-titulo" for="nombre-asesor" style="display:block">Nombre del asesor</label>
-            <input class="campo-nombre" id="nombre-asesor" type="text" maxlength="24" value="Nova">
-          </div>
-        </div>
-        <div class="perso-guia" aria-hidden="true">
-          <div class="guia-pasos" id="guia-pasos"><i></i><i></i><i></i><i></i><i></i></div>
-          <span class="guia-txt" id="guia-txt">Seguí bajando y mirá cómo se adapta</span>
-        </div>
-      </div>
-      <div class="previa-marco">
-        <div class="previa" id="previa">
-          <div class="pv-cab">
-            <div class="pv-av"><svg aria-hidden="true"><use href="#chispa"/></svg></div>
-            <div><div class="pv-n" id="pv-nombre">Nova</div><div class="pv-e">En línea</div></div>
-          </div>
-          <div class="pv-cuerpo">
-            <div class="pv-hola" id="pv-hola">¡Hola! ¿Qué estás buscando hoy?</div>
-            <div class="pv-sub" id="pv-sub">Contame para qué lo querés y te ayudo a elegir.</div>
-            <div class="pv-op"><i><svg aria-hidden="true"><use href="#chispa"/></svg></i>Ayudame a elegir</div>
-            <div class="pv-op"><i><svg aria-hidden="true"><use href="#chispa"/></svg></i>Quiero comparar modelos</div>
-            <div class="pv-burbuja" id="pv-burbuja">Busco un regalo para mi mamá</div>
-            <div class="pv-in"><span>Escribí tu consulta...</span><span class="pv-env"></span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-   </div>
-  </section>
-
   <!-- ================= PANEL ================= -->
   <section class="banda banda--honda" id="panel">
     <div class="envoltura">
@@ -1682,6 +1611,134 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
     </div>
   </section>
 
+  <!-- ================= FUNCIONES ================= -->
+  <section class="banda banda--niebla" id="funciones">
+    <div class="envoltura">
+      <div class="cabeza-seccion cabeza-seccion--centro">
+        <h2>Lo que gana tu tienda con cada conversación</h2>
+        <p class="bajada">Responde solo con lo que está en tu catálogo y tus políticas. Si no sabe algo, no lo inventa: se lo pasa a tu equipo.</p>
+      </div>
+      <div class="bento">
+        <article class="celda celda--a">
+          <span class="celda-ico" style="background:#E3EEF8;color:#1C6280"><svg aria-hidden="true"><use href="#check"/></svg></span>
+          <h3>Respuestas en las que podés confiar</h3>
+          <p>Batería, potencia, materiales y stock, tal como figuran en tu ficha.</p>
+          <div class="vis vis-honesto" aria-hidden="true">
+            <span class="q">¿Cuánto dura la batería?</span>
+            <span class="r"><b>90 minutos</b> por carga. Es <b>IPX7</b>.</span>
+          </div>
+        </article>
+        <article class="celda celda--b">
+          <span class="celda-ico" style="background:#E5F6EE;color:#17774A"><svg aria-hidden="true"><use href="#carrito"/></svg></span>
+          <h3>Menos compras que se caen por precio</h3>
+          <p>Si el cliente dice «hasta US$ 60», le muestra solo lo que puede pagar.</p>
+          <div class="vis vis-presu" aria-hidden="true">
+            <div class="item"><span>Planchita cerámica 230 °C</span><span>US$ 39</span></div>
+            <div class="item"><span>Planchita cerámica 5 niveles</span><span>US$ 52</span></div>
+            <div class="item fuera"><span>Kit planchita 4 en 1</span><span>US$ 89</span></div>
+          </div>
+        </article>
+        <article class="celda celda--c">
+          <span class="celda-ico" style="background:#FFF1E6;color:#D9731A"><svg aria-hidden="true"><use href="#rayo"/></svg></span>
+          <h3>Vende también lo que nadie encuentra</h3>
+          <p>Busca y compara en todo tu catálogo, no solo en lo más visto.</p>
+          <div class="vis vis-catalogo" aria-hidden="true"><div class="sync" id="sync-2"></div></div>
+        </article>
+        <article class="celda celda--d celda--honda">
+          <span class="celda-ico" style="background:rgba(255,255,255,.14);color:#fff"><svg aria-hidden="true"><use href="#chispa"/></svg></span>
+          <h3>Potenciá lo que querés vender</h3>
+          <p>Un lanzamiento, una liquidación o lo que tiene más stock: lo recomienda primero cuando encaja con lo que busca el cliente.</p>
+          <div class="vis vis-potencia" aria-hidden="true">
+            <div class="item">Cepillo alisador antifrizz</div>
+            <div class="item">Planchita mini cerámica</div>
+            <div class="item prioridad">Secador plegable 1200 W <span class="badge">potenciado</span></div>
+          </div>
+        </article>
+        <article class="celda celda--e">
+          <span class="celda-ico" style="background:#FDE8EC;color:#C2405B"><svg aria-hidden="true"><use href="#persona"/></svg></span>
+          <h3>Mayoristas y ventas que vuelven</h3>
+          <p>Te deja los datos de quien quiere revender y de quien espera un producto agotado.</p>
+          <div class="vis vis-leads" aria-hidden="true"><span class="num" id="num-leads">27</span><small>contactos este mes<br>(ejemplo)</small></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PERSONALIZACIÓN ================= -->
+  <section class="banda perso-escena" id="personaliza">
+   <div class="perso-pegado">
+    <div class="envoltura perso">
+      <div>
+        <div class="cabeza-seccion" style="margin-bottom:0">
+          <h2>Probá cómo se vería con tu marca</h2>
+          <p class="bajada">Cambiá el nombre, los colores y el tono, y mirá el resultado al instante. Tus clientes sienten que hablan con alguien de tu tienda.</p>
+        </div>
+        <div class="controles">
+          <div>
+            <div class="control-titulo" id="lbl-color">Color de tu marca</div>
+            <div class="muestras" role="group" aria-labelledby="lbl-color" id="muestras"></div>
+          </div>
+          <div>
+            <div class="control-titulo" id="lbl-bordes">Bordes</div>
+            <div class="segmento" role="group" aria-labelledby="lbl-bordes" id="bordes">
+              <button type="button" data-v="recto" aria-pressed="false">Rectos</button>
+              <button type="button" data-v="suave" aria-pressed="false">Suaves</button>
+              <button type="button" data-v="redondo" aria-pressed="true">Redondeados</button>
+            </div>
+          </div>
+          <div>
+            <div class="control-titulo" id="lbl-tipo">Tipografía</div>
+            <div class="segmento" role="group" aria-labelledby="lbl-tipo" id="tipografia">
+              <button type="button" data-v="moderna" aria-pressed="true">Moderna</button>
+              <button type="button" data-v="elegante" aria-pressed="false">Elegante</button>
+            </div>
+          </div>
+          <div>
+            <div class="control-titulo" id="lbl-foto">Foto de perfil</div>
+            <div class="muestras" role="group" aria-labelledby="lbl-foto" id="fotos">
+              <button type="button" class="foto-op logo" data-v="logo" aria-pressed="true" aria-label="Logo"><svg aria-hidden="true"><use href="#chispa"/></svg></button>
+              <button type="button" class="foto-op" data-v="lucia" aria-pressed="false" aria-label="Foto de Lucía"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#avatar-lucia"/></svg></button>
+              <button type="button" class="foto-op" data-v="mateo" aria-pressed="false" aria-label="Foto de Mateo"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#avatar-mateo"/></svg></button>
+            </div>
+          </div>
+          <div>
+            <div class="control-titulo" id="lbl-tono">Tono</div>
+            <div class="segmento" role="group" aria-labelledby="lbl-tono" id="tono">
+              <button type="button" data-v="cercano" aria-pressed="true">Cercano</button>
+              <button type="button" data-v="formal" aria-pressed="false">Formal</button>
+              <button type="button" data-v="experto" aria-pressed="false">Experto</button>
+            </div>
+          </div>
+          <div>
+            <label class="control-titulo" for="nombre-asesor" style="display:block">Nombre del asesor</label>
+            <input class="campo-nombre" id="nombre-asesor" type="text" maxlength="24" value="Nova">
+          </div>
+        </div>
+        <div class="perso-guia" aria-hidden="true">
+          <div class="guia-pasos" id="guia-pasos"><i></i><i></i><i></i><i></i><i></i></div>
+          <span class="guia-txt" id="guia-txt">Seguí bajando y mirá cómo se adapta</span>
+        </div>
+      </div>
+      <div class="previa-marco">
+        <div class="previa" id="previa">
+          <div class="pv-cab">
+            <div class="pv-av"><svg aria-hidden="true"><use href="#chispa"/></svg></div>
+            <div><div class="pv-n" id="pv-nombre">Nova</div><div class="pv-e">En línea</div></div>
+          </div>
+          <div class="pv-cuerpo">
+            <div class="pv-hola" id="pv-hola">¡Hola! ¿Qué estás buscando hoy?</div>
+            <div class="pv-sub" id="pv-sub">Contame para qué lo querés y te ayudo a elegir.</div>
+            <div class="pv-op"><i><svg aria-hidden="true"><use href="#chispa"/></svg></i>Ayudame a elegir</div>
+            <div class="pv-op"><i><svg aria-hidden="true"><use href="#chispa"/></svg></i>Quiero comparar modelos</div>
+            <div class="pv-burbuja" id="pv-burbuja">Busco un regalo para mi mamá</div>
+            <div class="pv-in"><span>Escribí tu consulta...</span><span class="pv-env"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+   </div>
+  </section>
+
   <!-- ================= SOLUCIONES POR RUBRO ================= -->
   <section class="banda" id="rubros">
     <div class="envoltura">
@@ -1713,15 +1770,15 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
           <div class="dato-fuente"><b>Fuente:</b> Zoovu, <i>2026 Benchmark for AI in Ecommerce Conversion</i>. <a href="https://www.retainful.com/blog/ai-ecommerce-conversion-benchmark" target="_blank" rel="noopener">Ver resumen</a></div>
         </article>
         <article class="dato">
-          <div class="dato-q">Cuánto más convierte la tienda</div>
-          <div class="dato-n"><small>hasta</small>+40%</div>
-          <h3 class="dato-t">más conversión en la tienda</h3>
-          <p>Pasa cuando el asistente traduce las características técnicas de un producto en beneficios para lo que cada persona necesita.</p>
-          <div class="dato-barras" role="img" aria-label="Sin asistente: punto de partida. Con asistente de IA: hasta +40%.">
-            <div class="dato-b"><span>Sin asistente <b>punto de partida</b></span><i style="--w:71.4%"></i></div>
-            <div class="dato-b dato-b--ia"><span>Con asistente de IA <b>hasta +40%</b></span><i style="--w:100%"></i></div>
+          <div class="dato-q">Medido con grupo de control</div>
+          <div class="dato-n">+21,7%</div>
+          <h3 class="dato-t">más conversión con un asistente de IA</h3>
+          <p>En un experimento con unos 44.600 compradores repartidos al azar, quienes tenían un asistente de IA antes de comprar convirtieron 21,7&nbsp;% más que quienes no lo tenían.</p>
+          <div class="dato-barras" role="img" aria-label="Sin asistente: punto de partida. Con asistente de IA: +21,7%.">
+            <div class="dato-b"><span>Sin asistente <b>punto de partida</b></span><i style="--w:82.2%"></i></div>
+            <div class="dato-b dato-b--ia"><span>Con asistente de IA <b>+21,7%</b></span><i style="--w:100%"></i></div>
           </div>
-          <div class="dato-fuente"><b>Fuente:</b> Zoovu, <i>2026 Benchmark for AI in Ecommerce Conversion</i>. <a href="https://www.retainful.com/blog/ai-ecommerce-conversion-benchmark" target="_blank" rel="noopener">Ver resumen</a></div>
+          <div class="dato-fuente"><b>Fuente:</b> Fang, Yuan, Zhang, Donati y Sarvary, Columbia Business School, 2026. Experimento en una plataforma de ecommerce internacional. <a href="https://arxiv.org/abs/2510.12049" target="_blank" rel="noopener">Ver estudio</a></div>
         </article>
         <article class="dato">
           <div class="dato-q">Cuánto crecieron las ventas</div>
@@ -1735,7 +1792,7 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
           <div class="dato-fuente"><b>Fuente:</b> Salesforce, datos de compras de fin de año 2025. <a href="https://www.salesforce.com/news/stories/2025-holiday-shopping-data/" target="_blank" rel="noopener">Ver fuente</a></div>
         </article>
       </div>
-      <p class="datos-nota"><b>Para leerlos bien:</b> son datos de proveedores de IA y de tiendas de otros mercados. Muestran una tendencia, no una promesa de resultado. En tu tienda lo medimos con un piloto. Para leer más: <a href="https://www.mdpi.com/2079-8954/12/10/429" target="_blank" rel="noopener">revisión académica sobre marketing con IA y ventas online</a> (<i>Systems</i>, 2024).</p>
+      <p class="datos-nota"><b>Para leerlos bien:</b> son datos de otros mercados: un experimento académico y datos de empresas de IA. Muestran una tendencia, no una promesa de resultado. En tu tienda lo medimos con un piloto. Para leer más: <a href="https://www.mdpi.com/2079-8954/12/10/429" target="_blank" rel="noopener">revisión académica sobre marketing con IA y ventas online</a> (<i>Systems</i>, 2024).</p>
     </div>
   </section>
 
@@ -1900,6 +1957,45 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
     </div>
   </section>
 
+  <!-- ================= SIN RIESGO ================= -->
+  <section class="banda banda--honda" id="sin-riesgo">
+    <div class="envoltura">
+      <div class="cabeza-seccion cabeza-seccion--centro">
+        <h2>Probarlo no te cuesta nada</h2>
+        <p class="bajada">Lo ves funcionando con tus productos antes de decidir. Y si después no te sirve, lo das de baja.</p>
+      </div>
+      <div class="garantias">
+        <div><svg aria-hidden="true"><use href="#check"/></svg><b>Demo gratis con tus productos</b><span>Antes de pagar nada, lo ves funcionando con tu catálogo real.</span></div>
+        <div><svg aria-hidden="true"><use href="#check"/></svg><b>Sin permanencia</b><span>Es mes a mes. Lo das de baja cuando quieras.</span></div>
+        <div><svg aria-hidden="true"><use href="#check"/></svg><b>No inventa</b><span>Responde con tu catálogo y tus políticas. Si no sabe algo, lo dice y le pasa la consulta a tu equipo.</span></div>
+        <div><svg aria-hidden="true"><use href="#check"/></svg><b>Medís lo que vende</b><span>El panel te muestra las ventas asistidas, directas e indirectas.</span></div>
+        <div><svg aria-hidden="true"><use href="#check"/></svg><b>Sin trabajo técnico</b><span>Lo conectamos y lo probamos nosotros. En tu tienda se agrega una línea de código.</span></div>
+      </div>
+      <div class="garantias-cta"><a class="btn btn--rojo" href="#demo">Probalo en tu tienda <svg aria-hidden="true"><use href="#flecha"/></svg></a></div>
+    </div>
+  </section>
+
+  <!-- ================= QUIÉN ESTÁ DETRÁS ================= -->
+  <section class="banda banda--niebla" id="quien">
+    <div class="envoltura">
+      <div class="quien">
+        <div class="quien-persona">
+          <span class="quien-av" aria-hidden="true">AG</span>
+          <div><b>Agustín Gallesio</b><span>Fundador de Guidelia</span></div>
+        </div>
+        <div class="quien-txt">
+          <h2>Detrás de Guidelia hay una persona, no un formulario</h2>
+          <p>Guidelia nace en Argentina, para tiendas argentinas en Tiendanube y WooCommerce. Armo cada demo con tu catálogo real y te acompaño en la puesta en marcha, hasta que el asesor responde como vos querés.</p>
+          <div class="quien-primeros"><b>Primeros clientes</b><span>Estamos sumando las primeras tiendas, con condiciones especiales a cambio de compartir sus resultados.</span></div>
+          <div class="quien-acc">
+            <a class="btn btn--rojo" href="#demo">Probalo en tu tienda <svg aria-hidden="true"><use href="#flecha"/></svg></a>
+            <a class="btn btn--borde" href="mailto:agustin@guidelia.com.ar?subject=Quiero%20saber%20m%C3%A1s%20de%20Guidelia">Escribime</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ================= PREGUNTAS FRECUENTES ================= -->
   <section class="banda">
     <div class="envoltura">
@@ -1999,6 +2095,7 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
       </form>
     </div>
   </section>
+
   <!-- ================= DEL BLOG ================= -->
 <!-- BLOG-HOME:INICIO (generado por blog-src/actualizar-blog-home.py) -->
   <section class="banda" id="del-blog" aria-labelledby="del-blog-t">
@@ -2509,13 +2606,13 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
   }
   const PLANCHAS = [["Planchita cerámica 230 °C", "US$ 39", "-15%", "plancha1"], ["Planchita cerámica 5 niveles", "US$ 52", "-15%", "plancha2"], ["Planchita titanio 230 °C", "US$ 59", "-15%", "plancha3"]];
   const DIA = [
-    { hora: "09:12", t: "Una duda antes de comprar", x: "Alguien compara dos secadores camino al trabajo. El asesor le responde con la potencia, el peso y los accesorios de cada ficha. Tu equipo ni se entera.", panel: "Consulta registrada · Secadores",
+    { hora: "09:12", t: "Vendés mientras tu equipo hace otra cosa", x: "Alguien compara dos secadores camino al trabajo. El asesor le contesta con los datos de cada ficha y tu equipo no tiene que intervenir.", panel: "Consulta registrada · Secadores",
       chat: { c: "¿Qué diferencia hay entre el secador de 2000 W y el plegable?", a: "El **profesional de 2000 W** trae difusor y cable de 3 metros. El **plegable de 1200 W** pesa **344 g**: es el ideal para viajar.", tarjetas: [["Secador profesional 2000 W", "US$ 89", "-15%", "secador1"], ["Secador plegable 1200 W", "US$ 39", "-20%", "secador2"]], chips: ["¿Cuál conviene para pelo largo?"] } },
-    { hora: "13:40", t: "Un presupuesto que se respeta", x: "Una clienta tiene US$ 60. Ve solo lo que entra en su presupuesto y suma una al carrito sin salir del chat.", panel: "Carrito asistido · US$ 52",
+    { hora: "13:40", t: "Una venta que no se pierde por precio", x: "Una clienta tiene US$ 60. El asesor le muestra solo lo que puede pagar y ella suma una al carrito. Para vos, es una venta asistida.", panel: "Carrito asistido · US$ 52",
       chat: { c: "Quiero una planchita para pelo lacio, tengo hasta US$ 60", a: "Tengo tres que entran en tu presupuesto. La de **5 niveles de temperatura** calienta en unos **60 segundos**.", tarjetas: PLANCHAS, ok: "Agregado al carrito" } },
-    { hora: "21:05", t: "Un producto agotado, una venta que vuelve", x: "La planchita mini negra se agotó. El asesor toma el email de la clienta y le avisa apenas vuelva.", panel: "Aviso de stock pedido",
+    { hora: "21:05", t: "Un agotado que no se pierde", x: "La planchita mini negra no tiene stock. El asesor toma el email de la clienta y vos sabés qué reponer y a quién avisarle.", panel: "Aviso de stock pedido",
       chat: { c: "¿Tienen la planchita mini en negro?", a: "Por ahora la **planchita mini negra** está sin stock. Si querés, dejame tu email y te aviso apenas vuelva.", form: [["Email", "lucia@correo.com"], ["Producto", "Planchita mini · negra"]], ok: "Aviso de stock programado" } },
-    { hora: "03:07", t: "3 de la mañana: el asesor sigue atendiendo", x: "Un local de Rosario quiere revender. Deja sus datos y a la mañana te espera en el panel, listo para llamar.", panel: "Lead mayorista · Rosario",
+    { hora: "03:07", t: "Un mayorista que te espera a la mañana", x: "A las 3 de la mañana, un local de Rosario quiere revender. Deja sus datos y a la mañana lo tenés en el panel, listo para llamar.", panel: "Lead mayorista · Rosario",
       chat: { c: "Tengo un local y quiero revender sus productos", a: "¡Buenísimo! Dejame tus datos y el equipo comercial te escribe con la lista de precios mayoristas.", form: [["Nombre", "Lucía Ferreyra"], ["Negocio", "Estudio Norte"], ["Ciudad", "Rosario"]], ok: "Datos enviados al equipo" } },
   ];
   const miniWidget = (hora, ch) => `<div class="widget-demo widget-rubro widget-demo--auto pausa"><div class="wd-cabeza"><div class="avatar">${icono("chispa")}</div><div><div class="wd-nombre">Asesor de la tienda</div><div class="wd-estado">Hoy · ${hora}</div></div></div><div class="wd-cuerpo">${chatSecuencia(ch)}</div></div>`;
