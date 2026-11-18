@@ -635,6 +635,9 @@
   .prob-etq { align-self: center; white-space: nowrap; font-size: 12.5px; font-weight: 600; color: #C81E1E; background: var(--rojo-suave); padding: 6px 12px; border-radius: 999px; }
   .prob-sol { background: linear-gradient(150deg, #F3FAF6, #fff) !important; border-color: #CDEBDB !important; }
   .prob-sol .prob-n { background: var(--ok); border-color: var(--ok); color: #fff; }
+  .prob-n svg { width: 19px; height: 19px; }
+  .prob-n { background: var(--rojo-suave) !important; border-color: #fff !important; box-shadow: 0 0 0 4px #fff; }
+  .prob-sol .prob-n { background: var(--ok) !important; }
   .prob-sol .prob-n svg { width: 16px; height: 16px; }
   .prob-sol a { color: var(--petroleo); font-weight: 600; }
   @media (max-width: 900px) { .prob { grid-template-columns: 1fr; } .prob-izq { position: static; } }
@@ -1346,7 +1349,7 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
     <div class="hero-fondo" aria-hidden="true"><div class="mancha mancha--1"></div><div class="mancha mancha--2"></div></div>
     <div class="envoltura">
       <div class="hero-texto">
-        <h1>Convertí las <span class="subr">visitas que pagás<svg class="subr-trazo" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M4 15 C 52 9, 104 7, 156 9 S 248 15, 296 8"/><path pathLength="1" d="M18 19 C 84 14, 170 13, 282 15"/></svg></span> en ventas, con un asesor que atiende a cada cliente <em>hasta la compra<svg aria-hidden="true"><use href="#chispa"/></svg></em></h1>
+        <h1><span class="subr">Aumentá tus ventas<svg class="subr-trazo" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M4 15 C 52 9, 104 7, 156 9 S 248 15, 296 8"/><path pathLength="1" d="M18 19 C 84 14, 170 13, 282 15"/></svg></span> con un asesor que acompaña a cada cliente <em>hasta la compra<svg aria-hidden="true"><use href="#chispa"/></svg></em></h1>
         <p class="hero-rubro">Hecho para tiendas de <span class="rot" id="rot"><span class="act">bazar</span><span>muebles y deco</span><span>jugueterías</span><span>belleza y cuidado personal</span></span></p>
         <div class="hero-acciones">
           <a class="btn btn--rojo" href="#demo">Ver cómo queda en mi tienda <svg aria-hidden="true"><use href="#flecha"/></svg></a>
@@ -1404,17 +1407,17 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
       </div>
       <ol class="prob-lista">
         <li>
-          <span class="prob-n">01</span>
-          <div><h3>La duda sin respuesta</h3><p>¿Me entra? ¿Llega antes del viernes? ¿Cuál me conviene? Si nadie contesta en ese momento, el cliente cierra la pestaña.</p></div>
+          <span class="prob-n"><svg aria-hidden="true"><use href="#pn-duda"/></svg></span>
+          <div><h3>Preguntas sin responder</h3><p>¿Me entra? ¿Llega antes del viernes? ¿Cuál me conviene? Si nadie contesta en ese momento, el cliente cierra la pestaña.</p></div>
           <span class="prob-etq">Venta perdida</span>
         </li>
         <li>
-          <span class="prob-n">02</span>
-          <div><h3>WhatsApp no da abasto</h3><p>En Hot Sale, en Cyber o un sábado a la noche, las consultas se acumulan. Cuando por fin respondés, muchas veces ya compró en otro lado.</p></div>
+          <span class="prob-n"><svg aria-hidden="true"><use href="#pn-chat"/></svg></span>
+          <div><h3>WhatsApp colapsado</h3><p>En Hot Sale, en Cyber o un sábado a la noche, las consultas se acumulan. Cuando por fin respondés, muchas veces ya compró en otro lado.</p></div>
           <span class="prob-etq">Cliente que espera</span>
         </li>
         <li>
-          <span class="prob-n">03</span>
+          <span class="prob-n"><svg aria-hidden="true"><use href="#repetir"/></svg></span>
           <div><h3>Tu equipo repite lo mismo</h3><p>Stock, envíos, medidas, cuotas. Horas por mes respondiendo preguntas que ya están en tus fichas.</p></div>
           <span class="prob-etq">Horas del equipo</span>
         </li>
@@ -2061,36 +2064,6 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
         <div><svg aria-hidden="true"><use href="#check"/></svg><b>Sin trabajo técnico</b><span>Lo conectamos y lo probamos nosotros. En tu tienda se agrega una línea de código.</span></div>
       </div>
       <div class="garantias-cta"><a class="btn btn--rojo" href="#demo">Probalo en tu tienda <svg aria-hidden="true"><use href="#flecha"/></svg></a></div>
-    </div>
-  </section>
-
-  <!-- ================= QUIÉN ESTÁ DETRÁS ================= -->
-  <section class="banda" id="quien">
-    <div class="envoltura">
-      <div class="quien">
-        <div class="quien-persona">
-          <span class="quien-av" aria-hidden="true">AG</span>
-          <div><b>Agustín Gallesio</b><span>Cofundador de Guidelia</span></div>
-        </div>
-        <div class="quien-txt">
-          <h2>Hecho por gente que conoce el ecommerce argentino</h2>
-          <p>Agustín Gallesio viene del marketing digital para tiendas online: campañas de Google y Meta, conversión y medición de resultados. Desde ahí vio el mismo problema una y otra vez: tiendas que invierten para traer visitas y las pierden por una duda que nadie respondió a tiempo.</p>
-          <div class="quien-mision">
-            <span>La misión</span>
-            <p>Que cualquier tienda online argentina pueda atender a cada cliente como lo haría su mejor vendedor, con la tecnología de las grandes marcas y sin necesitar un equipo técnico.</p>
-          </div>
-          <ul class="quien-hechos">
-            <li><svg aria-hidden="true"><use href="#check"/></svg>Hecho en Argentina</li>
-            <li><svg aria-hidden="true"><use href="#check"/></svg>Para Tiendanube y WooCommerce</li>
-            <li><svg aria-hidden="true"><use href="#check"/></svg>Acompañamiento en la puesta en marcha</li>
-          </ul>
-          <div class="quien-primeros"><b>Primeros clientes</b><span>Guidelia está sumando sus primeras tiendas, con condiciones especiales a cambio de compartir sus resultados.</span></div>
-          <div class="quien-acc">
-            <a class="btn btn--rojo" href="#demo">Probalo en tu tienda <svg aria-hidden="true"><use href="#flecha"/></svg></a>
-            <a class="btn btn--borde" href="mailto:agustin@guidelia.com.ar?subject=Quiero%20saber%20m%C3%A1s%20de%20Guidelia">Escribile a Agustín</a>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
