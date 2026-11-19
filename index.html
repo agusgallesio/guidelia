@@ -617,31 +617,24 @@
     .hpil::before { left: 10px; right: 10px; }
   }
   @media (max-width: 860px) { .hero-pilares { grid-template-columns: 1fr; } .hpil + .hpil { border-left: 0; border-top: 1px solid var(--linea); } }
-  .prob { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
-  .prob-izq { display: grid; gap: 28px; position: sticky; top: 110px; }
-  .prob-dato { background: linear-gradient(150deg, var(--petroleo-hondo), var(--petroleo)); color: #fff; border-radius: var(--r-xl); padding: 28px 30px; display: grid; gap: 8px; box-shadow: var(--sombra-2); position: relative; overflow: hidden; }
-  .prob-dato::after { content: ""; position: absolute; right: -40px; top: -40px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(closest-side, rgba(255,50,49,.35), transparent); }
-  .prob-dato b { font-family: var(--f-display); font-weight: 600; font-size: clamp(56px, 6vw, 76px); line-height: 1; letter-spacing: -.04em; }
-  .prob-dato span { font-size: 18px; line-height: 1.4; color: #E7F1F5; max-width: 340px; }
-  .prob-dato small { font-size: 13px; color: #8FB6C5; }
-  .prob-dato small a { color: #fff; }
-  .prob-lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; position: relative; }
-  .prob-lista::before { content: ""; position: absolute; left: 31px; top: 30px; bottom: 30px; width: 2px; background: linear-gradient(var(--rojo-suave), var(--cielo)); }
-  .prob-lista li { position: relative; display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 18px; align-items: start; background: #fff; border: 1px solid var(--linea); border-radius: var(--r-lg); padding: 22px 22px 22px 0; box-shadow: var(--sombra-1); transition: transform .2s, box-shadow .2s; }
-  .prob-lista li:hover { transform: translateX(4px); box-shadow: var(--sombra-2); }
-  .prob-n { justify-self: center; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: #fff; border: 2px solid var(--rojo-suave); color: var(--rojo); font-family: var(--f-display); font-weight: 600; font-size: 14px; position: relative; z-index: 1; }
-  .prob-lista h3 { font-size: 19px; margin: 0 0 6px; }
-  .prob-lista p { margin: 0; font-size: 15.5px; color: var(--texto-2); line-height: 1.55; }
-  .prob-etq { align-self: center; white-space: nowrap; font-size: 12.5px; font-weight: 600; color: #C81E1E; background: var(--rojo-suave); padding: 6px 12px; border-radius: 999px; }
-  .prob-sol { background: linear-gradient(150deg, #F3FAF6, #fff) !important; border-color: #CDEBDB !important; }
-  .prob-sol .prob-n { background: var(--ok); border-color: var(--ok); color: #fff; }
-  .prob-n svg { width: 19px; height: 19px; }
-  .prob-n { background: var(--rojo-suave) !important; border-color: #fff !important; box-shadow: 0 0 0 4px #fff; }
-  .prob-sol .prob-n { background: var(--ok) !important; }
-  .prob-sol .prob-n svg { width: 16px; height: 16px; }
-  .prob-sol a { color: var(--petroleo); font-weight: 600; }
-  @media (max-width: 900px) { .prob { grid-template-columns: 1fr; } .prob-izq { position: static; } }
-  @media (max-width: 560px) { .prob-lista li { grid-template-columns: 52px minmax(0, 1fr); padding-right: 18px; } .prob-lista::before { left: 25px; } .prob-etq { grid-column: 2; justify-self: start; } }
+  .prob-casos { display: grid; gap: clamp(28px, 4vw, 48px); }
+  .prob-caso { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px); gap: clamp(28px, 6vw, 88px); align-items: center; background: #fff; border: 1px solid var(--linea); border-radius: var(--r-xl); padding: clamp(24px, 4vw, 48px); box-shadow: var(--sombra-1); }
+  .prob-caso:nth-child(even) { grid-template-columns: minmax(0, 420px) minmax(0, 1fr); }
+  .prob-caso:nth-child(even) .prob-tx { order: 2; }
+  .prob-tx { display: grid; gap: 14px; justify-items: start; min-width: 0; }
+  .prob-tx h3 { font-size: clamp(24px, 2.6vw, 32px); margin: 0; }
+  .prob-tx p { margin: 0; font-size: 16.5px; color: var(--texto-2); line-height: 1.55; max-width: 46ch; }
+  .prob-n { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--rojo-suave); color: var(--rojo); }
+  .prob-n svg { width: 20px; height: 20px; }
+  .prob-etq { font-size: 12.5px; font-weight: 600; color: #C81E1E; background: var(--rojo-suave); padding: 5px 12px; border-radius: 999px; }
+  .prob-con { display: flex !important; gap: 10px; align-items: flex-start; padding: 14px 16px; border-radius: var(--r-lg); background: #F3FAF6; border: 1px solid #CDEBDB; color: var(--texto) !important; }
+  .prob-con svg { flex: 0 0 auto; width: 20px; height: 20px; margin-top: 1px; padding: 3px; border-radius: 50%; background: var(--ok); color: #fff; }
+  .prob-con b { color: #17774A; }
+  .prob-w { min-width: 0; }
+  .prob-w .widget-demo { max-width: 420px; }
+  .prob-w .widget-demo--auto .wd-cuerpo { min-height: 250px; }
+  .prob-nota { text-align: center; font-size: 13.5px; color: var(--apagado); margin: 22px 0 0; }
+  @media (max-width: 900px) { .prob-caso, .prob-caso:nth-child(even) { grid-template-columns: minmax(0, 1fr); } .prob-caso:nth-child(even) .prob-tx { order: 0; } .prob-w .widget-demo { max-width: 460px; } }
   .garantias { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
   .garantias > div { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: var(--r-lg); padding: 22px 20px; display: grid; gap: 8px; align-content: start; }
   .garantias svg { width: 22px; height: 22px; color: #7FE0B0; }
@@ -1397,39 +1390,44 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
 
   <!-- ================= EL PROBLEMA ================= -->
   <section class="banda banda--niebla" id="problema">
-    <div class="envoltura prob">
-      <div class="prob-izq">
-        <div class="cabeza-seccion" style="margin-bottom:0">
-          <h2>Pagás para que entren. Se van con una duda</h2>
-          <p class="bajada">Traer visitas es cada vez más caro. Lo que pasa después decide si esa inversión se convierte en ventas o se pierde.</p>
-        </div>
-        <div class="prob-dato">
-          <b>70%</b>
-          <span>de los carritos de compra online se abandonan antes de pagar.</span>
-          <small>Promedio de 50 estudios. <a href="https://baymard.com/lists/cart-abandonment-rate" target="_blank" rel="noopener">Baymard Institute</a>, 2025.</small>
-        </div>
+    <div class="envoltura">
+      <div class="cabeza-seccion cabeza-seccion--centro">
+        <h2>Pagás para que entren. Se van con una duda</h2>
+        <p class="bajada">Traer visitas es cada vez más caro. Lo que pasa después decide si esa inversión se convierte en ventas o se pierde. Mirá cómo cambia con Guidelia.</p>
       </div>
-      <ol class="prob-lista">
-        <li>
-          <span class="prob-n"><svg aria-hidden="true"><use href="#pn-duda"/></svg></span>
-          <div><h3>Preguntas sin responder</h3><p>¿Me entra? ¿Llega antes del viernes? ¿Cuál me conviene? Si nadie contesta en ese momento, el cliente cierra la pestaña.</p></div>
-          <span class="prob-etq">Venta perdida</span>
-        </li>
-        <li>
-          <span class="prob-n"><svg aria-hidden="true"><use href="#pn-chat"/></svg></span>
-          <div><h3>WhatsApp colapsado</h3><p>En Hot Sale, en Cyber o un sábado a la noche, las consultas se acumulan. Cuando por fin respondés, muchas veces ya compró en otro lado.</p></div>
-          <span class="prob-etq">Cliente que espera</span>
-        </li>
-        <li>
-          <span class="prob-n"><svg aria-hidden="true"><use href="#repetir"/></svg></span>
-          <div><h3>Tu equipo repite lo mismo</h3><p>Stock, envíos, medidas, cuotas. Horas por mes respondiendo preguntas que ya están en tus fichas.</p></div>
-          <span class="prob-etq">Horas del equipo</span>
-        </li>
-        <li class="prob-sol">
-          <span class="prob-n"><svg aria-hidden="true"><use href="#chispa"/></svg></span>
-          <div><h3>Guidelia resuelve las tres</h3><p>Sin cambiar tu tienda ni sumar gente. <a href="#como-funciona">Mirá cómo funciona</a></p></div>
-        </li>
-      </ol>
+      <div class="prob-casos">
+        <article class="prob-caso" data-caso="0">
+          <div class="prob-tx">
+            <span class="prob-n"><svg aria-hidden="true"><use href="#pn-duda"/></svg></span>
+            <span class="prob-etq">Venta perdida</span>
+            <h3>Preguntas sin responder</h3>
+            <p>¿Me entra? ¿Llega antes del viernes? ¿Cuál me conviene? Si nadie contesta en ese momento, el cliente cierra la pestaña.</p>
+            <p class="prob-con"><svg aria-hidden="true"><use href="#check"/></svg><span><b>Con Guidelia:</b> contesta en el momento, con los datos de tu ficha, y el cliente sigue comprando.</span></p>
+          </div>
+          <div class="prob-w"></div>
+        </article>
+        <article class="prob-caso" data-caso="1">
+          <div class="prob-tx">
+            <span class="prob-n"><svg aria-hidden="true"><use href="#pn-chat"/></svg></span>
+            <span class="prob-etq">Cliente que espera</span>
+            <h3>WhatsApp colapsado</h3>
+            <p>En Hot Sale, en Cyber o un sábado a la noche, las consultas se acumulan. Cuando por fin respondés, muchas veces ya compró en otro lado.</p>
+            <p class="prob-con"><svg aria-hidden="true"><use href="#check"/></svg><span><b>Con Guidelia:</b> atiende todas las consultas a la vez, sin cola y sin que nadie tenga que estar conectado.</span></p>
+          </div>
+          <div class="prob-w"></div>
+        </article>
+        <article class="prob-caso" data-caso="2">
+          <div class="prob-tx">
+            <span class="prob-n"><svg aria-hidden="true"><use href="#repetir"/></svg></span>
+            <span class="prob-etq">Horas del equipo</span>
+            <h3>Tu equipo repite lo mismo</h3>
+            <p>Stock, envíos, medidas, cuotas. Horas por mes respondiendo preguntas que ya están en tus fichas.</p>
+            <p class="prob-con"><svg aria-hidden="true"><use href="#check"/></svg><span><b>Con Guidelia:</b> responde solo con lo que ya está en tu catálogo, y tu equipo se dedica a vender.</span></p>
+          </div>
+          <div class="prob-w"></div>
+        </article>
+      </div>
+      <p class="prob-nota">Conversaciones de ejemplo con los productos de una tienda de demostración.</p>
       <div class="cta-seccion"><a class="btn btn--rojo" href="#demo">Probalo en tu tienda <svg aria-hidden="true"><use href="#flecha"/></svg></a><span>Mirá cómo respondería tus preguntas más frecuentes, con tus productos.</span></div>
     </div>
   </section>
@@ -2692,6 +2690,23 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
       chat: { c: "Tengo un local y quiero revender sus productos", a: "¡Buenísimo! Dejame tus datos y el equipo comercial te escribe con la lista de precios mayoristas.", form: [["Nombre", "Lucía Ferreyra"], ["Negocio", "Estudio Norte"], ["Ciudad", "Rosario"]], ok: "Datos enviados al equipo" } },
   ];
   const miniWidget = (hora, ch) => `<div class="widget-demo widget-rubro widget-demo--auto pausa"><div class="wd-cabeza"><div class="avatar">${icono("chispa")}</div><div><div class="wd-nombre">Asesor de la tienda</div><div class="wd-estado">Hoy · ${hora}</div></div></div><div class="wd-cuerpo">${chatSecuencia(ch)}</div></div>`;
+  // --- Problemas: cada uno con la conversación que lo resuelve
+  const PROB = [
+    { estado: "Hoy · 16:20", c: "¿Me llega antes del viernes si compro hoy en Córdoba?", a: "Si pagás hoy, te llega entre el **miércoles y el jueves**. El envío es **gratis** desde US$ 50.", tarjetas: [["Planchita cerámica 5 niveles", "US$ 52", "-15%", "plancha2"]], ok: "Siguió al carrito" },
+    { estado: "Sábado · 23:40", c: "¿La promo de 6 cuotas sin interés sigue hasta mañana?", a: "Sí, vale **hasta el domingo a las 23:59** con tarjetas de crédito seleccionadas. ¿Querés que te muestre qué entra en la promo?", chips: ["Ver productos en promo"], ok: "Respondida al instante" },
+    { estado: "Lunes · 10:15", c: "¿Cuánto pesa y trae garantía?", a: "El **secador plegable de 1200 W** pesa **344 g** y tiene **12 meses de garantía** oficial.", tarjetas: [["Secador plegable 1200 W", "US$ 39", "-20%", "secador2"]], ok: "Tu equipo no tuvo que intervenir" },
+  ];
+  document.querySelectorAll(".prob-caso").forEach((el) => {
+    const q = PROB[+el.dataset.caso];
+    el.querySelector(".prob-w").innerHTML = `<div class="widget-demo widget-rubro widget-demo--auto pausa"><div class="wd-cabeza"><div class="avatar">${icono("chispa")}</div><div><div class="wd-nombre">Asesor de la tienda</div><div class="wd-estado">${q.estado}</div></div></div><div class="wd-cuerpo">${chatSecuencia(q)}</div></div>`;
+  });
+  if ("IntersectionObserver" in window && !QUIETO) {
+    const ioProb = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.querySelector(".widget-demo").classList.remove("pausa"); ioProb.unobserve(e.target); } }), { threshold: 0.4 });
+    document.querySelectorAll(".prob-w").forEach((w) => ioProb.observe(w));
+    setTimeout(() => document.querySelectorAll(".prob-w .pausa").forEach((w) => w.classList.remove("pausa")), 8000);
+  } else {
+    document.querySelectorAll(".prob-w .pausa").forEach((w) => w.classList.remove("pausa"));
+  }
   const contDia = $("dia-pasos");
   contDia.innerHTML = DIA.map((p, i) => `<article class="dia-paso${i === 0 ? " act" : ""}" data-i="${i}"><div class="dia-hora">${p.hora}</div><h3>${p.t}</h3><p>${p.x}</p><span class="dia-panel"><i>${icono("check")}</i>En tu panel: ${p.panel}</span><div class="dia-mini" data-hora="${p.hora}"></div></article>`).join("");
   const pasosDia = [...contDia.children];
