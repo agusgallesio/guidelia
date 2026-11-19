@@ -964,7 +964,7 @@
   .hero--rubro h1 { font-size: clamp(38px, 5.2vw, 64px); }
   .tarjeta-prod .foto--ilus { padding: 6px; }
   .tarjeta-prod .foto--ilus svg { width: 100%; height: 100%; opacity: 1; }
-  .widget-rubro .msg, .widget-rubro .tarjetas, .widget-rubro .chips, .widget-rubro .aviso-ok { animation: entra .5s cubic-bezier(.2,.8,.2,1) both; }
+  .widget-rubro .msg, .widget-rubro .tarjetas, .widget-rubro .chips, .widget-rubro .aviso-ok { animation: entra .25s cubic-bezier(.2,.8,.2,1) both; }
   .repetir { margin: 14px auto 0; display: flex; align-items: center; gap: 7px; border: 0; background: rgba(255,255,255,.8); box-shadow: var(--sombra-1); padding: 9px 15px; border-radius: 999px; font-size: 13px; font-weight: 600; color: var(--petroleo); cursor: pointer; }
   .repetir svg { width: 15px; height: 15px; }
   .preguntas-rubro { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; max-width: 900px; margin: 0 auto; }
@@ -2611,14 +2611,14 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
   // --- Un día con el asesor: el chat cambia mientras se hace scroll
   function chatSecuencia(ch) {
     const d = (t) => (QUIETO ? "" : ` style="animation-delay:${t.toFixed(2)}s"`);
-    let t = 0.2;
+    let t = 0;
     let h = `<div class="msg msg--c"${d(t)}>${ch.c}</div>`;
-    t += 0.9;
+    t += 0.3;
     h += `<div class="msg msg--a"${d(t)}>${negritas(ch.a)}</div>`;
-    t += 0.7;
-    if (ch.tarjetas) { h += tarjetasRubro(ch.tarjetas).replace('<div class="tarjetas">', `<div class="tarjetas"${d(t)}>`); t += 0.7; }
-    if (ch.form) { h += `<div class="mini-form"${d(t)}>${ch.form.map(([k, v]) => `<div class="campo"><span>${k}</span><span>${v}</span></div>`).join("")}</div>`; t += 0.7; }
-    if (ch.chips) { h += `<div class="chips"${d(t)}>${ch.chips.map((x) => `<span class="chip-sug">${x}</span>`).join("")}</div>`; t += 0.5; }
+    t += 0.25;
+    if (ch.tarjetas) { h += tarjetasRubro(ch.tarjetas).replace('<div class="tarjetas">', `<div class="tarjetas"${d(t)}>`); t += 0.25; }
+    if (ch.form) { h += `<div class="mini-form"${d(t)}>${ch.form.map(([k, v]) => `<div class="campo"><span>${k}</span><span>${v}</span></div>`).join("")}</div>`; t += 0.25; }
+    if (ch.chips) { h += `<div class="chips"${d(t)}>${ch.chips.map((x) => `<span class="chip-sug">${x}</span>`).join("")}</div>`; t += 0.2; }
     if (ch.ok) h += `<div class="aviso-ok"${d(t)}>${icono("check")}${ch.ok}</div>`;
     return h;
   }
