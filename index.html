@@ -617,24 +617,12 @@
     .hpil::before { left: 10px; right: 10px; }
   }
   @media (max-width: 860px) { .hero-pilares { grid-template-columns: 1fr; } .hpil + .hpil { border-left: 0; border-top: 1px solid var(--linea); } }
-  .prob-casos { display: grid; gap: clamp(28px, 4vw, 48px); }
-  .prob-caso { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px); gap: clamp(28px, 6vw, 88px); align-items: center; background: #fff; border: 1px solid var(--linea); border-radius: var(--r-xl); padding: clamp(24px, 4vw, 48px); box-shadow: var(--sombra-1); }
-  .prob-caso:nth-child(even) { grid-template-columns: minmax(0, 420px) minmax(0, 1fr); }
-  .prob-caso:nth-child(even) .prob-tx { order: 2; }
-  .prob-tx { display: grid; gap: 14px; justify-items: start; min-width: 0; }
-  .prob-tx h3 { font-size: clamp(24px, 2.6vw, 32px); margin: 0; }
-  .prob-tx p { margin: 0; font-size: 16.5px; color: var(--texto-2); line-height: 1.55; max-width: 46ch; }
-  .prob-n { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--rojo-suave); color: var(--rojo); }
-  .prob-n svg { width: 20px; height: 20px; }
-  .prob-etq { font-size: 12.5px; font-weight: 600; color: #C81E1E; background: var(--rojo-suave); padding: 5px 12px; border-radius: 999px; }
-  .prob-con { display: flex !important; gap: 10px; align-items: flex-start; padding: 14px 16px; border-radius: var(--r-lg); background: #F3FAF6; border: 1px solid #CDEBDB; color: var(--texto) !important; }
-  .prob-con svg { flex: 0 0 auto; width: 20px; height: 20px; margin-top: 1px; padding: 3px; border-radius: 50%; background: var(--ok); color: #fff; }
-  .prob-con b { color: #17774A; }
-  .prob-w { min-width: 0; }
-  .prob-w .widget-demo { max-width: 420px; }
-  .prob-w .widget-demo--auto .wd-cuerpo { min-height: 250px; }
-  .prob-nota { text-align: center; font-size: 13.5px; color: var(--apagado); margin: 22px 0 0; }
-  @media (max-width: 900px) { .prob-caso, .prob-caso:nth-child(even) { grid-template-columns: minmax(0, 1fr); } .prob-caso:nth-child(even) .prob-tx { order: 0; } .prob-w .widget-demo { max-width: 460px; } }
+  .dia-antes, .dia-con { margin: 0; padding: 12px 16px; border-radius: var(--r-lg); font-size: 16px !important; line-height: 1.5; max-width: 46ch; }
+  .dia-antes { background: var(--rojo-suave); }
+  .dia-con { background: #F3FAF6; border: 1px solid #CDEBDB; color: var(--texto) !important; }
+  .dia-antes b, .dia-con b { display: block; font-size: 12.5px; font-weight: 700; letter-spacing: .01em; margin-bottom: 2px; }
+  .dia-antes b { color: #C81E1E; }
+  .dia-con b { color: #17774A; }
   .garantias { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
   .garantias > div { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: var(--r-lg); padding: 22px 20px; display: grid; gap: 8px; align-content: start; }
   .garantias svg { width: 22px; height: 22px; color: #7FE0B0; }
@@ -1388,56 +1376,12 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
     <div class="fila-cinta" id="cinta-2"></div>
   </section>
 
-  <!-- ================= EL PROBLEMA ================= -->
-  <section class="banda banda--niebla" id="problema">
-    <div class="envoltura">
-      <div class="cabeza-seccion cabeza-seccion--centro">
-        <h2>Pagás para que entren. Se van con una duda</h2>
-        <p class="bajada">Traer visitas es cada vez más caro. Lo que pasa después decide si esa inversión se convierte en ventas o se pierde. Mirá cómo cambia con Guidelia.</p>
-      </div>
-      <div class="prob-casos">
-        <article class="prob-caso" data-caso="0">
-          <div class="prob-tx">
-            <span class="prob-n"><svg aria-hidden="true"><use href="#pn-duda"/></svg></span>
-            <span class="prob-etq">Venta perdida</span>
-            <h3>Preguntas sin responder</h3>
-            <p>¿Me entra? ¿Llega antes del viernes? ¿Cuál me conviene? Si nadie contesta en ese momento, el cliente cierra la pestaña.</p>
-            <p class="prob-con"><svg aria-hidden="true"><use href="#check"/></svg><span><b>Con Guidelia:</b> contesta en el momento, con los datos de tu ficha, y el cliente sigue comprando.</span></p>
-          </div>
-          <div class="prob-w"></div>
-        </article>
-        <article class="prob-caso" data-caso="1">
-          <div class="prob-tx">
-            <span class="prob-n"><svg aria-hidden="true"><use href="#pn-chat"/></svg></span>
-            <span class="prob-etq">Cliente que espera</span>
-            <h3>WhatsApp colapsado</h3>
-            <p>En Hot Sale, en Cyber o un sábado a la noche, las consultas se acumulan. Cuando por fin respondés, muchas veces ya compró en otro lado.</p>
-            <p class="prob-con"><svg aria-hidden="true"><use href="#check"/></svg><span><b>Con Guidelia:</b> atiende todas las consultas a la vez, sin cola y sin que nadie tenga que estar conectado.</span></p>
-          </div>
-          <div class="prob-w"></div>
-        </article>
-        <article class="prob-caso" data-caso="2">
-          <div class="prob-tx">
-            <span class="prob-n"><svg aria-hidden="true"><use href="#repetir"/></svg></span>
-            <span class="prob-etq">Horas del equipo</span>
-            <h3>Tu equipo repite lo mismo</h3>
-            <p>Stock, envíos, medidas, cuotas. Horas por mes respondiendo preguntas que ya están en tus fichas.</p>
-            <p class="prob-con"><svg aria-hidden="true"><use href="#check"/></svg><span><b>Con Guidelia:</b> responde solo con lo que ya está en tu catálogo, y tu equipo se dedica a vender.</span></p>
-          </div>
-          <div class="prob-w"></div>
-        </article>
-      </div>
-      <p class="prob-nota">Conversaciones de ejemplo con los productos de una tienda de demostración.</p>
-      <div class="cta-seccion"><a class="btn btn--rojo" href="#demo">Probalo en tu tienda <svg aria-hidden="true"><use href="#flecha"/></svg></a><span>Sin costo</span></div>
-    </div>
-  </section>
-
   <!-- ================= UN DÍA CON EL ASESOR ================= -->
   <section class="banda" id="dia">
     <div class="envoltura">
       <div class="cabeza-seccion">
-        <h2>Mientras vos hacés otra cosa, el asesor sigue vendiendo</h2>
-        <p class="bajada">Cuatro momentos de un día cualquiera y lo que ves en tu panel. Son ejemplos ilustrativos.</p>
+        <h2>Pagás para que entren. Se van con una duda</h2>
+        <p class="bajada">Traer visitas es cada vez más caro. Lo que pasa después decide si esa inversión se convierte en ventas o se pierde. Cuatro momentos de un día cualquiera, con y sin Guidelia. Son ejemplos ilustrativos.</p>
       </div>
       <div class="dia">
         <div class="dia-pasos" id="dia-pasos"></div>
@@ -2680,35 +2624,18 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
   }
   const PLANCHAS = [["Planchita cerámica 230 °C", "US$ 39", "-15%", "plancha1"], ["Planchita cerámica 5 niveles", "US$ 52", "-15%", "plancha2"], ["Planchita titanio 230 °C", "US$ 59", "-15%", "plancha3"]];
   const DIA = [
-    { hora: "09:12", t: "Vendés mientras tu equipo hace otra cosa", x: "Alguien compara dos secadores camino al trabajo. El asesor le contesta con los datos de cada ficha y tu equipo no tiene que intervenir.", panel: "Consulta registrada · Secadores",
+    { hora: "09:12", t: "Preguntas sin responder", antes: "Alguien compara dos secadores camino al trabajo. Si nadie contesta en ese momento, cierra la pestaña.", con: "Le contesta con los datos de cada ficha, y tu equipo no tiene que repetir lo mismo.", panel: "Consulta registrada · Secadores",
       chat: { c: "¿Qué diferencia hay entre el secador de 2000 W y el plegable?", a: "El **profesional de 2000 W** trae difusor y cable de 3 metros. El **plegable de 1200 W** pesa **344 g**: es el ideal para viajar.", tarjetas: [["Secador profesional 2000 W", "US$ 89", "-15%", "secador1"], ["Secador plegable 1200 W", "US$ 39", "-20%", "secador2"]], chips: ["¿Cuál conviene para pelo largo?"] } },
-    { hora: "13:40", t: "Una venta que no se pierde por precio", x: "Una clienta tiene US$ 60. El asesor le muestra solo lo que puede pagar y ella suma una al carrito. Para vos, es una venta asistida.", panel: "Carrito asistido · US$ 52",
+    { hora: "13:40", t: "Se van por el precio", antes: "Una clienta tiene US$ 60 y no encuentra qué entra en su presupuesto. Se va a mirar a otro lado.", con: "Le muestra solo lo que puede pagar y ella suma una al carrito. Para vos, es una venta asistida.", panel: "Carrito asistido · US$ 52",
       chat: { c: "Quiero una planchita para pelo lacio, tengo hasta US$ 60", a: "Tengo tres que entran en tu presupuesto. La de **5 niveles de temperatura** calienta en unos **60 segundos**.", tarjetas: PLANCHAS, ok: "Agregado al carrito" } },
-    { hora: "21:05", t: "Un agotado que no se pierde", x: "La planchita mini negra no tiene stock. El asesor toma el email de la clienta y vos sabés qué reponer y a quién avisarle.", panel: "Aviso de stock pedido",
+    { hora: "21:05", t: "WhatsApp colapsado de noche", antes: "A la noche y en Hot Sale las consultas se acumulan. Cuando respondés, ya compró en otro lado o el producto se agotó.", con: "Atiende a todos a la vez y, si algo no tiene stock, toma el email de la clienta para avisarle cuando vuelva.", panel: "Aviso de stock pedido",
       chat: { c: "¿Tienen la planchita mini en negro?", a: "Por ahora la **planchita mini negra** está sin stock. Si querés, dejame tu email y te aviso apenas vuelva.", form: [["Email", "lucia@correo.com"], ["Producto", "Planchita mini · negra"]], ok: "Aviso de stock programado" } },
-    { hora: "03:07", t: "Un mayorista que te espera a la mañana", x: "A las 3 de la mañana, un local de Rosario quiere revender. Deja sus datos y a la mañana lo tenés en el panel, listo para llamar.", panel: "Lead mayorista · Rosario",
+    { hora: "03:07", t: "Un mayorista que no espera", antes: "A las 3 de la mañana un local de Rosario quiere revender y nadie le contesta hasta el otro día.", con: "Deja sus datos y a la mañana lo tenés en el panel, listo para llamar.", panel: "Lead mayorista · Rosario",
       chat: { c: "Tengo un local y quiero revender sus productos", a: "¡Buenísimo! Dejame tus datos y el equipo comercial te escribe con la lista de precios mayoristas.", form: [["Nombre", "Lucía Ferreyra"], ["Negocio", "Estudio Norte"], ["Ciudad", "Rosario"]], ok: "Datos enviados al equipo" } },
   ];
   const miniWidget = (hora, ch) => `<div class="widget-demo widget-rubro widget-demo--auto pausa"><div class="wd-cabeza"><div class="avatar">${icono("chispa")}</div><div><div class="wd-nombre">Asesor de la tienda</div><div class="wd-estado">Hoy · ${hora}</div></div></div><div class="wd-cuerpo">${chatSecuencia(ch)}</div></div>`;
-  // --- Problemas: cada uno con la conversación que lo resuelve
-  const PROB = [
-    { estado: "Hoy · 16:20", c: "¿Me llega antes del viernes si compro hoy en Córdoba?", a: "Si pagás hoy, te llega entre el **miércoles y el jueves**. El envío es **gratis** desde US$ 50.", tarjetas: [["Planchita cerámica 5 niveles", "US$ 52", "-15%", "plancha2"]], ok: "Siguió al carrito" },
-    { estado: "Sábado · 23:40", c: "¿La promo de 6 cuotas sin interés sigue hasta mañana?", a: "Sí, vale **hasta el domingo a las 23:59** con tarjetas de crédito seleccionadas. ¿Querés que te muestre qué entra en la promo?", chips: ["Ver productos en promo"], ok: "Respondida al instante" },
-    { estado: "Lunes · 10:15", c: "¿Cuánto pesa y trae garantía?", a: "El **secador plegable de 1200 W** pesa **344 g** y tiene **12 meses de garantía** oficial.", tarjetas: [["Secador plegable 1200 W", "US$ 39", "-20%", "secador2"]], ok: "Tu equipo no tuvo que intervenir" },
-  ];
-  document.querySelectorAll(".prob-caso").forEach((el) => {
-    const q = PROB[+el.dataset.caso];
-    el.querySelector(".prob-w").innerHTML = `<div class="widget-demo widget-rubro widget-demo--auto pausa"><div class="wd-cabeza"><div class="avatar">${icono("chispa")}</div><div><div class="wd-nombre">Asesor de la tienda</div><div class="wd-estado">${q.estado}</div></div></div><div class="wd-cuerpo">${chatSecuencia(q)}</div></div>`;
-  });
-  if ("IntersectionObserver" in window && !QUIETO) {
-    const ioProb = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.querySelector(".widget-demo").classList.remove("pausa"); ioProb.unobserve(e.target); } }), { threshold: 0.4 });
-    document.querySelectorAll(".prob-w").forEach((w) => ioProb.observe(w));
-    setTimeout(() => document.querySelectorAll(".prob-w .pausa").forEach((w) => w.classList.remove("pausa")), 8000);
-  } else {
-    document.querySelectorAll(".prob-w .pausa").forEach((w) => w.classList.remove("pausa"));
-  }
   const contDia = $("dia-pasos");
-  contDia.innerHTML = DIA.map((p, i) => `<article class="dia-paso${i === 0 ? " act" : ""}" data-i="${i}"><div class="dia-hora">${p.hora}</div><h3>${p.t}</h3><p>${p.x}</p><span class="dia-panel"><i>${icono("check")}</i>En tu panel: ${p.panel}</span><div class="dia-mini" data-hora="${p.hora}"></div></article>`).join("");
+  contDia.innerHTML = DIA.map((p, i) => `<article class="dia-paso${i === 0 ? " act" : ""}" data-i="${i}"><div class="dia-hora">${p.hora}</div><h3>${p.t}</h3><p class="dia-antes"><b>Antes</b>${p.antes}</p><p class="dia-con"><b>Con Guidelia</b>${p.con}</p><span class="dia-panel"><i>${icono("check")}</i>En tu panel: ${p.panel}</span><div class="dia-mini" data-hora="${p.hora}"></div></article>`).join("");
   const pasosDia = [...contDia.children];
   let diaActivo = -1;
   function mostrarDia(i) {
