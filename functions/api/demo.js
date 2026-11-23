@@ -6,7 +6,7 @@ const DESTINO_POR_DEFECTO = "agustin@guidelia.com.ar";
 const VISITAS = ["Menos de 5.000", "De 5.000 a 10.000", "De 10.000 a 30.000", "Más de 30.000"];
 const PLATAFORMAS = ["WooCommerce", "Tiendanube", "Shopify", "Otra"];
 
-export async function onRequestPost({ request, env }) {
+export async function onRequestPost({ request, env, waitUntil }) {
   if (!origenValido(request)) return error("origen", "Solicitud no permitida.", 403);
   let c;
   try {
@@ -29,6 +29,34 @@ export async function onRequestPost({ request, env }) {
 
   const lead = { nombre, tienda, email, telefono: c.telefono, plataforma, visitas, fecha: new Date().toISOString(), pais: request.headers.get("CF-IPCountry") || "" };
   if (env.LEADS) await env.LEADS.put(`lead:${lead.fecha}:${crypto.randomUUID().slice(0, 8)}`, JSON.stringify(lead));
+
+  // Aviso al CRM: dispara la tarea que carga el lead en el panel. Corre en segundo plano y nunca bloquea ni rompe el formulario.
+  // Variables (Cloudflare Pages > Settings > Variables and Secrets): ROUTINE_FIRE_URL (texto) y ROUTINE_FIRE_TOKEN (secreto).
+  if (env.ROUTINE_FIRE_URL && env.ROUTINE_FIRE_TOKEN) {
+    const aviso = fetch(env.ROUTINE_FIRE_URL, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${env.ROUTINE_FIRE_TOKEN}`,
+        "anthropic-version": "2023-06-01",
+        "anthropic-beta": "experimental-cc-routine-2026-04-01",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        text: JSON.stringify({
+          leadId: crypto.randomUUID(),
+          nombre,
+          sitio: tienda,
+          mail: email,
+          telefono: c.telefono,
+          plataforma,
+          mensaje: `Visitas mensuales estimadas: ${visitas}`,
+          fecha: lead.fecha,
+        }),
+      }),
+    }).catch(() => {});
+    if (typeof waitUntil === "function") waitUntil(aviso);
+    else await aviso;
+  }
 
   const texto = [
     "Nueva solicitud de demo de Guidelia",
