@@ -428,14 +428,46 @@
   .sync .st { width: 7px; height: 7px; border-radius: 50%; background: var(--ok); }
   @keyframes sube { to { transform: translateY(-50%); } }
 
-  /* ---------- Tres pilares ---------- */
-  .pilares { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; position: relative; }
-  .pilares::before { content: ""; position: absolute; left: 12%; right: 12%; top: 50px; border-top: 2px dotted var(--celeste, #6FB8D3); z-index: 0; }
-  .pilar { position: relative; z-index: 1; }
-  .pilar-n { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--petroleo); color: #fff; font-family: var(--f-display); font-weight: 600; font-size: 18px; margin-bottom: 6px; }
-  .pilares-cierre { margin: 28px auto 0; max-width: 62ch; text-align: center; color: var(--texto-2); font-size: 16px; }
+  /* ---------- Tres pilares: ciclo animado ---------- */
+  .resalte { font-style: normal; color: var(--petroleo); background: linear-gradient(100deg, var(--petroleo) 34%, #3C8FB3 50%, var(--petroleo) 66%); background-size: 260% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: brilloT 7s ease-in-out infinite; }
+  @media (prefers-reduced-motion: reduce) { .resalte { animation: none; } }
+  .ciclo { position: relative; max-width: 1120px; margin: 0 auto; }
+  .ciclo-svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .ciclo-base { fill: none; stroke: var(--petroleo-medio); stroke-opacity: .55; stroke-width: 3.5; stroke-linecap: round; stroke-dasharray: 1 11; }
+  .ciclo-rastro { fill: none; stroke: url(#ciclo-trazo); stroke-width: 4; stroke-linecap: round; }
+  .ciclo-etq { font-family: var(--f-texto); font-size: 17px; font-weight: 600; fill: var(--petroleo-medio); }
+  .ciclo-nodo .halo { fill: var(--cielo); opacity: 0; transform-box: fill-box; transform-origin: center; transform: scale(.82); transition: opacity .5s, transform .5s; }
+  .ciclo-nodo .cuerpo { transform-box: fill-box; transform-origin: center; transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+  .ciclo-nodo.activo .halo { opacity: 1; transform: scale(1); }
+  .ciclo-nodo.activo .cuerpo { transform: scale(1.07); }
+  .ciclo-nodo .num { font-family: var(--f-texto); font-size: 15px; font-weight: 600; fill: var(--petroleo); }
+  .ciclo-textos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin-top: 18px; }
+  .ciclo-item { text-align: center; display: grid; gap: 8px; justify-items: center; }
+  .ciclo-item h3 { font-size: 22px; transition: color .4s; }
+  .ciclo-item p { color: var(--texto-2); font-size: 15.5px; line-height: 1.55; max-width: 34ch; transition: color .4s; }
+  .ciclo-item.activo h3 { color: var(--petroleo); }
+  .ciclo-item.activo p { color: var(--texto); }
+  .ciclo-mini { display: none; }
+  .ciclo-chispa { transition: opacity .3s; }
+  .ciclo.quieto .ciclo-chispa, .ciclo.quieto .ciclo-rastro { display: none; }
+  .pilares-cierre { margin: 34px auto 0; max-width: 62ch; text-align: center; color: var(--texto-2); font-size: 16px; }
   .pilares-cierre b { color: var(--texto); font-weight: 600; }
-  @media (max-width: 900px) { .pilares { grid-template-columns: minmax(0, 1fr); } .pilares::before { display: none; } }
+  @media (max-width: 760px) {
+    .ciclo-svg { display: none; }
+    .ciclo-textos { grid-template-columns: minmax(0, 1fr); gap: 0; margin-top: 0; }
+    .ciclo-item { grid-template-columns: 64px minmax(0, 1fr); text-align: left; justify-items: start; column-gap: 18px; row-gap: 6px; position: relative; padding-bottom: 34px; }
+    .ciclo-item > * { grid-column: 2; }
+    .ciclo-item h3 { font-size: 20px; }
+    .ciclo-mini { display: grid; grid-column: 1 !important; grid-row: 1 / span 2; place-items: center; width: 64px; height: 64px; border-radius: 50%; color: #fff;
+      background: linear-gradient(150deg, var(--petroleo), var(--petroleo-hondo)); box-shadow: 0 0 0 0 var(--cielo); transition: box-shadow .5s, transform .5s; position: relative; z-index: 1; }
+    .ciclo-mini svg { width: 26px; height: 26px; }
+    .ciclo-item.activo .ciclo-mini { box-shadow: 0 0 0 9px var(--cielo); transform: scale(1.05); }
+    .ciclo-item::after { content: ""; position: absolute; left: 31px; top: 70px; bottom: 4px; border-left: 3px dotted var(--petroleo-medio); opacity: .35; }
+    .ciclo-item:last-child { padding-bottom: 0; }
+    .ciclo-item:last-child::after { display: none; }
+    .pilares-cierre { text-align: left; margin-top: 28px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .ciclo-nodo .halo, .ciclo-nodo .cuerpo, .ciclo-mini { transition: none; } }
 
   /* ---------- Funciones (bento) ---------- */
   .bento { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 18px; }
@@ -1549,25 +1581,67 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
   <section class="banda banda--niebla" id="pilares">
     <div class="envoltura">
       <div class="cabeza-seccion cabeza-seccion--centro">
-        <h2>Tres pilares que hacen crecer tu tienda</h2>
-        <p class="bajada">El asesor es la puerta. Lo que aprende de cada conversación es lo que lo hace vender mejor cada mes.</p>
+        <h2>Te presentamos <em class="resalte">Shopping Intelligence</em></h2>
+        <p class="bajada">Un sistema que convierte cada conversación con tus compradores en ventas y en un catálogo más completo. Son tres pilares conectados y cada uno alimenta al siguiente.</p>
       </div>
-      <div class="pilares">
-        <article class="celda pilar">
-          <span class="pilar-n" aria-hidden="true">1</span>
-          <h3>Un asesor en tu tienda</h3>
-          <p>Atiende a cada comprador al lado del producto, recomienda con tu catálogo real y lo lleva al carrito, a cualquier hora.</p>
-        </article>
-        <article class="celda pilar">
-          <span class="pilar-n" aria-hidden="true">2</span>
-          <h3>Lo que dicen tus clientes, ordenado</h3>
-          <p>Qué preguntan, qué buscan y qué no encuentran, en tu panel. Sabés qué reponer y qué corregir primero.</p>
-        </article>
-        <article class="celda pilar">
-          <span class="pilar-n" aria-hidden="true">3</span>
-          <h3>Un catálogo más completo</h3>
-          <p>Cada pregunta sin respuesta marca un dato que le falta a tu ficha. Lo completás y el asesor responde mejor la próxima vez.</p>
-        </article>
+      <div class="ciclo" id="ciclo">
+        <svg class="ciclo-svg" viewBox="0 0 1200 345" aria-hidden="true">
+          <defs>
+            <linearGradient id="ciclo-disco" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--petroleo)"/><stop offset="1" style="stop-color:var(--petroleo-hondo)"/></linearGradient>
+            <linearGradient id="ciclo-trazo" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0"><stop offset="0" style="stop-color:var(--petroleo-medio)"/><stop offset="1" style="stop-color:var(--petroleo)"/></linearGradient>
+          </defs>
+          <path id="ciclo-camino" class="ciclo-base" d="M200 250 L600 250 L1000 250 C1000 20 200 20 200 250"/>
+          <path id="ciclo-rastro" class="ciclo-rastro" d="M200 250 L600 250 L1000 250 C1000 20 200 20 200 250" stroke-dasharray="0 4000"/>
+          <text class="ciclo-etq" x="600" y="132" text-anchor="middle">Cada vuelta mejora la siguiente</text>
+          <g class="ciclo-nodo" data-i="0" transform="translate(200 250)">
+            <circle class="halo" r="98"/>
+            <g class="cuerpo">
+              <circle r="78" fill="url(#ciclo-disco)"/>
+              <use href="#pn-chat" x="-30" y="-30" width="60" height="60" style="color:#fff"/>
+              <circle cx="58" cy="-58" r="18" fill="#fff"/>
+              <text class="num" x="58" y="-52.5" text-anchor="middle">1</text>
+            </g>
+          </g>
+          <g class="ciclo-nodo" data-i="1" transform="translate(600 250)">
+            <circle class="halo" r="98"/>
+            <g class="cuerpo">
+              <circle r="78" fill="url(#ciclo-disco)"/>
+              <use href="#pn-torta" x="-30" y="-30" width="60" height="60" style="color:#fff"/>
+              <circle cx="58" cy="-58" r="18" fill="#fff"/>
+              <text class="num" x="58" y="-52.5" text-anchor="middle">2</text>
+            </g>
+          </g>
+          <g class="ciclo-nodo" data-i="2" transform="translate(1000 250)">
+            <circle class="halo" r="98"/>
+            <g class="cuerpo">
+              <circle r="78" fill="url(#ciclo-disco)"/>
+              <use href="#pn-ficha" x="-30" y="-30" width="60" height="60" style="color:#fff"/>
+              <circle cx="58" cy="-58" r="18" fill="#fff"/>
+              <text class="num" x="58" y="-52.5" text-anchor="middle">3</text>
+            </g>
+          </g>
+          <g id="ciclo-chispa" class="ciclo-chispa" transform="translate(200 250)">
+            <circle r="16" fill="var(--rojo)" opacity=".16"/>
+            <use href="#chispa" x="-11" y="-11" width="22" height="22" style="color:var(--rojo)"/>
+          </g>
+        </svg>
+        <div class="ciclo-textos">
+          <article class="ciclo-item">
+            <span class="ciclo-mini" aria-hidden="true"><svg><use href="#pn-chat"/></svg></span>
+            <h3>Un asesor en tu tienda</h3>
+            <p>Atiende a cada comprador al lado del producto, recomienda con tu catálogo real y lo lleva al carrito, a cualquier hora.</p>
+          </article>
+          <article class="ciclo-item">
+            <span class="ciclo-mini" aria-hidden="true"><svg><use href="#pn-torta"/></svg></span>
+            <h3>Lo que dicen tus clientes, ordenado</h3>
+            <p>Qué preguntan, qué buscan y qué no encuentran, en tu panel. Sabés qué reponer y qué corregir primero.</p>
+          </article>
+          <article class="ciclo-item">
+            <span class="ciclo-mini" aria-hidden="true"><svg><use href="#pn-ficha"/></svg></span>
+            <h3>Un catálogo más completo</h3>
+            <p>Cada pregunta sin respuesta marca un dato que le falta a tu ficha. Lo completás y el asesor responde mejor la próxima vez.</p>
+          </article>
+        </div>
       </div>
       <p class="pilares-cierre"><b>Es un círculo:</b> más conversaciones dan mejor información, la información completa tu catálogo y un catálogo más completo vende más.</p>
     </div>
@@ -2577,6 +2651,44 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
   const ioRev = QUIETO || !("IntersectionObserver" in window) ? null : new IntersectionObserver((entradas) => {
     entradas.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("rev-in"); ioRev.unobserve(e.target); } });
   }, { rootMargin: "0px 0px -8% 0px", threshold: 0.06 });
+
+  /* ---------- Tres pilares: la chispa recorre el ciclo ---------- */
+  (() => {
+    const raiz = document.getElementById("ciclo"); if (!raiz) return;
+    const camino = raiz.querySelector("#ciclo-camino"), rastro = raiz.querySelector("#ciclo-rastro"), chispa = raiz.querySelector("#ciclo-chispa");
+    const nodos = [...raiz.querySelectorAll(".ciclo-nodo")], items = [...raiz.querySelectorAll(".ciclo-item")];
+    const marcar = (i) => { nodos.forEach((n, k) => n.classList.toggle("activo", k === i)); items.forEach((n, k) => n.classList.toggle("activo", k === i)); };
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches || !camino.getTotalLength) { raiz.classList.add("quieto"); return; }
+    const movil = matchMedia("(max-width: 760px)");
+    const MARCAS = [0, 400, 800];   // distancia de cada pilar sobre el camino (los tramos rectos miden 400)
+    const COLA = 150, DUR = 10000, DUR_MOVIL = 7500;
+    let largo = 0, t0 = null, vivo = false, raf = 0;
+    const medir = () => { try { largo = camino.getTotalLength(); } catch (e) { largo = 0; } if (largo) rastro.setAttribute("stroke-dasharray", COLA + " " + largo); };
+    const paso = (ts) => {
+      if (t0 === null) t0 = ts;
+      if (movil.matches || !largo) {
+        if (!movil.matches) medir();
+        marcar(Math.floor((((ts - t0) % DUR_MOVIL) / DUR_MOVIL) * 3));
+      } else {
+        const pos = (((ts - t0) % DUR) / DUR) * largo;
+        const pt = camino.getPointAtLength(pos);
+        chispa.setAttribute("transform", "translate(" + pt.x.toFixed(1) + " " + pt.y.toFixed(1) + ")");
+        rastro.setAttribute("stroke-dashoffset", String(COLA - pos));
+        let act = -1;
+        MARCAS.forEach((m, k) => { if (Math.min(Math.abs(pos - m), Math.abs(pos - m - largo)) < 75) act = k; });
+        marcar(act);
+      }
+      if (vivo) raf = requestAnimationFrame(paso);
+    };
+    medir();
+    if (!("IntersectionObserver" in window)) { vivo = true; raf = requestAnimationFrame(paso); return; }
+    new IntersectionObserver((es) => {
+      const visible = es[0].isIntersecting;
+      if (visible && !vivo) { vivo = true; raf = requestAnimationFrame(paso); }
+      else if (!visible && vivo) { vivo = false; cancelAnimationFrame(raf); }
+    }, { threshold: 0.15 }).observe(raiz);
+  })();
+
   const SELECTOR_REV = ".cabeza-seccion, .cf, .celda, .tarjeta-rubro, .plan, .roi-card, .roi-detalles details, .faq details, .beneficio, .tablero, .previa-marco, .controles, .plataforma, .instala, .notas-planes, .preguntas-rubro";
   function prepararReveal(raiz) {
     if (!ioRev) return;
