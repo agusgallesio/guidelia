@@ -441,7 +441,37 @@
   .ciclo-nodo.activo .halo { opacity: 1; transform: scale(1); }
   .ciclo-nodo.activo .cuerpo { transform: scale(1.07); }
   .ciclo-nodo .num { font-family: var(--f-texto); font-size: 15px; font-weight: 600; fill: var(--petroleo); }
-  .ciclo-textos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin-top: 18px; }
+  #pilares .cabeza-seccion { margin-bottom: 0; }
+  .ciclo-nodo .insignia { fill: #fff; stroke: var(--cielo); stroke-width: 3; }
+  .ciclo-nodo .pista { fill: none; stroke: var(--petroleo-medio); stroke-opacity: .18; stroke-width: 2; }
+  .ciclo-nodo .avance { fill: none; stroke: var(--petroleo-medio); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 578; stroke-dashoffset: 578; transition: stroke-dashoffset 1.1s cubic-bezier(.3,.7,.2,1); }
+  .ciclo-nodo.activo .avance { stroke-dashoffset: 0; }
+  .dib * { transform-box: fill-box; }
+  .dib-chat .globo-c { fill: #fff; fill-opacity: .2; }
+  .dib-chat .linea-c { fill: #fff; fill-opacity: .7; }
+  .dib-chat .globo-a { fill: #fff; transform-origin: left bottom; transform: scale(.92); opacity: .9; transition: transform .45s cubic-bezier(.2,.8,.2,1), opacity .45s; }
+  .dib-chat .prod { fill: var(--cielo); }
+  .dib-chat .linea-a { fill: var(--petroleo); fill-opacity: .55; }
+  .dib-chat .punto { fill: var(--petroleo-medio); opacity: .35; }
+  .ciclo-nodo.activo .dib-chat .globo-a { transform: scale(1); opacity: 1; }
+  .ciclo-nodo.activo .dib-chat .punto { animation: tipeo 1s ease-in-out infinite; }
+  .ciclo-nodo.activo .dib-chat .p2 { animation-delay: .15s; } .ciclo-nodo.activo .dib-chat .p3 { animation-delay: .3s; }
+  @keyframes tipeo { 0%, 100% { opacity: .3; } 50% { opacity: 1; } }
+  .dib-barras .base { fill: #fff; fill-opacity: .35; }
+  .dib-barras .barra { fill: #fff; fill-opacity: .85; transform-origin: center bottom; transform: scaleY(.45); transition: transform .7s cubic-bezier(.2,.8,.2,1); }
+  .dib-barras .destacada { fill: #6FB8D3; fill-opacity: 1; }
+  .ciclo-nodo.activo .dib-barras .barra { transform: scaleY(1); }
+  .ciclo-nodo.activo .dib-barras .b2 { transition-delay: .08s; } .ciclo-nodo.activo .dib-barras .b3 { transition-delay: .16s; } .ciclo-nodo.activo .dib-barras .b4 { transition-delay: .24s; }
+  .dib-ficha .ficha { fill: #fff; }
+  .dib-ficha .foto { fill: var(--cielo); }
+  .dib-ficha .renglon { fill: var(--petroleo); fill-opacity: .4; }
+  .dib-ficha .nuevo { fill: #6FB8D3; fill-opacity: 1; transform-origin: left center; transform: scaleX(0); transition: transform .6s .1s cubic-bezier(.2,.8,.2,1); }
+  .dib-ficha .tilde circle { fill: var(--ok); }
+  .dib-ficha .tilde path { fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+  .dib-ficha .tilde { transform-origin: center; transform: scale(0); transition: transform .45s .45s cubic-bezier(.3,1.6,.5,1); }
+  .ciclo-nodo.activo .dib-ficha .nuevo { transform: scaleX(1); }
+  .ciclo-nodo.activo .dib-ficha .tilde { transform: scale(1); }
+  .ciclo-textos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin-top: 14px; }
   .ciclo-item { text-align: center; display: grid; gap: 8px; justify-items: center; }
   .ciclo-item h3 { font-size: 22px; transition: color .4s; }
   .ciclo-item p { color: var(--texto-2); font-size: 15.5px; line-height: 1.55; max-width: 34ch; transition: color .4s; }
@@ -465,9 +495,9 @@
     .ciclo-item::after { content: ""; position: absolute; left: 31px; top: 70px; bottom: 4px; border-left: 3px dotted var(--petroleo-medio); opacity: .35; }
     .ciclo-item:last-child { padding-bottom: 0; }
     .ciclo-item:last-child::after { display: none; }
-    .pilares-cierre { text-align: left; margin-top: 28px; }
+    #pilares .cabeza-seccion { margin-bottom: 32px; }
   }
-  @media (prefers-reduced-motion: reduce) { .ciclo-nodo .halo, .ciclo-nodo .cuerpo, .ciclo-mini { transition: none; } }
+  @media (prefers-reduced-motion: reduce) { .ciclo-nodo .halo, .ciclo-nodo .cuerpo, .ciclo-mini, .ciclo-nodo .avance, .dib * { transition: none !important; animation: none !important; } }
 
   /* ---------- Funciones (bento) ---------- */
   .bento { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 18px; }
@@ -617,6 +647,9 @@
   .horas-filas b { color: #fff; font-weight: 700; text-align: right; font-variant-numeric: tabular-nums; }
   /* PLANES OCULTOS (temporal, 14-nov-2026): se esconden los enlaces a la sección de planes */
   a[href="#planes"], a[href="/#planes"] { display: none !important; }
+  /* Personalización oculta por ahora (pedido de Agustín, 26-nov-2026): sacar el hidden de #personaliza y esta regla para volver a mostrarla. */
+  #personaliza[hidden] { display: none !important; }
+  a[href="#personaliza"], a[href="/#personaliza"] { display: none !important; }
 
   /* Comunicación para dueños (18-nov-2026): pilares con datos, el problema, sin riesgo y quién está detrás */
   .hero-texto > .hero-pilares { order: 4; }
@@ -1585,39 +1618,70 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
         <p class="bajada">Un sistema que convierte cada conversación con tus compradores en ventas y en un catálogo más completo. Son tres pilares conectados y cada uno alimenta al siguiente.</p>
       </div>
       <div class="ciclo" id="ciclo">
-        <svg class="ciclo-svg" viewBox="0 0 1200 345" aria-hidden="true">
+        <svg class="ciclo-svg" viewBox="0 58 1200 306" aria-hidden="true">
           <defs>
             <linearGradient id="ciclo-disco" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--petroleo)"/><stop offset="1" style="stop-color:var(--petroleo-hondo)"/></linearGradient>
+            <radialGradient id="ciclo-brillo" cx=".3" cy=".22" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/></radialGradient>
             <linearGradient id="ciclo-trazo" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0"><stop offset="0" style="stop-color:var(--petroleo-medio)"/><stop offset="1" style="stop-color:var(--petroleo)"/></linearGradient>
           </defs>
           <path id="ciclo-camino" class="ciclo-base" d="M200 250 L600 250 L1000 250 C1000 20 200 20 200 250"/>
           <path id="ciclo-rastro" class="ciclo-rastro" d="M200 250 L600 250 L1000 250 C1000 20 200 20 200 250" stroke-dasharray="0 4000"/>
           <text class="ciclo-etq" x="600" y="132" text-anchor="middle">Cada vuelta mejora la siguiente</text>
           <g class="ciclo-nodo" data-i="0" transform="translate(200 250)">
-            <circle class="halo" r="98"/>
+            <circle class="halo" r="108"/>
+            <circle class="pista" r="92"/>
+            <circle class="avance" r="92" transform="rotate(-90)"/>
             <g class="cuerpo">
               <circle r="78" fill="url(#ciclo-disco)"/>
-              <use href="#pn-chat" x="-30" y="-30" width="60" height="60" style="color:#fff"/>
-              <circle cx="58" cy="-58" r="18" fill="#fff"/>
-              <text class="num" x="58" y="-52.5" text-anchor="middle">1</text>
+              <circle r="78" fill="url(#ciclo-brillo)"/>
+              <g class="dib dib-chat">
+                <rect class="globo-c" x="-48" y="-38" width="58" height="24" rx="12"/>
+                <rect class="linea-c" x="-38" y="-29" width="38" height="6" rx="3"/>
+                <rect class="globo-a" x="-14" y="-6" width="62" height="42" rx="13"/>
+                <rect class="prod" x="-6" y="2" width="20" height="20" rx="5"/>
+                <rect class="linea-a" x="20" y="4" width="20" height="5" rx="2.5"/>
+                <rect class="linea-a l2" x="20" y="13" width="14" height="5" rx="2.5"/>
+                <circle class="punto p1" cx="-2" cy="30" r="2.6"/><circle class="punto p2" cx="7" cy="30" r="2.6"/><circle class="punto p3" cx="16" cy="30" r="2.6"/>
+              </g>
+              <circle class="insignia" cx="60" cy="-60" r="18"/>
+              <text class="num" x="60" y="-54.5" text-anchor="middle">1</text>
             </g>
           </g>
           <g class="ciclo-nodo" data-i="1" transform="translate(600 250)">
-            <circle class="halo" r="98"/>
+            <circle class="halo" r="108"/>
+            <circle class="pista" r="92"/>
+            <circle class="avance" r="92" transform="rotate(-90)"/>
             <g class="cuerpo">
               <circle r="78" fill="url(#ciclo-disco)"/>
-              <use href="#pn-torta" x="-30" y="-30" width="60" height="60" style="color:#fff"/>
-              <circle cx="58" cy="-58" r="18" fill="#fff"/>
-              <text class="num" x="58" y="-52.5" text-anchor="middle">2</text>
+              <circle r="78" fill="url(#ciclo-brillo)"/>
+              <g class="dib dib-barras">
+                <rect class="base" x="-44" y="36" width="88" height="3" rx="1.5"/>
+                <rect class="barra b1" x="-40" y="10" width="15" height="26" rx="4"/>
+                <rect class="barra b2" x="-19" y="-10" width="15" height="46" rx="4"/>
+                <rect class="barra b3" x="2" y="-1" width="15" height="37" rx="4"/>
+                <rect class="barra b4 destacada" x="23" y="-28" width="15" height="64" rx="4"/>
+              </g>
+              <circle class="insignia" cx="60" cy="-60" r="18"/>
+              <text class="num" x="60" y="-54.5" text-anchor="middle">2</text>
             </g>
           </g>
           <g class="ciclo-nodo" data-i="2" transform="translate(1000 250)">
-            <circle class="halo" r="98"/>
+            <circle class="halo" r="108"/>
+            <circle class="pista" r="92"/>
+            <circle class="avance" r="92" transform="rotate(-90)"/>
             <g class="cuerpo">
               <circle r="78" fill="url(#ciclo-disco)"/>
-              <use href="#pn-ficha" x="-30" y="-30" width="60" height="60" style="color:#fff"/>
-              <circle cx="58" cy="-58" r="18" fill="#fff"/>
-              <text class="num" x="58" y="-52.5" text-anchor="middle">3</text>
+              <circle r="78" fill="url(#ciclo-brillo)"/>
+              <g class="dib dib-ficha">
+                <rect class="ficha" x="-32" y="-44" width="64" height="86" rx="10"/>
+                <rect class="foto" x="-24" y="-36" width="48" height="28" rx="6"/>
+                <rect class="renglon r1" x="-24" y="0" width="44" height="6" rx="3"/>
+                <rect class="renglon r2" x="-24" y="12" width="32" height="6" rx="3"/>
+                <rect class="renglon r3 nuevo" x="-24" y="24" width="38" height="6" rx="3"/>
+                <g class="tilde"><circle cx="26" cy="34" r="13"/><path d="M20 34.5l4 4 8-8.5"/></g>
+              </g>
+              <circle class="insignia" cx="60" cy="-60" r="18"/>
+              <text class="num" x="60" y="-54.5" text-anchor="middle">3</text>
             </g>
           </g>
           <g id="ciclo-chispa" class="ciclo-chispa" transform="translate(200 250)">
@@ -1643,7 +1707,6 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
           </article>
         </div>
       </div>
-      <p class="pilares-cierre"><b>Es un círculo:</b> más conversaciones dan mejor información, la información completa tu catálogo y un catálogo más completo vende más.</p>
     </div>
   </section>
 
@@ -1814,7 +1877,7 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
   </section>
 
   <!-- ================= PERSONALIZACIÓN ================= -->
-  <section class="banda perso-escena" id="personaliza">
+  <section class="banda perso-escena" id="personaliza" hidden>
    <div class="perso-pegado">
     <div class="envoltura perso">
       <div>
@@ -2658,7 +2721,7 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
     const camino = raiz.querySelector("#ciclo-camino"), rastro = raiz.querySelector("#ciclo-rastro"), chispa = raiz.querySelector("#ciclo-chispa");
     const nodos = [...raiz.querySelectorAll(".ciclo-nodo")], items = [...raiz.querySelectorAll(".ciclo-item")];
     const marcar = (i) => { nodos.forEach((n, k) => n.classList.toggle("activo", k === i)); items.forEach((n, k) => n.classList.toggle("activo", k === i)); };
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches || !camino.getTotalLength) { raiz.classList.add("quieto"); return; }
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches || !camino.getTotalLength) { raiz.classList.add("quieto"); nodos.forEach((n) => n.classList.add("activo")); return; }
     const movil = matchMedia("(max-width: 760px)");
     const MARCAS = [0, 400, 800];   // distancia de cada pilar sobre el camino (los tramos rectos miden 400)
     const COLA = 150, DUR = 10000, DUR_MOVIL = 7500;
