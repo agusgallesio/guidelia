@@ -19,6 +19,7 @@ Para dueños de tiendas online de Argentina, chicas y medianas. Se instala en la
 
 ## Artículos
 
+- [ChatGPT Business Hub: guía para crear la ficha de tu tienda online en ChatGPT](https://guidelia.com.ar/blog/chatgpt-business-hub-guia-tienda-online/): Guía paso a paso de ChatGPT Business Hub para tiendas online: cómo reclamar y verificar tu ficha, qué completar, el agente de tu marca y qué hay en Argentina.
 - [Chatbot de WhatsApp o asesor en tu tienda online: cuál conviene](https://guidelia.com.ar/blog/chatbot-de-whatsapp-o-asesor-en-la-tienda-online/): Chatbot de WhatsApp o asesor de compras dentro de tu tienda online: qué resuelve cada uno, cuánto trabajo pide y cómo combinarlos para vender más.
 - [IA para Tiendanube: cómo sumar un asesor de compras a tu tienda](https://guidelia.com.ar/blog/ia-para-tiendanube-asesor-de-compras/): Cómo sumar inteligencia artificial a tu tienda Tiendanube: un asesor de compras que responde con tu catálogo, cómo se instala y qué medir.
 - [Cliengo o un asesor de compras con IA: diferencias y cuál conviene a tu tienda](https://guidelia.com.ar/blog/cliengo-o-asesor-de-compras-con-ia/): Diferencias entre Cliengo y un asesor de compras con IA como Guidelia: canales, catálogo, carrito y qué mide cada uno. Cuál conviene según tu tienda.
