@@ -649,6 +649,9 @@
   a[href="#planes"], a[href="/#planes"] { display: none !important; }
   /* Personalización oculta por ahora (pedido de Agustín, 26-nov-2026): sacar el hidden de #personaliza y esta regla para volver a mostrarla. */
   #personaliza[hidden] { display: none !important; }
+  /* Funciones ("Lo que gana tu tienda con cada conversación") oculta por ahora (pedido de Agustín, 26-nov-2026): sacar el hidden de #funciones y esta regla para volver a mostrarla. */
+  #funciones[hidden] { display: none !important; }
+  a[href="#funciones"], a[href="/#funciones"] { display: none !important; }
   a[href="#personaliza"], a[href="/#personaliza"] { display: none !important; }
 
   /* Comunicación para dueños (18-nov-2026): pilares con datos, el problema, sin riesgo y quién está detrás */
@@ -1452,8 +1455,8 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
   <section class="banda" id="dia">
     <div class="envoltura">
       <div class="cabeza-seccion">
-        <h2>Pagás para que entren. Se van con una duda</h2>
-        <p class="bajada">Traer visitas es cada vez más caro. Lo que pasa después decide si esa inversión se convierte en ventas o se pierde. Cuatro momentos de un día cualquiera, con y sin Guidelia. Son ejemplos ilustrativos.</p>
+        <h2>Cada duda sin respuesta es una venta menos</h2>
+        <p class="bajada">Traer visitas es cada vez más caro. Lo que pasa después decide si esa inversión se convierte en ventas o se pierde. Cuatro momentos de un día cualquiera, con y sin Guidelia.</p>
       </div>
       <div class="dia">
         <div class="dia-pasos" id="dia-pasos"></div>
@@ -1697,7 +1700,7 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
           </article>
           <article class="ciclo-item">
             <span class="ciclo-mini" aria-hidden="true"><svg viewBox="-100 -100 200 200"><g><circle class="pista" r="92"/><circle class="avance" r="92" transform="rotate(-90)"/><g class="cuerpo"><circle r="78" fill="url(#ciclo-disco-m)"/><circle r="78" fill="url(#ciclo-brillo-m)"/><g class="dib dib-barras"><rect class="base" x="-44" y="36" width="88" height="3" rx="1.5"/><rect class="barra b1" x="-40" y="10" width="15" height="26" rx="4"/><rect class="barra b2" x="-19" y="-10" width="15" height="46" rx="4"/><rect class="barra b3" x="2" y="-1" width="15" height="37" rx="4"/><rect class="barra b4 destacada" x="23" y="-28" width="15" height="64" rx="4"/></g><circle class="insignia" cx="60" cy="-60" r="18"/><text class="num" x="60" y="-54.5" text-anchor="middle">2</text></g></g></svg></span>
-            <h3>Lo que dicen tus clientes, ordenado</h3>
+            <h3>Información sobre cada conversación</h3>
             <p>Qué preguntan, qué buscan y qué no encuentran, en tu panel. Sabés qué reponer y qué corregir primero.</p>
           </article>
           <article class="ciclo-item">
@@ -1823,7 +1826,7 @@ h1 { letter-spacing: -.04em; } h2 { letter-spacing: -.03em; }
   </section>
 
   <!-- ================= FUNCIONES ================= -->
-  <section class="banda banda--niebla" id="funciones">
+  <section class="banda banda--niebla" id="funciones" hidden>
     <div class="envoltura">
       <div class="cabeza-seccion cabeza-seccion--centro">
         <h2>Lo que gana tu tienda con cada conversación</h2>
