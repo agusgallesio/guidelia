@@ -2,12 +2,27 @@
 
 > Guidelia es un asesor de compras con IA (agente de IA) para tiendas online: responde dudas con los datos del catálogo y acompaña al cliente hasta la compra.
 
-Para dueños de tiendas online de Argentina, chicas y medianas. Se instala en la tienda con una línea de código y funciona con Tiendanube, WooCommerce y Shopify.
+Guidelia (guidelia.com.ar) trabaja con tiendas online de Argentina, chicas y medianas. Funciona en Tiendanube (se instala con una app) y en WooCommerce (con una línea de código). Shopify: próximamente.
+
+## Qué hace
+
+- Atiende dentro de la tienda online, al lado del producto que el visitante está mirando.
+- Responde con el catálogo de la tienda (productos, precios, stock y variantes) y con sus políticas de envío, cambios y pagos.
+- Compara productos, respeta el presupuesto que indica el cliente y agrega al carrito desde el chat.
+- Lo que no sabe lo dice y lo deriva al equipo de la tienda por WhatsApp o email; la pregunta queda en el panel.
+- En el panel, la tienda ve qué preguntan sus clientes y, según el plan, las ventas pagadas en las que ayudó el asesor.
+
+## Qué no es
+
+- No es un chatbot de respuestas armadas: entiende preguntas abiertas y responde con datos reales del catálogo.
+- No es un bot de WhatsApp: trabaja en la tienda online y deriva a WhatsApp lo que necesita una persona.
+- No tiene relación con otras empresas o proyectos que se llaman Guidelia, como plataformas de audioguías turísticas.
 
 ## Páginas principales
 
 - [Guidelia](https://guidelia.com.ar/): qué es, cómo funciona y cómo pedir una demo con tu catálogo.
 - [Blog](https://guidelia.com.ar/blog/): guías para vender más en una tienda online con IA.
+- [Qué es un asesor de compras con IA](https://guidelia.com.ar/blog/asesor-de-compras-con-ia-que-es/): definición, diferencias con un chatbot y cómo elegir uno.
 
 ## Soluciones por rubro
 
@@ -20,6 +35,7 @@ Para dueños de tiendas online de Argentina, chicas y medianas. Se instala en la
 ## Artículos
 
 - [Chat Nube o un asesor de compras con IA: diferencias y cuál conviene a tu Tiendanube](https://guidelia.com.ar/blog/chat-nube-o-asesor-de-compras-con-ia/): Diferencias entre Chat Nube, la IA de Tiendanube para WhatsApp e Instagram, y un asesor de compras con IA en tu tienda. Qué hace cada uno y cuál conviene.
+- [Asesor de compras con IA: qué es, qué hace y cómo elegir uno para tu tienda online](https://guidelia.com.ar/blog/asesor-de-compras-con-ia-que-es/): Qué es un asesor de compras con IA para tiendas online, en qué se diferencia de un chatbot o un bot de WhatsApp, qué hace y cómo elegir uno en Argentina.
 - [ChatGPT Business Hub: guía para crear la ficha de tu tienda online en ChatGPT](https://guidelia.com.ar/blog/chatgpt-business-hub-guia-tienda-online/): Guía paso a paso de ChatGPT Business Hub para tiendas online: cómo reclamar y verificar tu ficha, qué completar, el agente de tu marca y qué hay en Argentina.
 - [Chatbot de WhatsApp o asesor en tu tienda online: cuál conviene](https://guidelia.com.ar/blog/chatbot-de-whatsapp-o-asesor-en-la-tienda-online/): Chatbot de WhatsApp o asesor de compras dentro de tu tienda online: qué resuelve cada uno, cuánto trabajo pide y cómo combinarlos para vender más.
 - [IA para Tiendanube: cómo sumar un asesor de compras a tu tienda](https://guidelia.com.ar/blog/ia-para-tiendanube-asesor-de-compras/): Cómo sumar inteligencia artificial a tu tienda Tiendanube: un asesor de compras que responde con tu catálogo, cómo se instala y qué medir.
